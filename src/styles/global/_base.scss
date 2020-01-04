@@ -1,0 +1,42 @@
+html {
+  background-color: var(--black);
+}
+
+// Input Range Styles
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  height: var(--c-03);
+  max-width: 550px;
+  margin-top: var(--l-03);
+
+  &:focus {
+    outline: none;
+  }
+
+  // Track Styles
+  &::-webkit-slider-runnable-track,
+  &::-moz-range-track {
+    background-color: var(--yellow);
+    width: 100%;
+    height: var(--c-03);
+    border-radius: 1000px;
+    border: none;
+  }
+
+  // Thumb Slider Styles
+  &::-webkit-slider-thumb,
+  &::-moz-range-thumb {
+    width: var(--c-06);
+    height: var(--c-06);
+    background-color: var(--yellow);
+    border: 2px solid var(--black);
+    border-radius: var(--c-05);
+  }
+
+  &::-moz-focus-outer {
+    border: 0;
+  }
+}

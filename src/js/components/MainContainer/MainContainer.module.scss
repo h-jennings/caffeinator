@@ -1,0 +1,32 @@
+@value mainContainerBreak from '../../../styles/shared/breakpoints.scss';
+@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+
+.wrapper {
+  margin: 0 auto;
+  width: 800px;
+  padding-top: 104px;
+
+  @media mainContainerBreak {
+    width: 100%;
+  }
+}
+
+.headline {
+  color: var(--yellow);
+  text-align: left;
+  margin-bottom: 56px;
+  padding-left: var(--c-05);
+}
+
+.contentContainer {
+  background-color: #2F404E;
+  padding: 70px 60px;
+  border-radius: 45px;
+  max-width: 760px;
+  margin: 0 auto;
+  margin: 0 20px;
+
+  @media phoneBreak {
+    padding: 35px 30px
+  }
+}

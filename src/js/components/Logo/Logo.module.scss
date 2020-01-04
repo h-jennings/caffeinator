@@ -1,0 +1,27 @@
+@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+
+:global {
+  .Logo {
+    [class*="Logo-cup"] {
+      fill: var(--black);
+    }
+  }
+}
+
+.container {
+  height: 100px;
+  width: 100px;
+  background-color: var(--white);
+  display: grid;
+  place-items: center;
+  border-radius: 10%;
+
+  @media phoneBreak {
+    height: 75px;
+    width: 75px;
+
+    svg {
+      width: 45px;
+    }
+  }
+}

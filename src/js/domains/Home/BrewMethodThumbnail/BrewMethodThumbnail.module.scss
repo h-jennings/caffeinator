@@ -1,0 +1,56 @@
+@value mainContainerBreak from '../../../../styles/shared/breakpoints.scss';
+
+.container {
+  border-radius: 12px;
+background: linear-gradient(145deg, #324453, #2a3a46);
+box-shadow: 13px 13px 26px #283642, 
+            -13px -13px 26px #364a5a;
+  border-radius: 12px;
+  padding: var(--c-06) var(--c-03);
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+
+  @media mainContainerBreak {
+    min-height: unset;
+  }
+  
+  img {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  // This is a bit of a hack to make
+  // the grid items have a 1:1 aspect ratio
+  &::after {
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 0;
+    padding-bottom: 86.36%;
+  }
+}
+
+.headline {
+  color: var(--black);
+  position: absolute;
+  top: var(--c-05);
+  
+  @media mainContainerBreak {
+    font-size: 3.4vw;
+    top: var(--c-06);
+  }
+}
+
+.icon {
+  margin: 0 auto;
+  display: block;
+}

@@ -1,0 +1,18 @@
+@value mainContainerBreak from '../../../styles/shared/breakpoints.scss';
+@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+
+.methodsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 190px);
+  gap: 35px;
+
+  @media mainContainerBreak {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+    color: transparent;
+  }
+}

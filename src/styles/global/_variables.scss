@@ -1,0 +1,44 @@
+:root {
+  // Font
+  --primary-font: 'Basier Circle', -apple-system, 'Helvetica Neue', sans-serif;
+
+  // Colors
+  --black: #011627;
+  --white: #fdfffc;
+  --yellow: #ff9f1c;
+  --red: #f71735;
+  --turquoise: #41ead4;
+  --light-steel-blue: #BCC4DB;
+  --blue: #2F404E;
+
+  // Navigation height
+  --nav-height: 180px;
+
+  // Spacing
+  // Component Spacing
+  // (Spacing units use within components)
+  --c-01: 3px;
+  --c-02: 5px;
+  --c-03: 10px;
+  --c-04: 15px;
+  --c-05: 20px;
+  --c-06: 30px;
+  --c-07: 40px;
+  --c-08: 50px;
+  --c-09: 60px;
+
+  // Layout Spacing
+  // (Spacing units for layout)
+  --l-01: 20px;
+  --l-02: 30px;
+  --l-03: 40px;
+  --l-04: 60px;
+  --l-05: 80px;
+  --l-06: 120px;
+  --l-07: 200px;
+
+  // Elements
+
+  --nav-height: 180px;
+  --main-container-break: 800px;
+}

@@ -1,0 +1,13 @@
+.btnBase {
+  text-decoration: none;
+  padding: var(--c-05) var(--c-09);
+  display: inline-block;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: var(--txt-base);
+  line-height: 1;
+  background-color: var(--yellow);
+  color: var(--black);
+  border: none;
+  cursor: pointer;
+}
