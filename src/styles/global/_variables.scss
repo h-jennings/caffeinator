@@ -11,9 +11,6 @@
   --light-steel-blue: #BCC4DB;
   --blue: #2F404E;
 
-  // Navigation height
-  --nav-height: 180px;
-
   // Spacing
   // Component Spacing
   // (Spacing units use within components)
@@ -41,4 +38,12 @@
 
   --nav-height: 180px;
   --main-container-break: 800px;
+  
+  
+}
+
+@media screen and (max-width: 599px) {
+  :root {
+    --nav-height: 155px;
+  }
 }

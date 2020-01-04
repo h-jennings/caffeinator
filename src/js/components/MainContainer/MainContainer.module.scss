@@ -5,8 +5,9 @@
   margin: 0 auto;
   width: 800px;
   padding-top: 104px;
-
+  
   @media mainContainerBreak {
+    padding-top: var(--l-02);
     width: 100%;
   }
 }
@@ -16,6 +17,16 @@
   text-align: left;
   margin-bottom: 56px;
   padding-left: var(--c-05);
+
+  @media mainContainerBreak {
+    text-align: center;
+  }
+  
+  @media phoneBreak {
+    font-size: var(--txt-md);
+    margin-bottom: var(--l-03);
+    padding-right: var(--c-05);
+  }
 }
 
 .contentContainer {
@@ -27,6 +38,6 @@
   margin: 0 20px;
 
   @media phoneBreak {
-    padding: 35px 30px
+    padding: 35px 20px
   }
 }
