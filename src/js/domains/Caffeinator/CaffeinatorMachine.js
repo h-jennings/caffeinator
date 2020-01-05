@@ -1,6 +1,6 @@
 import { Machine } from 'xstate';
 
-const dataCollectionStates = {
+/* const dataCollectionStates = {
   id: 'dataCollectionStates',
   initial: 'idle',
   states: {
@@ -13,82 +13,48 @@ const dataCollectionStates = {
       },
     },
   },
-};
+}; */
 
 const Caffeinator = new Machine({
   id: 'Caffeinator',
-  initial: 'idle',
+  initial: 'init',
   context: {
     cupAmount: 1,
   },
   states: {
-    idle: {
+    init: {
       on: {
-        START: {
-          target: 'start',
-        },
+        '': [
+          { cond: { type: 'isAeropressPage' }, target: 'aeropress' },
+          { cond: { type: 'isFrenchPressPage' }, target: 'frenchPress' },
+          { cond: { type: 'isChemexPage' }, target: 'chemex' },
+          { cond: { type: 'isPourOverPage' }, target: 'pourOver' },
+          { target: 'unknownPage' },
+        ],
       },
     },
-    start: {
-      on: {
-        MAKE_COFFEE: {
-          target: 'Grind_Beans',
-        },
-      },
-      ...dataCollectionStates,
+    aeropress: {
+
     },
-    Grind_Beans: {
-      on: {
-        RESET: 'idle',
-        NEXT: {
-          target: 'Add_Water',
-        },
-        PREV: 'start',
-      },
+    frenchPress: {
+
     },
-    Add_Water: {
-      on: {
-        RESET: 'idle',
-        NEXT: {
-          target: 'Stir',
-        },
-        PREV: 'Grind_Beans',
-      },
+    chemex: {
+
     },
-    Stir: {
-      entry: 'createTimer',
-      on: {
-        RESET: 'idle',
-        NEXT: {
-          target: 'Add_Remaining_Water',
-        },
-        PREV: 'Add_Water',
-      },
+    pourOver: {
+
     },
-    Add_Remaining_Water: {
-      on: {
-        RESET: 'idle',
-        NEXT: {
-          target: 'Wait',
-        },
-        PREV: 'Stir',
-      },
+    unknownPage: {
+
     },
-    Wait: {
-      entry: 'createTimer',
-      on: {
-        RESET: 'idle',
-        NEXT: 'Finished',
-        PREV: 'Add_Remaining_Water',
-      },
-    },
-    Finished: {
-      type: 'final',
-      on: {
-        RESET: 'idle',
-        PREV: 'Wait',
-      },
-    },
+  },
+}, {
+  guards: {
+    isAeropressPage: (context, _event) => context.method === 'aeropress',
+    isFrenchPressPage: (context, _event) => context.method === 'french-press',
+    isChemexPage: (context, _event) => context.method === 'chemex',
+    isPourOverPage: (context, _event) => context.method === 'pour-over',
   },
 });
 
