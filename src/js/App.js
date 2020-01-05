@@ -4,6 +4,7 @@ import methods from '../data/methods.json';
 import Home from './domains/Home';
 import Layout from './components/Layout';
 import RecipePage from './domains/RecipePage';
+import FourZeroFour from './domains/404';
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
           <Route path="/" exact>
             <Home methods={methods} />
           </Route>
-          <Route path="/">
+          <Route path="/:method">
             <RecipePage methods={methods} />
           </Route>
+          <Route component={FourZeroFour} />
         </Switch>
       </Layout>
     </Router>

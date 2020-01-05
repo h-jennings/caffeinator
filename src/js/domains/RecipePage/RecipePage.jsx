@@ -1,31 +1,41 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import {
+  useLocation, Switch, Route, useRouteMatch, Link,
+} from 'react-router-dom';
+import Caffeinator from '../Caffeinator';
+import ScrollToTopOnMount from '../../components/ScrollToTopOnMount';
 import MainContainer from '../../components/MainContainer';
 import RecipePageListItem from './RecipePageListItem';
+import FourZeroFour from '../404';
 
 function RecipePage({ methods }) {
   const location = useLocation();
+  const match = useRouteMatch();
   const pathName = location.pathname;
   const pageMethod = methods.filter((method) => method.path === pathName);
 
   return (
-    <>
-      {pageMethod.length >= 1 ? (
-        <MainContainer headline={`${pageMethod[0].type} Recipes`}>
-          <ul>
-            {pageMethod[0].recipes.map((recipe) => (
-              <RecipePageListItem key={recipe.name} recipe={recipe} icon={pageMethod[0].icon} />
-            ))}
-          </ul>
-        </MainContainer>
-      ) : (
-          <h1 style={{ color: 'var(--yellow)' }}>
-            No Recipes Found for
-          {' '}
-            <code>{pathName}</code>
-          </h1>
-        )}
-    </>
+    <Switch>
+      <Route exact path={`${match.path}/:recipeId`}>
+        <Caffeinator />
+      </Route>
+      <Route exact path={match.path}>
+        {pageMethod.length >= 1 ? (
+          <>
+            <ScrollToTopOnMount />
+            <MainContainer headline={`${pageMethod[0].type} Recipes`}>
+              <ul>
+                {pageMethod[0].recipes.map((recipe) => (
+                  <Link key={recipe.name} to={`${match.url}/${recipe.path}`}>
+                    <RecipePageListItem recipe={recipe} icon={pageMethod[0].icon} />
+                  </Link>
+                ))}
+              </ul>
+            </MainContainer>
+          </>
+        ) : <FourZeroFour />}
+      </Route>
+    </Switch>
   );
 }
 

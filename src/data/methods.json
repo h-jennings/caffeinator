@@ -8,11 +8,13 @@
     },
     "recipes": [{
         "name": "French press by coffee.cup.guru",
+        "path": "french-press-by-coffee-cup-guru",
         "timeInSeconds": 240,
         "grindRange": "medium-coarse"
       },
       {
         "name": "Perfect French press coffee",
+        "path": "perfect-french-press-coffee",
         "timeInSeconds": 330,
         "grindRange": "coarse"
       }
@@ -28,21 +30,25 @@
     },
     "recipes": [{
         "name": "Chemex sweet and easy",
+        "path": "chemex-sweet-and-easy",
         "timeInSeconds": 260,
         "grindRange": "medium"
       },
       {
         "name": "Chemex by coffee.cup.guru",
+        "path": "chemex-by-coffee-cup-guru",
         "timeInSeconds": 280,
         "grindRange": "medium"
       },
       {
         "name": "Chemex higher temperature",
+        "path": "chemex-higher-temperature",
         "timeInSeconds": 260,
         "grindRange": "medium"
       },
       {
         "name": "Chemex longer bloom",
+        "path": "chemex-longer-bloom",
         "timeInSeconds": 330,
         "grindRange": "medium"
       }
@@ -58,11 +64,13 @@
     },
     "recipes": [{
         "name": "AeroPress basic recipe",
+        "path": "aeropress-basic-recipe",
         "timeInSeconds": 150,
         "grindRange": "medium"
       },
       {
         "name": "AeroPress brew recipe",
+        "path": "aeropress-brew-recipe",
         "timeInSeconds": 180,
         "grindRange": "medium-fine"
       }
@@ -78,11 +86,13 @@
     },
     "recipes": [{
         "name": "Peet's pour over",
+        "path": "peets-pour-over",
         "timeInSeconds": 300,
         "grindRange": "medium-fine"
       },
       {
         "name": "Hario - make it easy",
+        "path": "hario-make-it-easy",
         "timeInSeconds": 240,
         "grindRange": "medium-fine"
       }

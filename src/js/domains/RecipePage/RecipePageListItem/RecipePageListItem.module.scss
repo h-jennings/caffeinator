@@ -24,6 +24,10 @@
   align-items: center;
   z-index: 2;
   position: relative;
+
+  @media phoneBreak {
+    padding: var(--c-05);
+  }
 }
 
 .recipeText {
@@ -56,6 +60,8 @@
   
   @media phoneBreak {
     width: 100%;
+    max-width: 300px;
+    padding: var(--c-07) var(--c-05) var(--c-05) var(--c-05);
   }
 }
 
@@ -73,6 +79,10 @@
 
   :nth-child(1){
     margin-right: var(--c-05);
+
+    @media phoneBreak {
+      margin-right: var(--c-03);
+    }
   }
 }
 
