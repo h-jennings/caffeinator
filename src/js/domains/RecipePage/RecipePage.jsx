@@ -1,41 +1,35 @@
 import React from 'react';
 import {
-  useLocation, Switch, Route, useRouteMatch, Link,
+  useRouteMatch, Link, useParams,
 } from 'react-router-dom';
-import Caffeinator from '../Caffeinator';
+import styles from './RecipePage.module.scss';
 import ScrollToTopOnMount from '../../components/ScrollToTopOnMount';
 import MainContainer from '../../components/MainContainer';
 import RecipePageListItem from './RecipePageListItem';
 import FourZeroFour from '../404';
 
-function RecipePage({ methods }) {
-  const location = useLocation();
+function RecipePage({ brewMethods }) {
+  const { method } = useParams();
   const match = useRouteMatch();
-  const pathName = location.pathname;
-  const pageMethod = methods.filter((method) => method.path === pathName);
+  const pageMethod = brewMethods.find((brewMethod) => brewMethod.path === method);
 
   return (
-    <Switch>
-      <Route exact path={`${match.path}/:recipeId`}>
-        <Caffeinator />
-      </Route>
-      <Route exact path={match.path}>
-        {pageMethod.length >= 1 ? (
-          <>
-            <ScrollToTopOnMount />
-            <MainContainer headline={`${pageMethod[0].type} Recipes`}>
-              <ul>
-                {pageMethod[0].recipes.map((recipe) => (
-                  <Link key={recipe.name} to={`${match.url}/${recipe.path}`}>
-                    <RecipePageListItem recipe={recipe} icon={pageMethod[0].icon} />
-                  </Link>
-                ))}
-              </ul>
-            </MainContainer>
-          </>
-        ) : <FourZeroFour />}
-      </Route>
-    </Switch>
+    <>
+      {pageMethod ? (
+        <>
+          <ScrollToTopOnMount />
+          <MainContainer headline={`${pageMethod.type} Recipes`}>
+            <ul>
+              {pageMethod.recipes.map((recipe) => (
+                <Link key={recipe.name} to={`${match.url}/${recipe.path}`} className={styles.listItemLink}>
+                  <RecipePageListItem recipe={recipe} icon={pageMethod.icon} />
+                </Link>
+              ))}
+            </ul>
+          </MainContainer>
+        </>
+      ) : <FourZeroFour />}
+    </>
   );
 }
 

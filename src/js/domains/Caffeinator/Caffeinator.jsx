@@ -1,36 +1,34 @@
 import React from 'react';
-import { useMachine } from '@xstate/react';
 import { useParams } from 'react-router-dom';
 import FourZeroFour from '../404';
-import CaffeinatorMachine from './CaffeinatorMachine';
 import ScrollToTopOnMount from '../../components/ScrollToTopOnMount';
+import AeroPress from '../brewMethods/AeroPress';
+import FrenchPress from '../brewMethods/FrenchPress';
+import Chemex from '../brewMethods/Chemex';
+import PourOver from '../brewMethods/PourOver';
 
-function Caffeinator() {
+function Caffeinator({ brewMethods }) {
   const { method } = useParams();
-
-  const [current, send] = useMachine(CaffeinatorMachine, {
-    context: {
-      method,
-    },
-  });
+  const pageMethod = brewMethods.find((brewMethod) => brewMethod.path === method);
+  const { recipes } = pageMethod;
 
   return (
     <>
       <ScrollToTopOnMount />
       {
         (() => {
-          switch (true) {
-            case current.matches('aeropress'):
-              return <h1>aeropress</h1>;
+          switch (method) {
+            case 'aeropress':
+              return <AeroPress recipes={recipes} />;
 
-            case current.matches('frenchPress'):
-              return <h1>french-press</h1>;
+            case 'french-press':
+              return <FrenchPress recipes={recipes} />;
 
-            case current.matches('chemex'):
-              return <h1>chemex</h1>;
+            case 'chemex':
+              return <Chemex recipes={recipes} />;
 
-            case current.matches('pourOver'):
-              return <h1>pour-over</h1>;
+            case 'pour-over':
+              return <PourOver recipes={recipes} />;
 
             default:
               return <FourZeroFour />;

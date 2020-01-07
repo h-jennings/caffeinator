@@ -1,6 +1,6 @@
 [{
     "type": "French Press",
-    "path": "/french-press",
+    "path": "french-press",
     "icon": {
       "src": "./icons/frenchPress.svg",
       "width": "60px",
@@ -22,7 +22,7 @@
   },
   {
     "type": "Chemex",
-    "path": "/chemex",
+    "path": "chemex",
     "icon": {
       "src": "./icons/chemex.svg",
       "width": "58px",
@@ -56,20 +56,20 @@
   },
   {
     "type": "Aeropress",
-    "path": "/aeropress",
+    "path": "aeropress",
     "icon": {
       "src": "./icons/aeropress.svg",
       "width": "46px",
       "height": "80px"
     },
     "recipes": [{
-        "name": "AeroPress basic recipe",
+        "name": "Aeropress basic recipe",
         "path": "aeropress-basic-recipe",
         "timeInSeconds": 150,
         "grindRange": "medium"
       },
       {
-        "name": "AeroPress brew recipe",
+        "name": "Aeropress brew recipe",
         "path": "aeropress-brew-recipe",
         "timeInSeconds": 180,
         "grindRange": "medium-fine"
@@ -78,7 +78,7 @@
   },
   {
     "type": "Pour Over",
-    "path": "/pour-over",
+    "path": "pour-over",
     "icon": {
       "src": "./icons/pourOver.svg",
       "width": "70px",

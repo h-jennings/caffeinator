@@ -34,7 +34,11 @@ const Caffeinator = new Machine({
       },
     },
     aeropress: {
-
+      on: {
+        '': [
+          { cond: { type: 'recipeIsAeropressBasicRecipe' }, target: 'aeropress' },
+        ],
+      },
     },
     frenchPress: {
 
@@ -51,10 +55,15 @@ const Caffeinator = new Machine({
   },
 }, {
   guards: {
+    // Method Guards
     isAeropressPage: (context, _event) => context.method === 'aeropress',
     isFrenchPressPage: (context, _event) => context.method === 'french-press',
     isChemexPage: (context, _event) => context.method === 'chemex',
     isPourOverPage: (context, _event) => context.method === 'pour-over',
+
+    // Recipe Guards
+    recipeIsPeetsPourOver: (context, _event) => context.recipe === 'peets-pour-over',
+    recipeIsAeropressBasicRecipe: (context, _event) => context.recipe === 'aeropress-basic-recipe',
   },
 });
 

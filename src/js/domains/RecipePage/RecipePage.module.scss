@@ -1,0 +1,8 @@
+.listItemLink {
+  margin-bottom: var(--l-01);
+  display: block;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}

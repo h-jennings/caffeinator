@@ -4,12 +4,12 @@ import MainContainer from '../../components/MainContainer';
 import styles from './Home.module.scss';
 import BrewMethodThumbnail from './BrewMethodThumbnail';
 
-function Home({ methods }) {
+function Home({ brewMethods }) {
   return (
     <MainContainer headline="Select a brew method.">
       <ul className={styles.methodsContainer}>
-        {methods.map((method) => (
-          <Link key={method.path} to={method.path}>
+        {brewMethods.map((method) => (
+          <Link key={method.path} to={`/${method.path}`}>
             <BrewMethodThumbnail data={method} />
           </Link>
         ))}

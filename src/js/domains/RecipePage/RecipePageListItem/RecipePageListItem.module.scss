@@ -3,15 +3,10 @@
 
 .listItemContainer {
   width: 600px;
-  margin-bottom: var(--l-01);
   position: relative;
 
   @media mainContainerBreak {
     width: 100%;
-  }
-
-  &:last-of-type {
-    margin-bottom: 0;
   }
 }
 
