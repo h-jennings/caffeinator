@@ -2,7 +2,7 @@
     "type": "French Press",
     "path": "french-press",
     "icon": {
-      "src": "./icons/frenchPress.svg",
+      "src": "/icons/frenchPress.svg",
       "width": "60px",
       "height": "80px"
     },
@@ -24,7 +24,7 @@
     "type": "Chemex",
     "path": "chemex",
     "icon": {
-      "src": "./icons/chemex.svg",
+      "src": "/icons/chemex.svg",
       "width": "58px",
       "height": "80px"
     },
@@ -58,7 +58,7 @@
     "type": "Aeropress",
     "path": "aeropress",
     "icon": {
-      "src": "./icons/aeropress.svg",
+      "src": "/icons/aeropress.svg",
       "width": "46px",
       "height": "80px"
     },
@@ -80,7 +80,7 @@
     "type": "Pour Over",
     "path": "pour-over",
     "icon": {
-      "src": "./icons/pourOver.svg",
+      "src": "/icons/pourOver.svg",
       "width": "70px",
       "height": "48px"
     },

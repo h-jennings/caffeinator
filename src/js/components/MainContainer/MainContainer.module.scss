@@ -9,6 +9,9 @@
   @media mainContainerBreak {
     padding-top: var(--l-02);
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 }
 
@@ -35,10 +38,42 @@
   border-radius: 45px;
   max-width: 760px;
   margin: 0 20px;
+  position: relative;
+
+
+  @media mainContainerBreak {
+    width: 100%;
+  }
 
   @media phoneBreak {
     padding: 35px 20px;
     margin: 0 10px;
     border-radius: 15px;
+  }
+}
+
+.prevBtn {
+  width: 60px;
+  height: 60px;
+  background-color: #2F404E;
+  position: absolute;
+  top: 0;
+  right: calc(100% + var(--c-08));
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0;
+  
+  path {
+    fill: var(--black);
+  }
+  
+  @media screen and (max-width: 1030px) {
+    right: calc(100% + var(--c-06));
+  }
+
+  @media mainContainerBreak {
+    display: none;
   }
 }
