@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
     "dev:mobile": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --config config/webpack.dev.js",
+    "storybook": "start-storybook",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js"
   },
   "author": "Hunter Jennings",
@@ -15,6 +16,7 @@
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
+    "@storybook/react": "^5.2.8",
     "@svgr/webpack": "^5.0.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
