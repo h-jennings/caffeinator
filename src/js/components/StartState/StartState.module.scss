@@ -1,0 +1,53 @@
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  position: relative;
+  margin-bottom: var(--l-04);
+}
+
+.input {
+  z-index: 2;
+}
+
+.rangeTrackContainer {
+  height: var(--c-03);
+  width: 100%;
+  max-width: 550px;
+  border-radius: 4px;
+  background-color: var(--yellow-light);
+  z-index: 1;
+  transform: translateY(-100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rangeTrackMarker {
+  height: 10px;
+  width: 10px;
+  background-color: var(--yellow);
+  border-radius: 50%;
+}
+
+.cupSelectorContainer {
+  background-color: var(--black);
+  padding: var(--c-06) var(--c-09);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 472px;
+  margin: 0 auto var(--l-04) auto;
+  border-radius: 14px;
+}
+
+.cupSelectorBtn {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 2px solid var(--yellow);
+  color: var(--yellow);
+  border-radius: 50%;
+  font-size: var(--txt-base);
+  cursor: pointer;
+}
