@@ -16,3 +16,25 @@
     color: var(--black);
   }
 }
+
+.flexContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.whiteTxt {
+  color: var(--white);
+}
+
+.yellowTxt {
+  color: var(--yellow);
+}
+
+.underlineDotted {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.txtCentered {
+  text-align: center;
+}

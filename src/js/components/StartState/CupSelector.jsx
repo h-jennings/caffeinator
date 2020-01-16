@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './StartState.module.scss';
 
-function CupSelector({ send }) {
+function CupSelector({ send, ratio }) {
   const handleCupSelection = (cupAmount = 1) => {
     const FlOz = cupAmount * 8;
-    send({ type: 'CHANGE', fluidOunces: FlOz.toString() });
+    send({ type: 'CHANGE', fluidOunces: FlOz.toString(), ratio });
   };
   return (
     <div className={styles.cupSelectorContainer}>
@@ -16,5 +17,10 @@ function CupSelector({ send }) {
     </div>
   );
 }
+
+CupSelector.propTypes = {
+  send: PropTypes.func.isRequired,
+  ratio: PropTypes.number.isRequired,
+};
 
 export default CupSelector;

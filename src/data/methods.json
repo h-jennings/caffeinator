@@ -10,12 +10,14 @@
         "name": "French press by coffee.cup.guru",
         "path": "french-press-by-coffee-cup-guru",
         "timeInSeconds": 240,
+        "ratio": 1.875,
         "grindRange": "medium-coarse"
       },
       {
         "name": "Perfect French press coffee",
         "path": "perfect-french-press-coffee",
         "timeInSeconds": 330,
+        "ratio": 1.875,
         "grindRange": "coarse"
       }
     ]
@@ -32,24 +34,28 @@
         "name": "Chemex sweet and easy",
         "path": "chemex-sweet-and-easy",
         "timeInSeconds": 260,
+        "ratio": 1.875,
         "grindRange": "medium"
       },
       {
         "name": "Chemex by coffee.cup.guru",
         "path": "chemex-by-coffee-cup-guru",
         "timeInSeconds": 280,
+        "ratio": 1.875,
         "grindRange": "medium"
       },
       {
         "name": "Chemex higher temperature",
         "path": "chemex-higher-temperature",
         "timeInSeconds": 260,
+        "ratio": 1.875,
         "grindRange": "medium"
       },
       {
         "name": "Chemex longer bloom",
         "path": "chemex-longer-bloom",
         "timeInSeconds": 330,
+        "ratio": 1.875,
         "grindRange": "medium"
       }
     ]
@@ -66,12 +72,14 @@
         "name": "Aeropress basic recipe",
         "path": "aeropress-basic-recipe",
         "timeInSeconds": 150,
+        "ratio": 1.875,
         "grindRange": "medium"
       },
       {
         "name": "Aeropress brew recipe",
         "path": "aeropress-brew-recipe",
         "timeInSeconds": 180,
+        "ratio": 1.875,
         "grindRange": "medium-fine"
       }
     ]
@@ -88,12 +96,14 @@
         "name": "Peet's pour over",
         "path": "peets-pour-over",
         "timeInSeconds": 300,
+        "ratio": 1.875,
         "grindRange": "medium-fine"
       },
       {
         "name": "Hario - make it easy",
         "path": "hario-make-it-easy",
         "timeInSeconds": 240,
+        "ratio": 1.875,
         "grindRange": "medium-fine"
       }
     ]

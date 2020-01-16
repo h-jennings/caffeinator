@@ -6,6 +6,11 @@ const handleFlOzChange = assign({
 
     return fluidOunces;
   },
+  grams: (_context, event) => {
+    const { ratio, fluidOunces } = event;
+
+    return Math.round(fluidOunces * ratio);
+  },
 });
 
 const FrenchPressByCoffeeCupGuruMachine = new Machine({
@@ -13,6 +18,7 @@ const FrenchPressByCoffeeCupGuruMachine = new Machine({
   initial: 'Start',
   context: {
     fluidOunces: 8,
+    grams: 15,
   },
   states: {
     Start: {

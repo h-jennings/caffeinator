@@ -1,3 +1,5 @@
+@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+
 .sliderContainer {
   display: flex;
   align-items: center;
@@ -10,10 +12,21 @@
   z-index: 2;
 }
 
+.valuesContainer {
+  margin-bottom: var(--l-04);
+  h1:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.BtnContainer {
+  composes: flexContainer from '../../../styles/shared/shared.scss';
+}
+
 .rangeTrackContainer {
   height: var(--c-03);
   width: 100%;
-  max-width: 550px;
+  max-width: 472px;
   border-radius: 4px;
   background-color: var(--yellow-light);
   z-index: 1;
@@ -39,6 +52,10 @@
   max-width: 472px;
   margin: 0 auto var(--l-04) auto;
   border-radius: 14px;
+  
+  @media phoneBreak {
+    padding: var(--c-06) var(--c-06);
+  }
 }
 
 .cupSelectorBtn {

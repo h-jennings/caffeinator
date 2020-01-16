@@ -1,16 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useMachine } from '@xstate/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import FrenchPressByCoffeeCupGuruMachine from './FrenchPressByCoffeeCupGuruMachine';
 import StartState from '../../../../../components/StartState';
 import MainContainer from '../../../../../components/MainContainer';
 import MachineButton from '../../../../../components/MachineButton';
+import GrindState from './States/GrindState/GrindState';
 
 
 function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
   // Initialize Recipe State Machine
   const [current, send] = useMachine(FrenchPressByCoffeeCupGuruMachine);
-  const ratio = 1.875;
+  const { name, ratio, grindRange } = pageRecipe;
 
   const headlineVariants = {
     initial: {
@@ -24,7 +26,6 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
     },
   };
 
-  const { name } = pageRecipe;
   return (
     <MainContainer headline={name}>
       {
@@ -34,17 +35,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
               return <StartState current={current} send={send} ratio={ratio} />;
 
             case current.matches('Grind'):
-              return (
-                <>
-                  <AnimatePresence exitBeforeEnter>
-                    <motion.h1 initial="initial" exit="exit" key={current.value} animate="enter" variants={headlineVariants}>Grind</motion.h1>
-                  </AnimatePresence>
-                  <p>{JSON.stringify(current.context)}</p>
-                  <MachineButton send={send} eventType="PREV">Prev</MachineButton>
-                  <MachineButton send={send} eventType="NEXT">Next</MachineButton>
-                  <MachineButton send={send} eventType="RESET">Reset</MachineButton>
-                </>
-              );
+              return <GrindState current={current} send={send} grindRange={grindRange} />;
 
             case current.matches('Add_Water'):
               return (
@@ -105,12 +96,20 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
               );
 
             default:
-              break;
+              return null;
           }
         })()
       }
     </MainContainer>
   );
 }
+
+FrenchPressByCoffeeCupGuru.propTypes = {
+  pageRecipe: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    ratio: PropTypes.number.isRequired,
+    grindRange: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default FrenchPressByCoffeeCupGuru;

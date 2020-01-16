@@ -1,16 +1,31 @@
 {
   "version": "0.2.0",
   "configurations": [{
-    "type": "chrome",
-    "request": "launch",
-    "name": "Launch Chrome against localhost",
-    "url": "http://localhost:8080",
-    "webRoot": "${workspaceFolder}",
-    "sourceMaps": true,
-    "smartStep": true,
-    "skipFiles": [
-      "node-modules/**",
-      "interpreter.js"
-    ]
-  }]
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "smartStep": true,
+      "skipFiles": [
+        "node-modules/**",
+        "interpreter.js"
+      ]
+    },
+    {
+      "type": "firefox",
+      "request": "launch",
+      "name": "debug:firefox",
+      "reAttach": true,
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "skipFiles": [
+        "node-modules/**",
+        "node-modules/",
+        "interpreter.js"
+      ],
+      "clearConsoleOnReload": true
+    }
+  ]
 }
