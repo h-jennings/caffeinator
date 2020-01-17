@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from 'react';
-import MachineButton from '../MachineButton';
+import PropTypes from 'prop-types';
+import MachineButton from '../../../../../../../components/MachineButton';
 import RangeSlider from './RangeSlider';
 import styles from './StartState.module.scss';
 import CupSelector from './CupSelector';
-import FlexContainer from '../FlexContainer';
+import FlexContainer from '../../../../../../../components/FlexContainer';
 
 function Start({ send, current, ratio }) {
   const rangeRef = useRef(null);
@@ -31,7 +32,6 @@ function Start({ send, current, ratio }) {
       </div>
       <RangeSlider ref={rangeRef} handleRangeChange={handleRangeChange} />
       <FlexContainer>
-
         <MachineButton
           send={send}
           eventType="NEXT"
@@ -42,5 +42,11 @@ function Start({ send, current, ratio }) {
     </>
   );
 }
+
+Start.propTypes = {
+  current: PropTypes.objectOf(PropTypes.any).isRequired,
+  send: PropTypes.func.isRequired,
+  ratio: PropTypes.number.isRequired,
+};
 
 export default Start;

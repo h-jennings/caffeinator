@@ -2,8 +2,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FourZeroFour from '../../404';
-import FrenchPressByCoffeeCupGuru from './recipes/FrenchPressByCoffeeCupGuru';
-import PerfectFrenchPressCoffee from './recipes/PerfectFrenchPressCoffee';
+import FrenchPressByCoffeeCupGuru from './Recipes/FrenchPressByCoffeeCupGuru';
+import PerfectFrenchPressCoffee from './Recipes/PerfectFrenchPressCoffee';
 
 function FrenchPress({ recipes }) {
   const { recipePath } = useParams();
@@ -30,7 +30,7 @@ function FrenchPress({ recipes }) {
 }
 
 FrenchPress.propTypes = {
-  // bla: PropTypes.string,
+  recipes: PropTypes.array.isRequired,
 };
 
 FrenchPress.defaultProps = {

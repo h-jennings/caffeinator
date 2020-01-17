@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 import { useMachine } from '@xstate/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import FrenchPressByCoffeeCupGuruMachine from './FrenchPressByCoffeeCupGuruMachine';
-import StartState from '../../../../../components/StartState';
 import MainContainer from '../../../../../components/MainContainer';
 import MachineButton from '../../../../../components/MachineButton';
-import GrindState from './States/GrindState/GrindState';
+import ResetStateButton from '../../../../../components/ResetStateButton';
+import StartState from './States/StartState';
+import GrindState from './States/GrindState';
+import AddWaterState from './States/AddWaterState';
+import AddRemainingWater from './States/AddRemainingWater';
+import StirState from './States/StirState';
+import BrewState from './States/BrewState';
 
 
 function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
@@ -14,20 +19,9 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
   const [current, send] = useMachine(FrenchPressByCoffeeCupGuruMachine);
   const { name, ratio, grindRange } = pageRecipe;
 
-  const headlineVariants = {
-    initial: {
-      opacity: 0,
-    },
-    enter: {
-      opacity: 1,
-    },
-    exit: {
-      opacity: 0,
-    },
-  };
-
   return (
     <MainContainer headline={name}>
+      <ResetStateButton send={send} eventType="RESET" />
       {
         (() => {
           switch (true) {
@@ -38,58 +32,23 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
               return <GrindState current={current} send={send} grindRange={grindRange} />;
 
             case current.matches('Add_Water'):
-              return (
-                <>
-                  <AnimatePresence exitBeforeEnter>
-                    <motion.h1 initial="initial" exit="exit" key={current.value} animate="enter" variants={headlineVariants}>Add Water</motion.h1>
-                  </AnimatePresence>
-                  <MachineButton send={send} eventType="PREV">Prev</MachineButton>
-                  <MachineButton send={send} eventType="NEXT">Next</MachineButton>
-                  <MachineButton send={send} eventType="RESET">Reset</MachineButton>
-                </>
-              );
+              return <AddWaterState current={current} send={send} />;
+
 
             case current.matches('Stir'):
-              return (
-                <>
-                  <AnimatePresence exitBeforeEnter>
-                    <motion.h1 initial="initial" exit="exit" key={current.value} animate="enter" variants={headlineVariants}>Stir</motion.h1>
-                  </AnimatePresence>
-                  <MachineButton send={send} eventType="PREV">Prev</MachineButton>
-                  <MachineButton send={send} eventType="NEXT">Next</MachineButton>
-                  <MachineButton send={send} eventType="RESET">Reset</MachineButton>
-                </>
-              );
+              return <StirState send={send} />;
 
             case current.matches('Add_Remaining_Water'):
-              return (
-                <>
-                  <AnimatePresence exitBeforeEnter>
-                    <motion.h1 initial="initial" exit="exit" key={current.value} animate="enter" variants={headlineVariants}>Add Remaining Water</motion.h1>
-                  </AnimatePresence>
-                  <MachineButton send={send} eventType="PREV">Prev</MachineButton>
-                  <MachineButton send={send} eventType="NEXT">Next</MachineButton>
-                  <MachineButton send={send} eventType="RESET">Reset</MachineButton>
-                </>
-              );
+              return <AddRemainingWater send={send} current={current} />;
 
             case current.matches('Brew'):
-              return (
-                <>
-                  <AnimatePresence exitBeforeEnter>
-                    <motion.h1 initial="initial" exit="exit" key={current.value} animate="enter" variants={headlineVariants}>Brew</motion.h1>
-                  </AnimatePresence>
-                  <MachineButton send={send} eventType="PREV">Prev</MachineButton>
-                  <MachineButton send={send} eventType="NEXT">Next</MachineButton>
-                  <MachineButton send={send} eventType="RESET">Reset</MachineButton>
-                </>
-              );
+              return <BrewState send={send} current={current} />;
 
             case current.matches('Done'):
               return (
                 <>
                   <AnimatePresence exitBeforeEnter>
-                    <motion.h1 initial="initial" exit="exit" key={current.value} animate="enter" variants={headlineVariants}>Done</motion.h1>
+                    <motion.h1 initial="initial" exit="exit" key={current.value} animate="enter">Done</motion.h1>
                   </AnimatePresence>
                   <MachineButton send={send} eventType="RESET">Reset</MachineButton>
                 </>

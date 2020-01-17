@@ -1,4 +1,4 @@
-@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+@value phoneBreak from '../../../../../../../../styles/shared/breakpoints.scss';
 
 .sliderContainer {
   display: flex;
@@ -17,10 +17,6 @@
   h1:last-of-type {
     margin-bottom: 0;
   }
-}
-
-.BtnContainer {
-  composes: flexContainer from '../../../styles/shared/shared.scss';
 }
 
 .rangeTrackContainer {
