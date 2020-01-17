@@ -11,3 +11,11 @@
   right: 40px;
   top: 30px;
 }
+
+@media screen and (max-width: 599px) {
+  .btn {
+    position: static;
+    display: block;
+    margin: 0 0 var(--c-06) auto;
+  }
+}

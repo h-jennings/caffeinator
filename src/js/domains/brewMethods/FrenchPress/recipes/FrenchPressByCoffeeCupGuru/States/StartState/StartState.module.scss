@@ -14,8 +14,51 @@
 
 .valuesContainer {
   margin-bottom: var(--l-04);
-  h1:last-of-type {
-    margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+  background-color: var(--black);
+  padding: var(--c-06) var(--c-09);
+  max-width: 472px;
+  margin: 0 auto var(--l-04) auto;
+  border-radius: 14px;
+}
+
+.valueContainer {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 2px solid var(--yellow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 30px;
+  position: relative;
+
+  p {
+    color: var(--yellow);
+    text-align: center;
+    line-height: 1;
+    font-weight: 700;
+    font-size: var(--txt-md);
+  }
+}
+
+.unitContainer {
+  width: 27px;
+  height: 27px;
+  background-color: var(--yellow);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  p {
+    color: var(--black);
+    font-size: var(--txt-xsm);
+    line-height: 1;
   }
 }
 
@@ -46,7 +89,7 @@
   justify-content: space-between;
   align-items: center;
   max-width: 472px;
-  margin: 0 auto var(--l-04) auto;
+  margin: 0 auto var(--l-03) auto;
   border-radius: 14px;
   
   @media phoneBreak {
@@ -63,4 +106,5 @@
   border-radius: 50%;
   font-size: var(--txt-base);
   cursor: pointer;
+  padding: 0;
 }

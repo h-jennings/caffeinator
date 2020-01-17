@@ -4,12 +4,12 @@ html {
 
 // Input Range Styles
 input[type="range"] {
-  -webkit-appearance: none;
   width: 100%;
   cursor: pointer;
-  background-color: transparent;
+  background-color: var(--yellow);
   height: var(--c-03);
   max-width: 472px;
+  border: none;
 
   &:focus {
     outline: none;
@@ -18,11 +18,11 @@ input[type="range"] {
   // Track Styles
   &::-webkit-slider-runnable-track,
   &::-moz-range-track {
-    background-color: transparent;
+    background-color: var(--yellow);
     width: 100%;
     height: var(--c-03);
     border-radius: 1000px;
-    border: none;
+    border: 2px solid var(--black);
   }
 
   // Thumb Slider Styles
@@ -31,8 +31,8 @@ input[type="range"] {
     width: var(--c-06);
     height: var(--c-06);
     background-color: var(--yellow);
-    border: none;
-    border-radius: var(--c-05);
+    border: 2px solid var(--black);
+    border-radius: var(--c-06);
   }
 
   &::-moz-focus-outer {

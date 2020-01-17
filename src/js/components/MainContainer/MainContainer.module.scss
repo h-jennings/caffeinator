@@ -2,7 +2,7 @@
 @value phoneBreak from '../../../styles/shared/breakpoints.scss';
 
 .wrapper {
-  margin: 0 auto;
+  margin: 0 auto var(--l-04) auto;
   width: 800px;
   padding-top: 104px;
   
@@ -12,6 +12,10 @@
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
+  }
+  @media phoneBreak {
+    grid-template-rows: auto 1fr;
+    margin: 0 auto;
   }
 }
 

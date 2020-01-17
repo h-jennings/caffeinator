@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './StartState.module.scss';
 
 
@@ -16,14 +17,11 @@ const RangeSlider = React.forwardRef(({ handleRangeChange }, ref) => (
       onChange={handleRangeChange}
       className={styles.input}
     />
-    <div className={styles.rangeTrackContainer}>
-      <div className={styles.rangeTrackMarker} />
-      <div className={styles.rangeTrackMarker} />
-      <div className={styles.rangeTrackMarker} />
-      <div className={styles.rangeTrackMarker} />
-      <div className={styles.rangeTrackMarker} />
-    </div>
   </div>
 ));
+
+RangeSlider.propTypes = {
+  handleRangeChange: PropTypes.func.isRequired,
+};
 
 export default RangeSlider;

@@ -5,7 +5,7 @@ import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
 import MachineArrowButton from '../../../../../../../components/MachineArrowButton';
 import FlexContainer from '../../../../../../../components/FlexContainer';
 
-function AddRemainingWater({ current, send }) {
+function AddRemainingWaterState({ current, send }) {
   return (
     <>
       <h1>Add Remaining Water</h1>
@@ -28,9 +28,9 @@ function AddRemainingWater({ current, send }) {
   );
 }
 
-AddRemainingWater.propTypes = {
+AddRemainingWaterState.propTypes = {
   current: PropTypes.objectOf(PropTypes.any).isRequired,
   send: PropTypes.func.isRequired,
 };
 
-export default AddRemainingWater;
+export default AddRemainingWaterState;

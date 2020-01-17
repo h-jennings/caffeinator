@@ -9,9 +9,10 @@ import ResetStateButton from '../../../../../components/ResetStateButton';
 import StartState from './States/StartState';
 import GrindState from './States/GrindState';
 import AddWaterState from './States/AddWaterState';
-import AddRemainingWater from './States/AddRemainingWater';
+import AddRemainingWater from './States/AddRemainingWaterState';
 import StirState from './States/StirState';
 import BrewState from './States/BrewState';
+import DoneState from './States/DoneState/DoneState';
 
 
 function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
@@ -45,14 +46,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
               return <BrewState send={send} current={current} />;
 
             case current.matches('Done'):
-              return (
-                <>
-                  <AnimatePresence exitBeforeEnter>
-                    <motion.h1 initial="initial" exit="exit" key={current.value} animate="enter">Done</motion.h1>
-                  </AnimatePresence>
-                  <MachineButton send={send} eventType="RESET">Reset</MachineButton>
-                </>
-              );
+              return <DoneState send={send} />;
 
             default:
               return null;

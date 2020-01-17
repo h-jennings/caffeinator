@@ -5,8 +5,10 @@ import RangeSlider from './RangeSlider';
 import styles from './StartState.module.scss';
 import CupSelector from './CupSelector';
 import FlexContainer from '../../../../../../../components/FlexContainer';
+import useScrollToTop from '../../../../../../../utils/useScrollToTop';
 
 function Start({ send, current, ratio }) {
+  useScrollToTop();
   const rangeRef = useRef(null);
   const handleRangeChange = () => {
     send({ type: 'CHANGE', fluidOunces: rangeRef.current.value, ratio });
@@ -21,14 +23,22 @@ function Start({ send, current, ratio }) {
     <>
       <CupSelector send={send} ratio={ratio} />
       <div className={styles.valuesContainer}>
-        <h1>
-          {current.context.fluidOunces}
-          oz
-        </h1>
-        <h1>
-          {current.context.grams}
-          g
-        </h1>
+        <div className={styles.valueContainer}>
+          <p>{current.context.fluidOunces}</p>
+          <div className={styles.unitContainer}>
+            <p>
+              oz
+            </p>
+          </div>
+        </div>
+        <div className={styles.valueContainer}>
+          <p>{current.context.grams}</p>
+          <div className={styles.unitContainer}>
+            <p>
+              g
+            </p>
+          </div>
+        </div>
       </div>
       <RangeSlider ref={rangeRef} handleRangeChange={handleRangeChange} />
       <FlexContainer>
