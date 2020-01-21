@@ -1,81 +1,7 @@
-import { Machine, assign } from 'xstate';
+import { Machine } from 'xstate';
+import TimerMethodConfig from './methods';
 
-// Setting initial value of the timer
-const setDefaults = assign({
-  seconds: (_context, event) => {
-    const { seconds } = event;
-
-    return seconds;
-  },
-  duration_ms: (_context, event) => {
-    const { seconds } = event;
-    const ms = seconds * 1000;
-
-    return ms;
-  },
-});
-
-const setNow = assign({
-  now: (_context, _event) => Date().now(),
-});
-
-const startTimer = assign({
-  start_time: (context, _event) => (context.now || 0),
-});
-
-const stopTimer = assign({
-  stop_time: (context, _event) => (context.now || 0),
-});
-
-// Reset timer values
-const resetTimer = assign({
-  seconds: undefined,
-  duration_ms: undefined,
-  start_time: undefined,
-  remaining_ms: undefined,
-  elapsed_ms: undefined,
-  now: undefined,
-});
-
-const updateRemainingFromRunning = assign({
-  remaining_ms: (context, _event) => (
-    context.duration_ms
-      ? context.duration_ms - (context.elapsed_ms || 0)
-      : undefined
-  ),
-});
-
-const updateElapsedFromRunning = assign({
-  elapsed_ms: (context, _event) => (context.now || 0) - (context.start_time || 0),
-});
-
-const updateElapsedAndRemainingFromStopped = assign({
-  elapsed_ms: (context, _event) => (context.stop_time || 0) - (context.start_time || 0),
-  remaining_ms: (context, _event) => (
-    context.duration_ms
-      ? context.duration_ms - (context.elapsed_ms || 0)
-      : undefined
-  ),
-});
-
-const startIntervalService = (context, _event) => (callback, _onReceive) => {
-  let stopTimerTimeout;
-  if (context.duration_ms) {
-    stopTimerTimeout = setTimeout(() => {
-      callback('STOP');
-    }, context.duration_ms - (context.elapsed_ms || 0));
-  }
-
-
-  const updateTimer = setInterval(() => callback('UPDATE'), context.update_frequency_ms);
-
-  return () => {
-    clearInterval(updateTimer);
-    if (stopTimerTimeout) clearTimeout(stopTimerTimeout);
-  };
-};
-
-const TimerMachine = new Machine({
+const TimerMachine = Machine({
   id: 'Timer',
   initial: 'idle',
   context: {
@@ -91,20 +17,20 @@ const TimerMachine = new Machine({
       on: {
         START: {
           target: 'running',
-          actions: setDefaults,
+          actions: 'setDefaults',
         },
       },
     },
     running: {
       invoke: {
         id: 'incInterval',
-        src: startIntervalService,
+        src: 'startIntervalService',
       },
-      onEntry: [setNow, startTimer],
+      onEntry: ['setNow', 'startTimer'],
       onExit: [
-        setNow,
-        stopTimer,
-        updateElapsedAndRemainingFromStopped,
+        'setNow',
+        'stopTimer',
+        'updateElapsedAndRemainingOnExit',
       ],
       on: {
         PAUSE: {
@@ -112,10 +38,14 @@ const TimerMachine = new Machine({
         },
         UPDATE: {
           actions: [
-            setNow,
-            updateElapsedFromRunning,
-            updateRemainingFromRunning,
+            'setNow',
+            'updateElapsedFromRunning',
+            'updateRemainingFromRunning',
           ],
+        },
+        RESET: {
+          target: 'idle',
+          actions: 'resetTimer',
         },
         DONE: {
           target: 'done',
@@ -127,7 +57,7 @@ const TimerMachine = new Machine({
         RESUME: 'running',
         RESET: {
           target: 'idle',
-          actions: resetTimer,
+          actions: 'resetTimer',
         },
       },
     },
@@ -135,6 +65,8 @@ const TimerMachine = new Machine({
       type: 'final',
     },
   },
+}, {
+  ...TimerMethodConfig,
 });
 
 export default TimerMachine;

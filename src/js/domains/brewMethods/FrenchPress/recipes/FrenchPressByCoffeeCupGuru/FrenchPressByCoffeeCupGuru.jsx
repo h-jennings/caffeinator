@@ -36,7 +36,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
               return <AddWaterState current={current} send={send} />;
 
             case current.matches('Stir'):
-              return <StirState send={send} />;
+              return <StirState send={send} current={current} />;
 
             case current.matches('Add_Remaining_Water'):
               return <AddRemainingWater send={send} current={current} />;

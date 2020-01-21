@@ -1,4 +1,5 @@
 import { Machine, assign } from 'xstate';
+import TimerMachine from '../../../../../components/Timer/TimerMachine';
 
 const handleFlOzChange = assign({
   fluidOunces: (_context, event) => {
@@ -13,9 +14,9 @@ const handleFlOzChange = assign({
   },
 });
 
-const FrenchPressByCoffeeCupGuruMachine = new Machine({
+const FrenchPressByCoffeeCupGuruMachine = Machine({
   id: 'FrenchPressByCoffeeCupGuruMachine',
-  initial: 'Start',
+  initial: 'Stir',
   context: {
     fluidOunces: 8,
     grams: 15,
@@ -54,6 +55,9 @@ const FrenchPressByCoffeeCupGuruMachine = new Machine({
     },
     Stir: {
       on: {
+        TIMERUPDATED: {
+          target: 'Stir',
+        },
         PREV: {
           target: 'Add_Water',
         },

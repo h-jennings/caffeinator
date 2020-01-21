@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 // import classNames from 'classnames';
 import FlexContainer from '../../../../../../../components/FlexContainer';
 import MachineArrowButton from '../../../../../../../components/MachineArrowButton';
+import Timer from '../../../../../../../components/Timer';
 // import styles from './StirState.module.scss';
 // import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
 
 function StirState({ send }) {
   return (
     <>
-      <>
-        <h1>Stir</h1>
-        <FlexContainer>
-          <MachineArrowButton send={send} eventType="PREV" />
-          <MachineArrowButton send={send} eventType="NEXT" />
-        </FlexContainer>
-      </>
+      <h1>Stir</h1>
+      <Timer seconds={240} />
+      <FlexContainer>
+        <MachineArrowButton send={send} eventType="PREV" />
+        <MachineArrowButton send={send} eventType="NEXT" />
+      </FlexContainer>
     </>
   );
 }
