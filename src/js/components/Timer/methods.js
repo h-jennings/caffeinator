@@ -34,6 +34,7 @@ const resetTimer = assign({
   start_time: undefined,
   remaining_ms: undefined,
   elapsed_ms: undefined,
+  elapsed_last_ms: undefined,
   now: undefined,
 });
 
@@ -46,11 +47,20 @@ const updateRemainingFromRunning = assign({
 });
 
 const updateElapsedFromRunning = assign({
-  elapsed_ms: (context, _event) => (context.now || 0) - (context.start_time || 0),
+  elapsed_ms: (context, _event) => (context.elapsed_last_ms || 0)
+    + (context.now || 0)
+    - (context.start_time || 0),
+});
+
+const updateLastElapsed = assign({
+  elapsed_last_ms: (context, _event) => (context.elapsed_last_ms || 0)
+    + (context.stop_time ? context.stop_time : 0)
+    - (context.start_time ? context.start_time : 0),
+
 });
 
 const updateElapsedAndRemainingOnExit = assign({
-  elapsed_ms: (context, _event) => (context.stop_time || 0) - (context.start_time || 0),
+  elapsed_ms: (context, _event) => (context.elapsed_last_ms || 0),
   remaining_ms: (context, _event) => (
     context.duration_ms
       ? context.duration_ms - (context.elapsed_ms || 0)
@@ -86,6 +96,7 @@ const TimerMethodConfig = {
     updateRemainingFromRunning,
     updateElapsedFromRunning,
     updateElapsedAndRemainingOnExit,
+    updateLastElapsed,
   },
   services: {
     startIntervalService,

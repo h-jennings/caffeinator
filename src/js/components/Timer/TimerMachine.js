@@ -9,6 +9,7 @@ const TimerMachine = Machine({
     start_time: undefined,
     stop_time: undefined,
     elapsed_ms: undefined,
+    elapsed_last_ms: undefined,
     remaining_ms: undefined,
     now: undefined,
   },
@@ -30,6 +31,7 @@ const TimerMachine = Machine({
       onExit: [
         'setNow',
         'stopTimer',
+        'updateLastElapsed',
         'updateElapsedAndRemainingOnExit',
       ],
       on: {
