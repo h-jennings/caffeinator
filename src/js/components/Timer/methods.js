@@ -2,14 +2,8 @@ import { assign } from 'xstate';
 
 // Setting initial value of the timer
 const setDefaults = assign({
-  seconds: (_context, event) => {
-    const { seconds } = event;
-
-    return seconds;
-  },
   duration_ms: (_context, event) => {
-    const { seconds } = event;
-    const ms = seconds * 1000;
+    const { ms } = event;
 
     return ms;
   },
@@ -76,6 +70,8 @@ const startIntervalService = (context, _event) => (callback, _onReceive) => {
     }, context.duration_ms - (context.elapsed_ms || 0));
   }
 
+  // CALL UPDATE INITIALLY
+  if (!updateTimer) callback('UPDATE');
 
   const updateTimer = setInterval(() => callback('UPDATE'), context.update_frequency_ms);
 

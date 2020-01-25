@@ -1,5 +1,4 @@
 import { Machine, assign } from 'xstate';
-import TimerMachine from '../../../../../components/Timer/TimerMachine';
 
 const handleFlOzChange = assign({
   fluidOunces: (_context, event) => {

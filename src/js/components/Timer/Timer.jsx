@@ -4,37 +4,43 @@ import PropTypes from 'prop-types';
 import TimerMachine from './TimerMachine';
 import toTimeString from '../../utils/toTimeString';
 
-function Timer({ seconds }) {
+function Timer({ ms }) {
   const [current, send] = useMachine(TimerMachine);
 
   useEffect(() => {
-    send('START', { seconds });
-  }, [seconds, send]);
+    const startTimer = setTimeout(() => {
+      send('START', { ms });
+    }, 1000);
+
+    return () => {
+      clearTimeout(startTimer);
+    };
+  }, [ms, send]);
 
   return (
     <>
-      {(current.context.remaining_ms && toTimeString(current.context.remaining_ms, true)) || '00:15'}
+      {
+        ((current.context.remaining_ms
+          && toTimeString(current.context.remaining_ms))
+          || toTimeString(ms))
+      }
       <button
         type="button"
-        onClick={() => handleClick()}
+        onClick={() => send('RESUME')}
       >
-        START
-      </button>
-      <button onClick={() => send('RESUME')}>
         RESUME
       </button>
-      <button onClick={() => send('PAUSE')}>
+      <button
+        type="button"
+        onClick={() => send('PAUSE')}
+      >
         PAUSE
       </button>
     </>
   );
 }
 Timer.propTypes = {
-  // bla: PropTypes.string,
-};
-
-Timer.defaultProps = {
-  // bla: 'test',
+  ms: PropTypes.number.isRequired,
 };
 
 export default Timer;

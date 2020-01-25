@@ -1,29 +1,25 @@
-function toTimeString(timeMs, stripFractions = true) {
-  const secondsNum = timeMs / 1000;
-  const hours = Math.floor(secondsNum / 3600);
-  const minutes = Math.floor((secondsNum - hours * 3600) / 60);
-  const seconds = secondsNum - hours * 3600 - minutes * 60;
+function toTimeString(ms) {
+  const totalSeconds = parseInt(Math.floor(ms / 1000), 10);
+  const totalMinutes = parseInt(totalSeconds / 60, 10);
+  const totalHours = parseInt(totalMinutes / 24, 10);
 
+  const seconds = parseInt(totalSeconds % 60, 10);
+  const minutes = parseInt(totalMinutes % 60, 10);
+  const hours = parseInt(totalHours % 240, 10);
 
-  // const outHours = hours < 10 ? `0${hours}` : hours.toString();
-  const outHours = hours.toString();
-  const outMins = minutes < 10 ? `0${minutes}` : minutes.toString();
-  let outSecs = seconds < 10 ? `0${seconds}` : seconds.toString();
-
-  if (outSecs.length === 2) outSecs = `${outSecs}.`;
-  outSecs = outSecs.padEnd(6, '0');
-
-  if (stripFractions) outSecs = outSecs.substr(0, 2);
+  const outSeconds = seconds < 10 ? `0${seconds}` : seconds.toString();
+  const outMinutes = minutes < 10 ? `0${minutes}` : minutes.toString();
+  const outHours = hours;
 
   switch (true) {
-    case hours === 0:
-      return `${outMins}:${outSecs}`;
+    case hours > 0:
+      return `${outHours}:${outMinutes}:${outSeconds}`;
 
-    case minutes === 0:
-      return `00:${outSecs}`;
+    case minutes > 0:
+      return `${outMinutes}:${outSeconds}`;
 
     default:
-      return `${outHours}:${outMins}:${outSecs}`;
+      return `00:${outSeconds}`;
   }
 }
 

@@ -11,7 +11,7 @@ function StirState({ send }) {
   return (
     <>
       <h1>Stir</h1>
-      <Timer seconds={15} />
+      <Timer ms={15000} />
       <FlexContainer>
         <MachineArrowButton send={send} eventType="PREV" />
         <MachineArrowButton send={send} eventType="NEXT" />
