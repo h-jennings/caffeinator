@@ -1,4 +1,4 @@
-import { Machine } from 'xstate';
+import { Machine, sendParent } from 'xstate';
 import TimerMethodConfig from './methods';
 
 const TimerMachine = Machine({
@@ -11,14 +11,14 @@ const TimerMachine = Machine({
     elapsed_ms: undefined,
     elapsed_last_ms: undefined,
     remaining_ms: undefined,
+    duration_ms: undefined,
     now: undefined,
   },
   states: {
     idle: {
       on: {
-        START: {
+        '': {
           target: 'running',
-          actions: 'setDefaults',
         },
       },
     },
@@ -27,8 +27,8 @@ const TimerMachine = Machine({
         id: 'incInterval',
         src: 'startIntervalService',
       },
-      onEntry: ['setNow', 'startTimer'],
-      onExit: [
+      entry: ['setNow', 'startTimer'],
+      exit: [
         'setNow',
         'stopTimer',
         'updateLastElapsed',
@@ -43,6 +43,7 @@ const TimerMachine = Machine({
             'setNow',
             'updateElapsedFromRunning',
             'updateRemainingFromRunning',
+            'updateParent', // ! Y U NO WORK
           ],
         },
         RESET: {
@@ -64,6 +65,7 @@ const TimerMachine = Machine({
       },
     },
     done: {
+      entry: sendParent('NEXT'),
       type: 'final',
     },
   },

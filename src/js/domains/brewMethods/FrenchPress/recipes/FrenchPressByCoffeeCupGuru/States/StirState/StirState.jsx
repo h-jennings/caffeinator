@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 // import classNames from 'classnames';
 import FlexContainer from '../../../../../../../components/FlexContainer';
@@ -7,11 +7,11 @@ import Timer from '../../../../../../../components/Timer';
 // import styles from './StirState.module.scss';
 // import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
 
-function StirState({ send }) {
+function StirState({ send, current }) {
   return (
     <>
       <h1>Stir</h1>
-      <Timer ms={15000} />
+      <Timer send={send} current={current} />
       <FlexContainer>
         <MachineArrowButton send={send} eventType="PREV" />
         <MachineArrowButton send={send} eventType="NEXT" />

@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import TimerMachine from './TimerMachine';
 import toTimeString from '../../utils/toTimeString';
 
-function Timer({ ms }) {
-  const [current, send] = useMachine(TimerMachine);
-
+function Timer({ ms, current, send }) {
+  /* const [current, send] = useMachine(TimerMachine);
   useEffect(() => {
     const startTimer = setTimeout(() => {
       send('START', { ms });
@@ -15,15 +14,15 @@ function Timer({ ms }) {
     return () => {
       clearTimeout(startTimer);
     };
-  }, [ms, send]);
+  }, [ms, send]); */
 
   return (
     <>
-      {
+      {/*       {
         ((current.context.remaining_ms
           && toTimeString(current.context.remaining_ms))
           || toTimeString(ms))
-      }
+      } */}
       <button
         type="button"
         onClick={() => send('RESUME')}

@@ -1,8 +1,8 @@
-import { assign } from 'xstate';
+import { assign, sendParent } from 'xstate';
 
 // Setting initial value of the timer
 const setDefaults = assign({
-  duration_ms: (_context, event) => {
+  duration_ms: (context, event) => {
     const { ms } = event;
 
     return ms;
@@ -81,6 +81,10 @@ const startIntervalService = (context, _event) => (callback, _onReceive) => {
   };
 };
 
+const updateParent = sendParent('TIMER_UPDATED', {
+  remaining_ms: (context, _event) => context.remaining_ms,
+});
+
 
 const TimerMethodConfig = {
   actions: {
@@ -93,6 +97,7 @@ const TimerMethodConfig = {
     updateElapsedFromRunning,
     updateElapsedAndRemainingOnExit,
     updateLastElapsed,
+    updateParent,
   },
   services: {
     startIntervalService,
