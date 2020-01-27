@@ -11,14 +11,15 @@ const TimerMachine = Machine({
     elapsed_ms: undefined,
     elapsed_last_ms: undefined,
     remaining_ms: undefined,
-    duration_ms: undefined,
+    duration_ms: 15000,
     now: undefined,
   },
   states: {
     idle: {
       on: {
-        '': {
+        START: {
           target: 'running',
+          actions: 'setDefaults',
         },
       },
     },
@@ -43,12 +44,21 @@ const TimerMachine = Machine({
             'setNow',
             'updateElapsedFromRunning',
             'updateRemainingFromRunning',
-            'updateParent', // ! Y U NO WORK
+            sendParent((context) => ({
+              type: 'TIMER_UPDATED',
+              remaining_ms: (context.remaining_ms || 0),
+            })),
           ],
         },
         RESET: {
           target: 'idle',
-          actions: 'resetTimer',
+          actions: [
+            'resetTimer',
+            sendParent((context) => ({
+              type: 'TIMER_UPDATED',
+              remaining_ms: (context.remaining_ms || 0),
+            })),
+          ],
         },
         DONE: {
           target: 'done',

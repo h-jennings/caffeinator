@@ -1,5 +1,8 @@
 import {
-  Machine, assign,
+  Machine,
+  assign,
+  spawn,
+  send,
 } from 'xstate';
 import TimerMachine from '../../../../../components/Timer/TimerMachine';
 
@@ -22,7 +25,8 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
   context: {
     fluidOunces: 8,
     grams: 15,
-    remaining_ms: null,
+    stirTimer: undefined,
+    remaining_ms: undefined,
   },
   states: {
     Start: {
@@ -57,14 +61,15 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
       },
     },
     Stir: {
-      invoke: {
-        id: 'stirTimer',
-        src: TimerMachine,
-        onDone: 'Add_Remaining_Water',
-        data: {
-          duration_ms: 15000,
-        },
-      },
+      entry: assign({
+        stirTimer: () => spawn(TimerMachine, { sync: false, autoForward: true, name: 'stirTimer' }),
+      }),
+      exit: [
+        send('RESET', { to: 'stirTimer' }),
+        assign({
+          remaining_ms: undefined,
+        }),
+      ],
       on: {
         TIMER_UPDATED: {
           actions: assign({
