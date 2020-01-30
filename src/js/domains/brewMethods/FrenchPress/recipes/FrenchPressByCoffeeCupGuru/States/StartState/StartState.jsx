@@ -6,6 +6,7 @@ import styles from './StartState.module.scss';
 import CupSelector from './CupSelector';
 import FlexContainer from '../../../../../../../components/FlexContainer';
 import useScrollToTop from '../../../../../../../utils/useScrollToTop';
+import UnitsContainer from './UnitsContainer';
 
 function Start({ send, current, ratio }) {
   useScrollToTop();
@@ -22,24 +23,7 @@ function Start({ send, current, ratio }) {
   return (
     <>
       <CupSelector send={send} ratio={ratio} />
-      <div className={styles.valuesContainer}>
-        <div className={styles.valueContainer}>
-          <p>{current.context.fluidOunces}</p>
-          <div className={styles.unitContainer}>
-            <p>
-              oz
-            </p>
-          </div>
-        </div>
-        <div className={styles.valueContainer}>
-          <p>{current.context.grams}</p>
-          <div className={styles.unitContainer}>
-            <p>
-              g
-            </p>
-          </div>
-        </div>
-      </div>
+      <UnitsContainer current={current} />
       <RangeSlider ref={rangeRef} handleRangeChange={handleRangeChange} />
       <FlexContainer>
         <MachineButton

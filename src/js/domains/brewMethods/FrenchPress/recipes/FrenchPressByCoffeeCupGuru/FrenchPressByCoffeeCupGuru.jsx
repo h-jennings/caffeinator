@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useMachine } from '@xstate/react';
-import { AnimatePresence, motion } from 'framer-motion';
 import FrenchPressByCoffeeCupGuruMachine from './FrenchPressByCoffeeCupGuruMachine';
 import MainContainer from '../../../../../components/MainContainer';
-import MachineButton from '../../../../../components/MachineButton';
 import ResetStateButton from '../../../../../components/ResetStateButton';
+import AddRemainingWaterState from './States/AddRemainingWaterState';
 import StartState from './States/StartState';
 import GrindState from './States/GrindState';
 import AddWaterState from './States/AddWaterState';
-import AddRemainingWater from './States/AddRemainingWaterState';
 import StirState from './States/StirState';
 import BrewState from './States/BrewState';
 import DoneState from './States/DoneState/DoneState';
@@ -39,7 +37,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
               return <StirState send={send} current={current} />;
 
             case current.matches('Add_Remaining_Water'):
-              return <AddRemainingWater send={send} current={current} />;
+              return <AddRemainingWaterState send={send} current={current} />;
 
             case current.matches('Brew'):
               return <BrewState send={send} current={current} />;

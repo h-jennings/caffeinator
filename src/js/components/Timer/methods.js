@@ -1,14 +1,5 @@
 import { assign, sendParent } from 'xstate';
 
-// Setting initial value of the timer
-const setDefaults = assign({
-  duration_ms: (_context, event) => {
-    const { ms } = event;
-
-    return ms;
-  },
-});
-
 const setNow = assign({
   now: (_context, _event) => Date.now(),
 });
@@ -70,8 +61,8 @@ const startIntervalService = (context, _event) => (callback, _onReceive) => {
     }, context.duration_ms - (context.elapsed_ms || 0));
   }
 
-  // CALL UPDATE INITIALLY
-  if (!updateTimer) callback('UPDATE');
+  // // CALL UPDATE INITIALLY
+  // if (!updateTimer) callback('UPDATE');
 
   const updateTimer = setInterval(() => {
     // console.log('UPDATE CALLED IN INTERVAL', context.update_frequency_ms);
@@ -90,7 +81,6 @@ const updateParent = sendParent('TIMER_UPDATED', {
 
 const TimerMethodConfig = {
   actions: {
-    setDefaults,
     setNow,
     startTimer,
     stopTimer,

@@ -33,7 +33,7 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
       on: {
         CHANGE: {
           target: 'Start',
-          actions: handleFlOzChange,
+          actions: 'handleFlOzChange',
         },
         NEXT: {
           target: 'Grind',
@@ -61,20 +61,22 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
       },
     },
     Stir: {
-      entry: assign({
-        stirTimer: () => spawn(TimerMachine, { sync: false, autoForward: true, name: 'stirTimer' }),
-      }),
+      entry: [
+        assign({
+          stirTimer: () => spawn(TimerMachine.withContext({
+            update_frequency_ms: 1000,
+            duration_ms: 15000,
+          }), { sync: false, autoForward: true, name: 'stirTimer' }),
+        }),
+        send('START', { to: 'stirTimer' }),
+      ],
       exit: [
         send('RESET', { to: 'stirTimer' }),
-        assign({
-          remaining_ms: undefined,
-        }),
+        'resetRemainingMs',
       ],
       on: {
         TIMER_UPDATED: {
-          actions: assign({
-            remaining_ms: (_context, event) => event.remaining_ms,
-          }),
+          actions: 'updateRemainingMs',
         },
         PREV: {
           target: 'Add_Water',
@@ -95,7 +97,23 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
       },
     },
     Brew: {
+      entry: [
+        assign({
+          brewTimer: () => spawn(TimerMachine.withContext({
+            update_frequency_ms: 1000,
+            duration_ms: 240000,
+          }), { sync: false, autoForward: true, name: 'brewTimer' }),
+        }),
+        send('START', { to: 'brewTimer' }),
+      ],
+      exit: [
+        send('RESET', { to: 'brewTimer' }),
+        'resetRemainingMs',
+      ],
       on: {
+        TIMER_UPDATED: {
+          actions: 'updateRemainingMs',
+        },
         PREV: {
           target: 'Add_Remaining_Water',
         },
@@ -110,6 +128,16 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
     RESET: {
       target: 'Start',
     },
+  },
+}, {
+  actions: {
+    handleFlOzChange,
+    updateRemainingMs: assign({
+      remaining_ms: (_context, event) => event.remaining_ms,
+    }),
+    resetRemainingMs: assign({
+      remaining_ms: undefined,
+    }),
   },
 });
 

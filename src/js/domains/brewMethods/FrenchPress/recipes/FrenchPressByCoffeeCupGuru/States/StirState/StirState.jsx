@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 // import classNames from 'classnames';
 import FlexContainer from '../../../../../../../components/FlexContainer';

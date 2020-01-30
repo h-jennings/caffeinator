@@ -3,16 +3,6 @@ import PropTypes from 'prop-types';
 import toTimeString from '../../utils/toTimeString';
 
 function Timer({ ms, current, send }) {
-  useEffect(() => {
-    const startTimer = setTimeout(() => {
-      send({ type: 'START', ms });
-    }, 1000);
-
-    return () => {
-      clearTimeout(startTimer);
-    };
-  }, [ms, send]);
-
   return (
     <>
       <h2>

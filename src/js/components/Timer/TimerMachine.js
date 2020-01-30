@@ -5,13 +5,13 @@ const TimerMachine = Machine({
   id: 'Timer',
   initial: 'idle',
   context: {
-    update_frequency_ms: 1000,
+    update_frequency_ms: undefined,
     start_time: undefined,
     stop_time: undefined,
     elapsed_ms: undefined,
     elapsed_last_ms: undefined,
     remaining_ms: undefined,
-    duration_ms: 15000,
+    duration_ms: undefined,
     now: undefined,
   },
   states: {
@@ -19,7 +19,6 @@ const TimerMachine = Machine({
       on: {
         START: {
           target: 'running',
-          actions: 'setDefaults',
         },
       },
     },

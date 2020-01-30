@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 // import classNames from 'classnames';
 import FlexContainer from '../../../../../../../components/FlexContainer';
 import MachineArrowButton from '../../../../../../../components/MachineArrowButton';
+import Timer from '../../../../../../../components/Timer';
 // import styles from './Brew.module.scss';
 // import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
 
-function BrewState({ send }) {
+function BrewState({ send, current }) {
   return (
     <>
-      <>
-        <h1>Brew</h1>
-        <FlexContainer>
-          <MachineArrowButton send={send} eventType="PREV" />
-          <MachineArrowButton send={send} eventType="NEXT" />
-        </FlexContainer>
-      </>
+      <h1>Brew</h1>
+      <Timer ms={240000} send={send} current={current} />
+      <FlexContainer>
+        <MachineArrowButton send={send} eventType="PREV" />
+        <MachineArrowButton send={send} eventType="NEXT" />
+      </FlexContainer>
     </>
   );
 }
