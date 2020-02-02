@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import MachineButton from '../../../../../../../components/MachineButton';
 import RangeSlider from './RangeSlider';
-import styles from './StartState.module.scss';
 import CupSelector from './CupSelector';
 import FlexContainer from '../../../../../../../components/FlexContainer';
 import useScrollToTop from '../../../../../../../utils/useScrollToTop';

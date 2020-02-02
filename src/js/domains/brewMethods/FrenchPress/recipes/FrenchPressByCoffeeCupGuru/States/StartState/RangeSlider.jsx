@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './StartState.module.scss';
+import styles from './RangeSlider.module.scss';
 
 
 const RangeSlider = React.forwardRef(({ handleRangeChange }, ref) => (

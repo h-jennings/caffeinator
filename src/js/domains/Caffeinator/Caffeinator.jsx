@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import FourZeroFour from '../404';
 import ScrollToTopOnMount from '../../components/ScrollToTopOnMount';
@@ -39,5 +40,9 @@ function Caffeinator({ brewMethods }) {
 
   );
 }
+
+Caffeinator.propTypes = {
+  brewMethods: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Caffeinator;
