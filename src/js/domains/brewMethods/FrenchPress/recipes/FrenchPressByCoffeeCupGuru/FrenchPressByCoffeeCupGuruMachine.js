@@ -21,7 +21,7 @@ const handleFlOzChange = assign({
 
 const FrenchPressByCoffeeCupGuruMachine = Machine({
   id: 'FrenchPressByCoffeeCupGuruMachine',
-  initial: 'Start',
+  initial: 'Grind',
   context: {
     fluidOunces: 8,
     grams: 15,

@@ -1,3 +1,5 @@
+@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+
 .btn {
   width: 30px;
   height: auto;
@@ -10,12 +12,10 @@
   position: absolute;
   right: 40px;
   top: 30px;
-}
 
-@media screen and (max-width: 599px) {
-  .btn {
+  @media phoneBreak {
     position: static;
     display: block;
-    margin: 0 0 var(--c-06) auto;
+    margin: 0 0 var(--c-03) auto;
   }
 }

@@ -1,6 +1,12 @@
+@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+
 .appContainer {
   margin: 0 auto;
   min-height: 760px;
   height: calc(100vh - var(--nav-height));
   margin-top: var(--nav-height);
+  
+  @media phoneBreak {
+    min-height: unset;
+  }
 }

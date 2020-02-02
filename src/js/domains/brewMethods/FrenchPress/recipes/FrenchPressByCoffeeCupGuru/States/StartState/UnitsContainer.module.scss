@@ -1,3 +1,5 @@
+@value phoneBreak from '../../../../../../../../styles/shared/breakpoints.scss';
+
 .valuesContainer {
   margin-bottom: var(--l-04);
   display: flex;
@@ -7,6 +9,10 @@
   max-width: 472px;
   margin: 0 auto var(--l-04) auto;
   border-radius: 14px;
+  
+  @media phoneBreak {
+    padding: var(--c-06) var(--c-02);
+  }
 }
 
 .valueContainer {
@@ -19,14 +25,18 @@
   align-items: center;
   margin: 0 30px;
   position: relative;
-
-  p {
-    color: var(--yellow);
-    text-align: center;
-    line-height: 1;
-    font-weight: 700;
-    font-size: var(--txt-md);
+  
+  @media phoneBreak {
+    margin: 0 10px;
   }
+}
+
+.measurementValueText {
+  color: var(--yellow);
+  text-align: center;
+  line-height: 1;
+  font-weight: 700;
+  font-size: var(--txt-md);
 }
 
 .unitContainer {
@@ -40,10 +50,12 @@
   position: absolute;
   bottom: 0;
   right: 0;
+}
 
-  p {
-    color: var(--black);
-    font-size: var(--txt-xsm);
-    line-height: 1;
-  }
+.unitTypeText {
+  color: var(--black);
+  font-size: var(--txt-xsm);
+  line-height: 1;
+  text-align: center;
+  font-weight: 500;
 }

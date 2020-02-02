@@ -4,12 +4,13 @@ import classNames from 'classnames';
 import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
 import MachineArrowButton from '../../../../../../../components/MachineArrowButton';
 import FlexContainer from '../../../../../../../components/FlexContainer';
+import StateBodyText from '../../../../../../../components/StateBodyText';
 
 function AddRemainingWaterState({ current, send }) {
   return (
     <>
       <h1>Add Remaining Water</h1>
-      <h2>
+      <StateBodyText>
         Add remaining
         {' '}
         <span className={classNames([sharedStyles.yellowTxt, sharedStyles.underlineDotted])}>
@@ -19,7 +20,7 @@ function AddRemainingWaterState({ current, send }) {
         </span>
         {' '}
         of water to the carafe.
-      </h2>
+      </StateBodyText>
       <FlexContainer>
         <MachineArrowButton send={send} eventType="PREV" />
         <MachineArrowButton send={send} eventType="NEXT" />

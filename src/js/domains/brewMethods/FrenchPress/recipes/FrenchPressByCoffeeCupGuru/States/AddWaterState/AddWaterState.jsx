@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import FlexContainer from '../../../../../../../components/FlexContainer';
 import MachineArrowButton from '../../../../../../../components/MachineArrowButton';
-import styles from './AddWaterState.module.scss';
 import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
+import StateBodyText from '../../../../../../../components/StateBodyText';
 
 function AddWaterState({ current, send }) {
   return (
     <>
       <h1>Add Water</h1>
-      <h2 className={styles.bodyTxt}>
+      <StateBodyText>
         Add
         {' '}
         <span className={classNames([sharedStyles.yellowTxt, sharedStyles.underlineDotted])}>
@@ -20,7 +20,7 @@ function AddWaterState({ current, send }) {
         </span>
         {' '}
         of water to the carafe.
-      </h2>
+      </StateBodyText>
       <FlexContainer>
         <MachineArrowButton send={send} eventType="PREV" />
         <MachineArrowButton send={send} eventType="NEXT" />

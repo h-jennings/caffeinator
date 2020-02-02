@@ -16,6 +16,7 @@
   @media phoneBreak {
     grid-template-rows: auto 1fr;
     margin: 0 auto;
+    // height: 100%;
   }
 }
 
@@ -30,7 +31,7 @@
   }
   
   @media phoneBreak {
-    font-size: var(--txt-md);
+    font-size: 8vw;
     margin-bottom: var(--l-03);
     padding-right: var(--c-05);
   }
@@ -50,7 +51,7 @@
   }
 
   @media phoneBreak {
-    padding: 35px 20px;
+    padding: 35px 20px 65px 20px;
     margin: 0 10px;
     border-radius: 15px;
   }

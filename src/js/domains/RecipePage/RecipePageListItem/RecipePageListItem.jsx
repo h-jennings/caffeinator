@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import convertSecondsToMinutes from '../../../utils/convertSecondsToMinutes';
 import styles from './RecipePageListItem.module.scss';
 import { ReactComponent as TimerSvg } from '../../../../images/timer.svg';
@@ -36,5 +37,10 @@ function RecipePageListItem({ recipe, icon }) {
     </>
   );
 }
+
+RecipePageListItem.propTypes = {
+  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  icon: PropTypes.objectOf(PropTypes.string).isRequired,
+};
 
 export default RecipePageListItem;

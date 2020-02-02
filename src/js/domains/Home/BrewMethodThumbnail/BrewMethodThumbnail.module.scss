@@ -1,4 +1,5 @@
 @value mainContainerBreak from '../../../../styles/shared/breakpoints.scss';
+@value phoneBreak from '../../../../styles/shared/breakpoints.scss';
 
 .container {
   border-radius: 12px;
@@ -14,11 +15,6 @@ box-shadow: 13px 13px 26px #283642,
 
   @media mainContainerBreak {
     min-height: unset;
-  }
-  
-  img {
-    grid-column: 1/-1;
-    grid-row: 1/-1;
   }
 
   a {
@@ -43,9 +39,14 @@ box-shadow: 13px 13px 26px #283642,
   position: absolute;
   top: var(--c-05);
   
-  @media mainContainerBreak {
-    font-size: 3.4vw;
+  @media mainContainerBreak{
     top: var(--c-06);
+  }
+  
+  @media phoneBreak {
+    position: static;
+    top: unset;
+    font-size: 3.4vw;
   }
 }
 
@@ -53,3 +54,13 @@ box-shadow: 13px 13px 26px #283642,
   margin: 0 auto;
   display: block;
 }
+
+.iconContainer {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+
+  @media phoneBreak {
+    width: 11vw;
+  }
+}
+

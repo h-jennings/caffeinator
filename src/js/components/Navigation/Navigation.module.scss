@@ -1,8 +1,14 @@
+@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+
 .container {
   display: flex;
   justify-content: center;
-  padding: var(--c-07) 0;
+  padding: var(--c-07) var(--c-07);
   position: absolute;
   width: 100%;
   top: 0;
+
+  @media phoneBreak {
+    justify-content: flex-start;
+  }
 }

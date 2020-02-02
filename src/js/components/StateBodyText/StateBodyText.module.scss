@@ -1,0 +1,21 @@
+@value mainContainerBreak from '../../../styles/shared/breakpoints.scss';
+@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+
+.text {
+  text-align: center;
+  font-size: var(--txt-md);
+  line-height: 1.33;
+  color: var(--white);
+  font-weight: 500;
+  margin: 0 auto var(--l-03) auto;
+  max-width: 500px;
+
+  @media mainContainerBreak {
+    font-size: var(--txt-sm);
+  }
+
+  @media phoneBreak {
+    // font-size: var(--txt-base);
+    font-weight: 400;
+  }
+}

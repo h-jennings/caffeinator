@@ -49,6 +49,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@welldone-software/why-did-you-render": "^4.0.3",
     "@xstate/react": "^0.8.1",
     "classnames": "^2.2.6",
     "dotenv-webpack": "^1.7.0",

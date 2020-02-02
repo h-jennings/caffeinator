@@ -17,9 +17,7 @@ const TimerMachine = Machine({
   states: {
     idle: {
       on: {
-        START: {
-          target: 'running',
-        },
+        START: 'running',
       },
     },
     running: {

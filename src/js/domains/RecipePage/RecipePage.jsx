@@ -1,6 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
-  useRouteMatch, Link, useParams,
+  useRouteMatch,
+  Link,
+  useParams,
 } from 'react-router-dom';
 import styles from './RecipePage.module.scss';
 import ScrollToTopOnMount from '../../components/ScrollToTopOnMount';
@@ -32,5 +35,9 @@ function RecipePage({ brewMethods }) {
     </>
   );
 }
+
+RecipePage.propTypes = {
+  brewMethods: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default RecipePage;

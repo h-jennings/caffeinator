@@ -61,11 +61,7 @@ const startIntervalService = (context, _event) => (callback, _onReceive) => {
     }, context.duration_ms - (context.elapsed_ms || 0));
   }
 
-  // // CALL UPDATE INITIALLY
-  // if (!updateTimer) callback('UPDATE');
-
   const updateTimer = setInterval(() => {
-    // console.log('UPDATE CALLED IN INTERVAL', context.update_frequency_ms);
     callback('UPDATE');
   }, (context.update_frequency_ms || 1000));
 
