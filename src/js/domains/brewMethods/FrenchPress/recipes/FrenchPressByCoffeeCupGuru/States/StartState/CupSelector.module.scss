@@ -1,0 +1,28 @@
+@value phoneBreak from '../../../../../../../../styles/shared/breakpoints.scss';
+
+.cupSelectorContainer {
+  background-color: var(--black);
+  padding: var(--c-06) var(--c-09);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 472px;
+  margin: 0 auto var(--l-01) auto;
+  border-radius: 14px;
+  
+  @media phoneBreak {
+    padding: var(--c-06) var(--c-06);
+  }
+}
+
+.cupSelectorBtn {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 2px solid var(--yellow);
+  color: var(--yellow);
+  border-radius: 50%;
+  font-size: var(--txt-base);
+  cursor: pointer;
+  padding: 0;
+}

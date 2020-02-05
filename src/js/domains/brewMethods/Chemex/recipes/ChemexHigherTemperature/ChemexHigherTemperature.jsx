@@ -1,10 +1,10 @@
 import React from 'react';
-import MainContainer from '../../../../../components/MainContainer';
+import MainContainerHeadlineOuter from '../../../../../components/MainContainerHeadlineOuter';
 
 function ChemexHigherTemperature({ pageRecipe }) {
   const { name } = pageRecipe;
   return (
-    <MainContainer headline={name} />
+    <MainContainerHeadlineOuter headline={name} />
   );
 }
 

@@ -12,7 +12,7 @@ const RangeSlider = React.forwardRef(({ handleRangeChange }, ref) => (
       min="8"
       max="40"
       step="1"
-      defaultValue="8"
+      defaultValue="1"
       id="flOunces"
       onChange={handleRangeChange}
       className={styles.input}

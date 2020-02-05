@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MainContainer from '../../components/MainContainer';
+import MainContainerHeadlineOuter from '../../components/MainContainerHeadlineOuter';
 import styles from './Home.module.scss';
 import BrewMethodThumbnail from './BrewMethodThumbnail';
 
 function Home({ brewMethods }) {
   return (
-    <MainContainer headline="Select a brew method.">
+    <MainContainerHeadlineOuter headline="Select a brew method.">
       <ul className={styles.methodsContainer}>
         {brewMethods.map((method) => (
           <Link key={method.path} to={`/${method.path}`}>
@@ -14,7 +14,7 @@ function Home({ brewMethods }) {
           </Link>
         ))}
       </ul>
-    </MainContainer>
+    </MainContainerHeadlineOuter>
   );
 }
 

@@ -1,13 +1,12 @@
 @value phoneBreak from '../../../../../../../../styles/shared/breakpoints.scss';
 
 .valuesContainer {
-  margin-bottom: var(--l-04);
   display: flex;
   justify-content: center;
   background-color: var(--black);
   padding: var(--c-06) var(--c-09);
   max-width: 472px;
-  margin: 0 auto var(--l-04) auto;
+  margin: 0 auto var(--l-03) auto;
   border-radius: 14px;
   
   @media phoneBreak {
@@ -28,6 +27,8 @@
   
   @media phoneBreak {
     margin: 0 10px;
+    width: 83px;
+    height: 83px;
   }
 }
 
@@ -37,6 +38,10 @@
   line-height: 1;
   font-weight: 700;
   font-size: var(--txt-md);
+  
+  @media phoneBreak {
+    font-size: var(--txt-sm);
+  }
 }
 
 .unitContainer {

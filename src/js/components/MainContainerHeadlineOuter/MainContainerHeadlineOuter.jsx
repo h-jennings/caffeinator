@@ -1,9 +1,9 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import styles from './MainContainer.module.scss';
+import styles from './MainContainerHeadlineOuter.module.scss';
 import { ReactComponent as BackArrow } from '../../../images/backArrow.svg';
 
-function MainContainer({ headline, children }) {
+function MainContainerHeadlineOuter({ headline, children }) {
   const history = useHistory();
   const location = useLocation();
   const handleClick = () => history.goBack();
@@ -26,4 +26,4 @@ function MainContainer({ headline, children }) {
   );
 }
 
-export default MainContainer;
+export default MainContainerHeadlineOuter;

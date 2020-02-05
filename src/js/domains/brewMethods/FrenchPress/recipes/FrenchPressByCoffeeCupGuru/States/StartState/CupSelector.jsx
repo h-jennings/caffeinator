@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './StartState.module.scss';
+import styles from './CupSelector.module.scss';
 
 function CupSelector({ send, ratio }) {
   const handleCupSelection = (cupAmount = 1) => {

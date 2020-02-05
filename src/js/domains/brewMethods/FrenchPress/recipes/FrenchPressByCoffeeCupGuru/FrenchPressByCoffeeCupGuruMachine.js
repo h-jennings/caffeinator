@@ -14,17 +14,16 @@ const handleFlOzChange = assign({
   },
   grams: (_context, event) => {
     const { ratio, fluidOunces } = event;
-
     return Math.round(fluidOunces * ratio);
   },
 });
 
 const FrenchPressByCoffeeCupGuruMachine = Machine({
   id: 'FrenchPressByCoffeeCupGuruMachine',
-  initial: 'Grind',
+  initial: 'Start',
   context: {
-    fluidOunces: 8,
-    grams: 15,
+    fluidOunces: 24,
+    grams: 45,
     stirTimer: undefined,
     remaining_ms: undefined,
   },

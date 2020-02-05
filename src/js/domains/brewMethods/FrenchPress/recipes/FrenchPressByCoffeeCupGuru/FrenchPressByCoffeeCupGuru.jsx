@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useMachine } from '@xstate/react';
 import FrenchPressByCoffeeCupGuruMachine from './FrenchPressByCoffeeCupGuruMachine';
-import MainContainer from '../../../../../components/MainContainer';
+import MainContainerHeadlineOuter from '../../../../../components/MainContainerHeadlineOuter';
 import ResetStateButton from '../../../../../components/ResetStateButton';
 import AddRemainingWaterState from './States/AddRemainingWaterState';
 import StartState from './States/StartState';
@@ -19,7 +19,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
   const { name, ratio, grindRange } = pageRecipe;
 
   return (
-    <MainContainer headline={name}>
+    <MainContainerHeadlineOuter headline={name}>
       <ResetStateButton send={send} eventType="RESET" />
       {
         (() => {
@@ -50,7 +50,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
           }
         })()
       }
-    </MainContainer>
+    </MainContainerHeadlineOuter>
   );
 }
 
