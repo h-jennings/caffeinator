@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useMachine } from '@xstate/react';
 import FrenchPressByCoffeeCupGuruMachine from './FrenchPressByCoffeeCupGuruMachine';
-import MainContainerHeadlineOuter from '../../../../../components/MainContainerHeadlineOuter';
-import ResetStateButton from '../../../../../components/ResetStateButton';
 import AddRemainingWaterState from './States/AddRemainingWaterState';
 import StartState from './States/StartState';
 import GrindState from './States/GrindState';
@@ -11,6 +9,7 @@ import AddWaterState from './States/AddWaterState';
 import StirState from './States/StirState';
 import BrewState from './States/BrewState';
 import DoneState from './States/DoneState/DoneState';
+import StateContainer from '../../../../../components/StateContainer';
 
 
 function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
@@ -19,8 +18,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
   const { name, ratio, grindRange } = pageRecipe;
 
   return (
-    <MainContainerHeadlineOuter headline={name}>
-      <ResetStateButton send={send} eventType="RESET" />
+    <StateContainer headline={name} send={send} eventType="RESET">
       {
         (() => {
           switch (true) {
@@ -50,7 +48,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
           }
         })()
       }
-    </MainContainerHeadlineOuter>
+    </StateContainer>
   );
 }
 

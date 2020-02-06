@@ -4,7 +4,7 @@
 .wrapper {
   margin: 0 auto var(--l-04) auto;
   width: 800px;
-  padding-top: 104px;
+  padding-top: var(--l-02);
   
   @media mainContainerBreak {
     padding-top: var(--l-02);

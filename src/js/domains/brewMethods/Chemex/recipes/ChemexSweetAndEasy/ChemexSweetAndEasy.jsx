@@ -1,10 +1,10 @@
 import React from 'react';
-import MainContainerHeadlineOuter from '../../../../../components/MainContainerHeadlineOuter';
+import MainContainer from '../../../../../components/MainContainer';
 
 function ChemexSweetAndEasy({ pageRecipe }) {
   const { name } = pageRecipe;
   return (
-    <MainContainerHeadlineOuter headline={name} />
+    <MainContainer headline={name} />
   );
 }
 

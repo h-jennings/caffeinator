@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import styles from './RecipePage.module.scss';
 import ScrollToTopOnMount from '../../components/ScrollToTopOnMount';
-import MainContainerHeadlineOuter from '../../components/MainContainerHeadlineOuter';
+import MainContainer from '../../components/MainContainer';
 import RecipePageListItem from './RecipePageListItem';
 import FourZeroFour from '../404';
 
@@ -21,7 +21,7 @@ function RecipePage({ brewMethods }) {
       {pageMethod ? (
         <>
           <ScrollToTopOnMount />
-          <MainContainerHeadlineOuter headline={`${pageMethod.type} Recipes`}>
+          <MainContainer headline={`${pageMethod.type} Recipes`}>
             <ul>
               {pageMethod.recipes.map((recipe) => (
                 <Link key={recipe.name} to={`${match.url}/${recipe.path}`} className={styles.listItemLink}>
@@ -29,7 +29,7 @@ function RecipePage({ brewMethods }) {
                 </Link>
               ))}
             </ul>
-          </MainContainerHeadlineOuter>
+          </MainContainer>
         </>
       ) : <FourZeroFour />}
     </>

@@ -1,13 +1,13 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import styles from './FourZeroFour.module.scss';
-import MainContainerHeadlineOuter from '../../components/MainContainerHeadlineOuter';
+import MainContainer from '../../components/MainContainer';
 import Button from '../../components/Button';
 
 function FourZeroFour() {
   const location = useLocation();
   return (
-    <MainContainerHeadlineOuter headline="Oops...we got nothin' :(">
+    <MainContainer headline="Oops...we got nothin' :(">
       <h3 className={styles.errorText}>
         <code>
           {location.pathname}
@@ -22,7 +22,7 @@ function FourZeroFour() {
           </Link>
         </Button>
       </div>
-    </MainContainerHeadlineOuter>
+    </MainContainer>
   );
 }
 

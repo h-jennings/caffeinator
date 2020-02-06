@@ -2,12 +2,10 @@
 
 .appContainer {
   margin: 0 auto;
-  min-height: 760px;
-  height: calc(100vh - var(--nav-height));
-  margin-top: var(--nav-height);
+  min-height: calc(100vh - var(--nav-height));
+  height: 100%;
   
   @media phoneBreak {
-    min-height: unset;
     display: flex;
   }
 }
