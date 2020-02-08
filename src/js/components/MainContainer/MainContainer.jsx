@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
 import styles from './MainContainer.module.scss';
 import { ReactComponent as BackArrow } from '../../../images/backArrow.svg';
@@ -12,6 +13,7 @@ function MainContainer({ headline, children }) {
       {headline && (<h1 className={styles.headline}>{headline}</h1>)}
       <div className={styles.contentContainer}>
         {children}
+        {/* if not home page, show button */}
         {location.pathname !== '/' && (
           <button
             type="button"
@@ -25,5 +27,14 @@ function MainContainer({ headline, children }) {
     </main>
   );
 }
+
+MainContainer.propTypes = {
+  headline: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
+
+MainContainer.defaultProps = {
+  headline: '',
+};
 
 export default MainContainer;

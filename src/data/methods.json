@@ -11,6 +11,7 @@
         "path": "french-press-by-coffee-cup-guru",
         "timeInSeconds": 240,
         "ratio": 1.875,
+        "temp": 205,
         "grindRange": "medium-coarse"
       },
       {
@@ -18,6 +19,7 @@
         "path": "perfect-french-press-coffee",
         "timeInSeconds": 330,
         "ratio": 1.875,
+        "temp": 205,
         "grindRange": "coarse"
       }
     ]
@@ -35,6 +37,7 @@
         "path": "chemex-sweet-and-easy",
         "timeInSeconds": 260,
         "ratio": 1.875,
+        "temp": 205,
         "grindRange": "medium"
       },
       {
@@ -42,6 +45,7 @@
         "path": "chemex-by-coffee-cup-guru",
         "timeInSeconds": 280,
         "ratio": 1.875,
+        "temp": 205,
         "grindRange": "medium"
       },
       {
@@ -49,6 +53,7 @@
         "path": "chemex-higher-temperature",
         "timeInSeconds": 260,
         "ratio": 1.875,
+        "temp": 205,
         "grindRange": "medium"
       },
       {
@@ -56,6 +61,7 @@
         "path": "chemex-longer-bloom",
         "timeInSeconds": 330,
         "ratio": 1.875,
+        "temp": 205,
         "grindRange": "medium"
       }
     ]
@@ -73,6 +79,7 @@
         "path": "aeropress-basic-recipe",
         "timeInSeconds": 150,
         "ratio": 1.875,
+        "temp": 205,
         "grindRange": "medium"
       },
       {
@@ -80,6 +87,7 @@
         "path": "aeropress-brew-recipe",
         "timeInSeconds": 180,
         "ratio": 1.875,
+        "temp": 205,
         "grindRange": "medium-fine"
       }
     ]
@@ -97,6 +105,7 @@
         "path": "peets-pour-over",
         "timeInSeconds": 300,
         "ratio": 1.875,
+        "temp": 205,
         "grindRange": "medium-fine"
       },
       {
@@ -104,6 +113,7 @@
         "path": "hario-make-it-easy",
         "timeInSeconds": 240,
         "ratio": 1.875,
+        "temp": 205,
         "grindRange": "medium-fine"
       }
     ]

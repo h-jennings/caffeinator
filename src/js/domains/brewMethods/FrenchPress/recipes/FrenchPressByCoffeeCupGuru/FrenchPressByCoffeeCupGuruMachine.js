@@ -23,12 +23,18 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
   initial: 'Start',
   context: {
     fluidOunces: 24,
+    fluidOuncesDisplayValue: null,
     grams: 45,
     stirTimer: undefined,
     remaining_ms: undefined,
   },
   states: {
     Start: {
+      entry: [
+        assign({
+          fluidOuncesDisplayValue: (context, _event) => context.fluidOunces / 2,
+        }),
+      ],
       on: {
         CHANGE: {
           target: 'Start',
@@ -86,6 +92,11 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
       },
     },
     Add_Remaining_Water: {
+      entry: [
+        assign({
+          fluidOuncesDisplayValue: (context, _event) => context.fluidOunces,
+        }),
+      ],
       on: {
         PREV: {
           target: 'Stir',

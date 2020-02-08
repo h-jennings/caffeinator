@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import classNames from 'classnames';
 import FlexContainer from '../../../../../../../components/FlexContainer';
 import MachineArrowButton from '../../../../../../../components/MachineArrowButton';
 import Timer from '../../../../../../../components/Timer';
-// import styles from './StirState.module.scss';
-// import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
 
 function StirState({ send, current }) {
   return (
@@ -22,6 +19,7 @@ function StirState({ send, current }) {
 
 StirState.propTypes = {
   send: PropTypes.func.isRequired,
+  current: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default StirState;

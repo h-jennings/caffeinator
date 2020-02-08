@@ -8,14 +8,9 @@
   cursor: pointer;
   padding: 0;
   border: none;
-  display: inline-block;
-  position: absolute;
-  right: 40px;
-  top: 30px;
 
   @media phoneBreak {
     position: static;
     display: block;
-    margin: 0 0 var(--c-04) auto;
   }
 }

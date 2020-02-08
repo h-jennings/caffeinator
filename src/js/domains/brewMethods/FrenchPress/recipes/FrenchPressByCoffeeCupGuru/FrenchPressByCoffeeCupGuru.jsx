@@ -18,7 +18,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
   const { name, ratio, grindRange } = pageRecipe;
 
   return (
-    <StateContainer headline={name} send={send} eventType="RESET">
+    <StateContainer headline={name} send={send} current={current} eventType="RESET">
       {
         (() => {
           switch (true) {
