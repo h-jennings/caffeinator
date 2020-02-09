@@ -1,1 +1,37 @@
-/* your css code */
+@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+
+.progressContainer {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.timerText,
+.progress {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+}
+
+.timerText {
+  z-index: 2;
+  margin: 0;
+  color: var(--white);
+}
+
+.progress {
+  transform: rotate(-90deg);
+  max-width: 200px;
+}
+
+:root {
+  --progress-percent: 0%;
+}
+
+.progressPath {
+  // 2🥧r = C 
+  // C = stroke-dasharray
+  stroke-dasharray: 581.2;
+  stroke-dashoffset: var(--progress-percent);
+  transition: stroke-dashoffset 0.1s ease-out;
+}
