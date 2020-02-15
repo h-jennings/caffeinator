@@ -5,6 +5,7 @@ import {
   send,
 } from 'xstate';
 import TimerMachine from '../../../../../components/Timer/TimerMachine';
+import timerButtonStates from '../../../../../utils/timerButtonStates';
 
 const handleFlOzChange = assign({
   fluidOunces: (_context, event) => {
@@ -27,6 +28,7 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
     grams: 45,
     stirTimer: undefined,
     remaining_ms: undefined,
+    timerButtonState: timerButtonStates.pause,
   },
   states: {
     Start: {
@@ -78,10 +80,16 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
       exit: [
         send('RESET', { to: 'stirTimer' }),
         'resetRemainingMs',
+        assign({
+          timerButtonState: timerButtonStates.pause,
+        }),
       ],
       on: {
         TIMER_UPDATED: {
           actions: 'updateRemainingMs',
+        },
+        TIMER_STATE_UPDATED: {
+          actions: 'updateTimerState',
         },
         PREV: {
           target: 'Add_Water',
@@ -119,10 +127,16 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
       exit: [
         send('RESET', { to: 'brewTimer' }),
         'resetRemainingMs',
+        assign({
+          timerButtonState: timerButtonStates.pause,
+        }),
       ],
       on: {
         TIMER_UPDATED: {
           actions: 'updateRemainingMs',
+        },
+        TIMER_STATE_UPDATED: {
+          actions: 'updateTimerState',
         },
         PREV: {
           target: 'Add_Remaining_Water',
@@ -144,6 +158,9 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
     handleFlOzChange,
     updateRemainingMs: assign({
       remaining_ms: (_context, event) => event.remaining_ms,
+    }),
+    updateTimerState: assign({
+      timerButtonState: (_context, event) => event.timerButtonState,
     }),
     resetRemainingMs: assign({
       remaining_ms: undefined,

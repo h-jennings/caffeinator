@@ -1,10 +1,72 @@
 @value phoneBreak from '../../../styles/shared/breakpoints.scss';
 
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--l-03);
+}
+
 .progressContainer {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 200px;
+  grid-template-rows: 1fr;
+  position: relative;
+}
+
+.timerBtn {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--yellow);
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s linear;
   display: grid;
   place-items: center;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
+  padding: 0;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+  
+  .visible {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .hidden {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  
+  .play,
+  .pause {
+    transition: all 0.2s linear;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+
+  .play {
+    width: 9px;
+    height: auto;
+    z-index: 2;
+  }
+
+  .pause {
+    width: 8px;
+    height: auto;
+  }
+  
+  path {
+    fill: var(--black);
+  }
 }
 
 .timerText,
