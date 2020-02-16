@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FourZeroFour from '../../404';
+import Loading from '../../../components/Loading';
 const FrenchPressByCoffeeCupGuru = lazy(() => import('./Recipes/FrenchPressByCoffeeCupGuru'));
 import PerfectFrenchPressCoffee from './Recipes/PerfectFrenchPressCoffee';
 
@@ -16,7 +17,7 @@ function FrenchPress({ recipes }) {
           switch (pageRecipe.path) {
             case 'french-press-by-coffee-cup-guru':
               return (
-                <Suspense fallback={<h1>Loading Recipe...</h1>}>
+                <Suspense fallback={<Loading />}>
                   <FrenchPressByCoffeeCupGuru pageRecipe={pageRecipe} />
                 </Suspense>
               );
