@@ -1,1 +1,10 @@
-/* your css code */
+.imgContainer {
+  width: 200px;
+  height: 200px;
+  border: 2px solid var(--yellow);
+  background-position: center;
+  background-size: cover;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: var(--l-02);
+}

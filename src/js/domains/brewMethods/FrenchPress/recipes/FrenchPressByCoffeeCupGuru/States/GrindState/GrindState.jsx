@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import FlexContainer from '../../../../../../../components/FlexContainer';
-import MachineArrowButton from '../../../../../../../components/MachineArrowButton';
 import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
 import StateBodyText from '../../../../../../../components/StateBodyText/StateBodyText';
 
-function GrindState({ current, send, grindRange }) {
+function GrindState({ current, grindRange }) {
   return (
     <>
       <h1>Grind</h1>
@@ -26,17 +24,12 @@ function GrindState({ current, send, grindRange }) {
         {' '}
         consistency.
       </StateBodyText>
-      <FlexContainer>
-        <MachineArrowButton send={send} eventType="PREV" />
-        <MachineArrowButton send={send} eventType="NEXT" />
-      </FlexContainer>
     </>
   );
 }
 
 GrindState.propTypes = {
   current: PropTypes.objectOf(PropTypes.any).isRequired,
-  send: PropTypes.func.isRequired,
   grindRange: PropTypes.string.isRequired,
 };
 

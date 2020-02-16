@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import className from 'classnames';
 import styles from './Timer.module.scss';
@@ -12,15 +12,16 @@ import timerButtonStates from '../../utils/timerButtonStates';
 // - Clean up play-pause button logic (at least naming)
 
 function Timer({ ms, current = {}, send }) {
+  const rootEl = useRef(document.documentElement);
   useEffect(() => {
     if (current.context.remaining_ms === undefined) return;
 
-    const root = document.documentElement;
+    const root = rootEl.current;
 
-    // Set --progress-percent value to the circumference minus percentage of progress every 1000ms
-    root.style.setProperty('--progress-percent', `${581.2 - (current.context.remaining_ms / ms) * 581.2}`);
+    // Set --progress value to the circumference minus percentage of progress every 1000ms
+    root.style.setProperty('--progress', `${581.2 - (current.context.remaining_ms / ms) * 581.2}`);
 
-    return () => root.style.removeProperty('--progress-percent');
+    return () => root.style.removeProperty('--progress');
   }, [current.context.remaining_ms, ms]);
 
   function handlePlayPauseButton() {
@@ -80,8 +81,8 @@ function Timer({ ms, current = {}, send }) {
 }
 Timer.propTypes = {
   ms: PropTypes.number.isRequired,
-  current: PropTypes.objectOf(PropTypes.any),
-  send: PropTypes.func,
+  current: PropTypes.objectOf(PropTypes.any).isRequired,
+  send: PropTypes.func.isRequired,
 };
 
 export default Timer;

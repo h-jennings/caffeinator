@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
-import MachineArrowButton from '../../../../../../../components/MachineArrowButton';
-import FlexContainer from '../../../../../../../components/FlexContainer';
 import StateBodyText from '../../../../../../../components/StateBodyText';
 
-function AddRemainingWaterState({ current, send }) {
+function AddRemainingWaterState({ current }) {
   return (
     <>
       <h1>Add Remaining Water</h1>
@@ -21,17 +19,12 @@ function AddRemainingWaterState({ current, send }) {
         {' '}
         of water to the carafe.
       </StateBodyText>
-      <FlexContainer>
-        <MachineArrowButton send={send} eventType="PREV" />
-        <MachineArrowButton send={send} eventType="NEXT" />
-      </FlexContainer>
     </>
   );
 }
 
 AddRemainingWaterState.propTypes = {
   current: PropTypes.objectOf(PropTypes.any).isRequired,
-  send: PropTypes.func.isRequired,
 };
 
 export default AddRemainingWaterState;

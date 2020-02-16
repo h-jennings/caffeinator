@@ -18,37 +18,100 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
   const { name, ratio, grindRange } = pageRecipe;
 
   return (
-    <StateContainer headline={name} send={send} current={current} eventType="RESET">
+    <>
       {
         (() => {
           switch (true) {
             case current.matches('Start'):
-              return <StartState current={current} send={send} ratio={ratio} />;
+              return (
+                <StateContainer
+                  headline={name}
+                  send={send}
+                  current={current}
+                  forwardBackBtns={false}
+                >
+                  <StartState current={current} send={send} ratio={ratio} />
+                </StateContainer>
+              );
 
             case current.matches('Grind'):
-              return <GrindState current={current} send={send} grindRange={grindRange} />;
+              return (
+                <StateContainer
+                  headline={name}
+                  send={send}
+                  current={current}
+                  forwardBackBtns
+                >
+                  <GrindState current={current} grindRange={grindRange} />
+                </StateContainer>
+              );
 
             case current.matches('Add_Water'):
-              return <AddWaterState current={current} send={send} />;
+              return (
+                <StateContainer
+                  headline={name}
+                  send={send}
+                  current={current}
+                  forwardBackBtns
+                >
+                  <AddWaterState current={current} />
+                </StateContainer>
+              );
 
             case current.matches('Stir'):
-              return <StirState send={send} current={current} />;
+              return (
+                <StateContainer
+                  headline={name}
+                  send={send}
+                  current={current}
+                  forwardBackBtns
+                >
+                  <StirState send={send} current={current} />
+                </StateContainer>
+              );
 
             case current.matches('Add_Remaining_Water'):
-              return <AddRemainingWaterState send={send} current={current} />;
+              return (
+                <StateContainer
+                  headline={name}
+                  send={send}
+                  current={current}
+                  forwardBackBtns
+                >
+                  <AddRemainingWaterState current={current} />
+                </StateContainer>
+              );
 
             case current.matches('Brew'):
-              return <BrewState send={send} current={current} />;
+              return (
+                <StateContainer
+                  headline={name}
+                  send={send}
+                  current={current}
+                  forwardBackBtns
+                >
+                  <BrewState send={send} current={current} />
+                </StateContainer>
+              );
 
             case current.matches('Done'):
-              return <DoneState send={send} />;
+              return (
+                <StateContainer
+                  headline={name}
+                  send={send}
+                  current={current}
+                  forwardBackBtns={false}
+                >
+                  <DoneState send={send} />
+                </StateContainer>
+              );
 
             default:
               return null;
           }
         })()
       }
-    </StateContainer>
+    </>
   );
 }
 

@@ -71,7 +71,7 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
       entry: [
         assign({
           stirTimer: () => spawn(TimerMachine.withContext({
-            update_frequency_ms: 1000,
+            update_frequency_ms: 100,
             duration_ms: 15000,
           }), { sync: false, autoForward: true, name: 'stirTimer' }),
         }),
@@ -118,7 +118,7 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
       entry: [
         assign({
           brewTimer: () => spawn(TimerMachine.withContext({
-            update_frequency_ms: 1000,
+            update_frequency_ms: 100,
             duration_ms: 240000,
           }), { sync: false, autoForward: true, name: 'brewTimer' }),
         }),

@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import styles from './StateContainer.module.scss';
 import MainContainer from '../MainContainer';
 import ResetStateButton from '../ResetStateButton';
-import MeasurementValueContainer from './MeasurementValueContainer';
+import MeasurementValueContainer from '../MeasurementValueContainer';
+import FlexContainer from '../FlexContainer';
+import MachineArrowButton from '../MachineArrowButton';
 
 
 function StateContainer({
   children,
   send,
   current,
-  eventType,
   headline: name,
+  forwardBackBtns,
 }) {
   return (
     <MainContainer headline={name}>
@@ -19,13 +21,19 @@ function StateContainer({
         !current.matches('Start') ? (
           <header className={styles.header}>
             <MeasurementValueContainer current={current} />
-            <ResetStateButton send={send} eventType={eventType} />
+            <ResetStateButton send={send} eventType="RESET" />
           </header>
         )
           : null
       }
       <div className={styles.stateContainerContent}>
         {children}
+        {!forwardBackBtns ? null : (
+          <FlexContainer>
+            <MachineArrowButton send={send} eventType="PREV" />
+            <MachineArrowButton send={send} eventType="NEXT" />
+          </FlexContainer>
+        )}
       </div>
     </MainContainer>
   );
@@ -34,9 +42,9 @@ function StateContainer({
 StateContainer.propTypes = {
   children: PropTypes.node.isRequired,
   send: PropTypes.func.isRequired,
-  eventType: PropTypes.string.isRequired,
   headline: PropTypes.string.isRequired,
   current: PropTypes.objectOf(PropTypes.any).isRequired,
+  forwardBackBtns: PropTypes.bool.isRequired,
 };
 
 export default StateContainer;

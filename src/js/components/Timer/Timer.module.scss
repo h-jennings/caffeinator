@@ -87,13 +87,13 @@
 }
 
 :root {
-  --progress-percent: 0%;
+  --progress: 0;
 }
 
 .progressPath {
   // 2🥧r = C 
   // C = stroke-dasharray
   stroke-dasharray: 581.2;
-  stroke-dashoffset: var(--progress-percent);
+  stroke-dashoffset: var(--progress);
   transition: stroke-dashoffset 0.1s ease-out;
 }
