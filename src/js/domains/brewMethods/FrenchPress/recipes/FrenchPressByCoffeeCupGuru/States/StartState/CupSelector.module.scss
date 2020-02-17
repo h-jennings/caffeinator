@@ -25,4 +25,11 @@
   font-size: var(--txt-base);
   cursor: pointer;
   padding: 0;
+  transition: all 0.2s ease-in;
+
+  &.active {
+    background-color: var(--yellow);
+    color: var(--black);
+    border: none;
+  }
 }

@@ -21,7 +21,7 @@ function Start({ send, current, ratio }) {
 
   return (
     <>
-      <CupSelector send={send} ratio={ratio} />
+      <CupSelector send={send} ratio={ratio} current={current} />
       <UnitsContainer current={current} />
       <RangeSlider ref={rangeRef} handleRangeChange={handleRangeChange} />
       <FlexContainer>
