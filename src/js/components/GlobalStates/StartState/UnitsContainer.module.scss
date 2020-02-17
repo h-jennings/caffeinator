@@ -1,0 +1,67 @@
+@value phoneBreak from '../../../../styles/shared/breakpoints.scss';
+
+
+.valuesContainer {
+  display: flex;
+  justify-content: center;
+  background-color: var(--black);
+  padding: var(--c-06) var(--c-09);
+  max-width: 472px;
+  margin: 0 auto var(--l-03) auto;
+  border-radius: 14px;
+  
+  @media phoneBreak {
+    padding: var(--c-06) var(--c-02);
+  }
+}
+
+.valueContainer {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 2px solid var(--yellow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 30px;
+  position: relative;
+  
+  @media phoneBreak {
+    margin: 0 10px;
+    width: 83px;
+    height: 83px;
+  }
+}
+
+.measurementValueText {
+  color: var(--yellow);
+  text-align: center;
+  line-height: 1;
+  font-weight: 700;
+  font-size: var(--txt-md);
+  
+  @media phoneBreak {
+    font-size: var(--txt-sm);
+  }
+}
+
+.unitContainer {
+  width: 27px;
+  height: 27px;
+  background-color: var(--yellow);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.unitTypeText {
+  color: var(--black);
+  font-size: var(--txt-xsm);
+  line-height: 1;
+  text-align: center;
+  font-weight: 500;
+}

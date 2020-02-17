@@ -18,8 +18,8 @@
         "name": "Perfect French press coffee",
         "path": "perfect-french-press-coffee",
         "timeInSeconds": 330,
-        "ratio": 1.875,
-        "temp": 205,
+        "ratio": 1.79,
+        "temp": 200,
         "grindRange": "coarse"
       }
     ]

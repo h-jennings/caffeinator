@@ -52,6 +52,7 @@
     "@welldone-software/why-did-you-render": "^4.0.3",
     "@xstate/react": "^0.8.1",
     "classnames": "^2.2.6",
+    "decimal.js": "^10.2.0",
     "dotenv-webpack": "^1.7.0",
     "framer-motion": "^1.7.0",
     "prop-types": "^15.7.2",

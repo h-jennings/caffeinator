@@ -7,15 +7,15 @@ import {
 import TimerMachine from '../../../../../components/Timer/TimerMachine';
 import timerButtonStates from '../../../../../utils/timerButtonStates';
 import handleFlOzChange from '../../../../../utils/handleFlOzChange';
+import roundToNearestFifth from '../../../../../utils/roundToNearestFifth';
 
-const FrenchPressByCoffeeCupGuruMachine = Machine({
-  id: 'FrenchPressByCoffeeCupGuruMachine',
+const PerfectFrenchPressCoffeeMachine = Machine({
+  id: 'PerfectFrenchPressCoffeeMachine',
   initial: 'Start',
   context: {
     fluidOunces: 24,
+    grams: 43,
     fluidOuncesDisplayValue: null,
-    grams: 45,
-    stirTimer: undefined,
     remaining_ms: undefined,
     timerButtonState: timerButtonStates.pause,
   },
@@ -23,7 +23,7 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
     Start: {
       entry: [
         assign({
-          fluidOuncesDisplayValue: (context, _event) => context.fluidOunces / 2,
+          fluidOuncesDisplayValue: (context, _event) => roundToNearestFifth(context.fluidOunces * 0.33),
         }),
       ],
       on: {
@@ -52,6 +52,38 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
           target: 'Grind',
         },
         NEXT: {
+          target: 'Bloom',
+        },
+      },
+    },
+    Bloom: {
+      entry: [
+        assign({
+          bloomTimer: () => spawn(TimerMachine.withContext({
+            update_frequency_ms: 100,
+            duration_ms: 30000,
+          }), { sync: false, autoForward: true, name: 'bloomTimer' }),
+        }),
+        send('START', { to: 'bloomTimer' }),
+      ],
+      exit: [
+        send('RESET', { to: 'bloomTimer' }),
+        'resetRemainingMs',
+        assign({
+          timerButtonState: timerButtonStates.pause,
+        }),
+      ],
+      on: {
+        TIMER_UPDATED: {
+          actions: 'updateRemainingMs',
+        },
+        TIMER_STATE_UPDATED: {
+          actions: 'updateTimerState',
+        },
+        PREV: {
+          target: 'Add_Water',
+        },
+        NEXT: {
           target: 'Stir',
         },
       },
@@ -61,7 +93,7 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
         assign({
           stirTimer: () => spawn(TimerMachine.withContext({
             update_frequency_ms: 100,
-            duration_ms: 15000,
+            duration_ms: 10000,
           }), { sync: false, autoForward: true, name: 'stirTimer' }),
         }),
         send('START', { to: 'stirTimer' }),
@@ -81,7 +113,7 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
           actions: 'updateTimerState',
         },
         PREV: {
-          target: 'Add_Water',
+          target: 'Bloom',
         },
         NEXT: {
           target: 'Add_Remaining_Water',
@@ -91,7 +123,7 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
     Add_Remaining_Water: {
       entry: [
         assign({
-          fluidOuncesDisplayValue: (context, _event) => context.fluidOunces,
+          fluidOuncesDisplayValue: (context, _event) => context.fluidOunces - context.fluidOuncesDisplayValue,
         }),
       ],
       on: {
@@ -157,4 +189,4 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
   },
 });
 
-export default FrenchPressByCoffeeCupGuruMachine;
+export default PerfectFrenchPressCoffeeMachine;
