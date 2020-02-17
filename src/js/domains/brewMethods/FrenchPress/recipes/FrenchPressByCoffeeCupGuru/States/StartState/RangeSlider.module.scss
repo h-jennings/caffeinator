@@ -1,3 +1,5 @@
+@value phoneBreak from '../../../../../../../../styles/shared/breakpoints.scss';
+
 // Input Range Styles
 input[type="range"] {
   width: 100%;
@@ -51,10 +53,11 @@ input[type="range"] {
     border: 2px solid var(--black);
     border-radius: var(--c-06);
   }
-
+  
   &::-moz-focus-outer {
     border: 0;
   }
+ 
 }
 
 .sliderContainer {
@@ -63,6 +66,10 @@ input[type="range"] {
   flex-flow: column;
   position: relative;
   margin-bottom: var(--l-03);
+  
+  @media phoneBreak {
+    margin-bottom: var(--l-02);
+  }
 }
 
 .input {

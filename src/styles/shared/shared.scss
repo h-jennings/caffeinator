@@ -1,3 +1,5 @@
+@value phoneBreak from './breakpoints.scss';
+
 .btnBase {
   text-decoration: none;
   padding: var(--c-05) var(--c-09);
@@ -14,6 +16,11 @@
   a {
     text-decoration: none;
     color: var(--black);
+  }
+
+  @media phoneBreak {
+    font-size: var(--txt-xsm);
+    padding: var(--c-04) var(--c-07);
   }
 }
 

@@ -22,7 +22,11 @@ function FrenchPress({ recipes }) {
                 </Suspense>
               );
             case 'perfect-french-press-coffee':
-              return <PerfectFrenchPressCoffee pageRecipe={pageRecipe} />;
+              return (
+                <Suspense fallback={<Loading />}>
+                  <PerfectFrenchPressCoffee pageRecipe={pageRecipe} />
+                </Suspense>
+              );
 
             default:
               return <FourZeroFour />;

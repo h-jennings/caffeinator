@@ -3,15 +3,13 @@
 
 .container {
   border-radius: 12px;
-background: linear-gradient(145deg, #324453, #2a3a46);
-box-shadow: 13px 13px 26px #283642, 
-            -13px -13px 26px #364a5a;
   padding: var(--c-06) var(--c-03);
   display: grid;
   place-items: center;
   position: relative;
   width: 100%;
   min-height: 220px;
+  background-color: var(--light-steel-blue);
 
   @media mainContainerBreak {
     min-height: unset;

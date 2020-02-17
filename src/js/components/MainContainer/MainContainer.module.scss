@@ -50,12 +50,13 @@
   }
 
   @media phoneBreak {
-    padding: var(--l-02) 20px var(--l-02) 20px;
+    padding: var(--l-01);
     margin: 0 10px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+    min-height: 68vh !important;
   }
 }
 

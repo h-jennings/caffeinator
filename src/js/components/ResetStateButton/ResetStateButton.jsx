@@ -10,7 +10,7 @@ function ResetStateButton({ send, eventType }) {
       onClick={() => send(eventType)}
       className={styles.btn}
     >
-      <ResetIcon width="30" />
+      <ResetIcon />
     </button>
   );
 }
