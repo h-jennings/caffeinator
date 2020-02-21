@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
 import StateBodyText from '../../../../../../../components/StateBodyText';
+import roundToNearestTenth from '../../../../../../../utils/roundToNearestTenth';
 
-function AddWaterState({ current }) {
+function AddRemainingWaterState({ current }) {
   return (
     <>
-      <h1>Add Water</h1>
+      <h1>Add Remaining Water</h1>
       <StateBodyText>
-        Add
+        Add remaining
         {' '}
         <span className={classNames([sharedStyles.yellowTxt, sharedStyles.underlineDotted])}>
-          {current.context.fluidOuncesDisplayValue}
+          {roundToNearestTenth(current.context.fluidOunces * 0.6666)}
           {' '}
           floz.
         </span>
@@ -23,8 +24,8 @@ function AddWaterState({ current }) {
   );
 }
 
-AddWaterState.propTypes = {
+AddRemainingWaterState.propTypes = {
   current: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default AddWaterState;
+export default AddRemainingWaterState;

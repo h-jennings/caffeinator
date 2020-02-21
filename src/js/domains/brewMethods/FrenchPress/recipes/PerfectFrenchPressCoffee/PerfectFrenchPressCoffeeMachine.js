@@ -7,7 +7,7 @@ import {
 import TimerMachine from '../../../../../components/Timer/TimerMachine';
 import timerButtonStates from '../../../../../utils/timerButtonStates';
 import handleFlOzChange from '../../../../../utils/handleFlOzChange';
-import roundToNearestFifth from '../../../../../utils/roundToNearestFifth';
+import roundToNearestTenth from '../../../../../utils/roundToNearestTenth';
 
 const PerfectFrenchPressCoffeeMachine = Machine({
   id: 'PerfectFrenchPressCoffeeMachine',
@@ -21,11 +21,6 @@ const PerfectFrenchPressCoffeeMachine = Machine({
   },
   states: {
     Start: {
-      entry: [
-        assign({
-          fluidOuncesDisplayValue: (context, _event) => roundToNearestFifth(context.fluidOunces * 0.33),
-        }),
-      ],
       on: {
         CHANGE: {
           target: 'Start',
@@ -37,6 +32,11 @@ const PerfectFrenchPressCoffeeMachine = Machine({
       },
     },
     Grind: {
+      entry: [
+        assign({
+          fluidOuncesDisplayValue: (context, _event) => roundToNearestTenth(context.fluidOunces * 0.3333),
+        }),
+      ],
       on: {
         PREV: {
           target: 'Start',
@@ -47,6 +47,12 @@ const PerfectFrenchPressCoffeeMachine = Machine({
       },
     },
     Add_Water: {
+      entry: [
+        assign({
+          // eslint-disable-next-line arrow-body-style
+          fluidOuncesDisplayValue: (context, _event) => roundToNearestTenth(context.fluidOunces * 0.3333),
+        }),
+      ],
       on: {
         PREV: {
           target: 'Grind',
@@ -123,7 +129,7 @@ const PerfectFrenchPressCoffeeMachine = Machine({
     Add_Remaining_Water: {
       entry: [
         assign({
-          fluidOuncesDisplayValue: (context, _event) => context.fluidOunces - context.fluidOuncesDisplayValue,
+          fluidOuncesDisplayValue: (context, _event) => context.fluidOunces,
         }),
       ],
       on: {

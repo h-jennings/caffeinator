@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { useMachine } from '@xstate/react';
 import FrenchPressByCoffeeCupGuruMachine from './FrenchPressByCoffeeCupGuruMachine';
 import AddRemainingWaterState from './States/AddRemainingWaterState';
-import StartState from '../../../../../components/GlobalStates/StartState';
-import GrindState from '../../../../../components/GlobalStates/GrindState';
-import AddWaterState from './States/AddWaterState';
-import StirState from './States/StirState';
-import BrewState from './States/BrewState';
-import DoneState from './States/DoneState/DoneState';
+import StartState from '../../../../../components/SharedStates/StartState';
+import GrindState from '../../../../../components/SharedStates/GrindState';
+import StirState from '../../../../../components/SharedStates/StirState';
+import AddWaterState from '../../../../../components/SharedStates/AddWaterState';
+import BrewState from '../../../../../components/SharedStates/BrewState';
+import DoneState from '../../../../../components/SharedStates/DoneState';
 import StateContainer from '../../../../../components/StateContainer';
 
 
@@ -66,7 +66,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
                   current={current}
                   forwardBackBtns
                 >
-                  <StirState send={send} current={current} />
+                  <StirState send={send} current={current} ms={15000} />
                 </StateContainer>
               );
 
@@ -90,7 +90,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
                   current={current}
                   forwardBackBtns
                 >
-                  <BrewState send={send} current={current} />
+                  <BrewState send={send} current={current} ms={240000} />
                 </StateContainer>
               );
 

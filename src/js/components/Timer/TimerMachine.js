@@ -71,6 +71,7 @@ const TimerMachine = Machine({
         },
         DONE: {
           target: 'done',
+          actions: sendParent('NEXT'),
         },
       },
     },
@@ -90,7 +91,9 @@ const TimerMachine = Machine({
       },
     },
     done: {
-      entry: sendParent('NEXT'),
+      // TODO:
+      // ! Getting a console warning when the timer auto-switches
+      // ! to the next spawned timer
       type: 'final',
     },
   },

@@ -1,4 +1,4 @@
-import { assign, sendParent } from 'xstate';
+import { assign } from 'xstate';
 
 const setNow = assign({
   now: (_context, _event) => Date.now(),
@@ -71,9 +71,6 @@ const startIntervalService = (context, _event) => (callback, _onReceive) => {
   };
 };
 
-const updateParent = sendParent('TIMER_UPDATED', {
-  data: (context, _event) => (context.remaining_ms || 0),
-});
 
 const TimerMethodConfig = {
   actions: {
@@ -85,7 +82,6 @@ const TimerMethodConfig = {
     updateElapsedFromRunning,
     updateElapsedAndRemainingOnExit,
     updateLastElapsed,
-    updateParent,
   },
   services: {
     startIntervalService,

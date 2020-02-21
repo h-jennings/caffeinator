@@ -53,7 +53,18 @@ function Timer({ ms, current = {}, send }) {
             </defs>
             <g id="timer-icon">
               <circle stroke="#FF9F1C" fill="none" cx="100" cy="100" r="92.5" strokeWidth="5" strokeLinecap="round" />
-              <circle className={styles.progressPath} stroke="url(#linearGradient)" fill="none" cx="100" cy="100" r="92.5" strokeWidth="15" strokeLinecap="round" />
+              {/* Animate the progress path */}
+              {/* <circle className={styles.progressPath} stroke="url(#linearGradient)" fill="none" cx="100" cy="100" r="92.5" strokeWidth="15" strokeLinecap="round" /> */}
+              <circle
+                className={styles.progressPath}
+                stroke="url(#linearGradient)"
+                fill="none"
+                cx="100"
+                cy="100"
+                r="92.5"
+                strokeWidth="15"
+                strokeLinecap="round"
+              />
             </g>
           </svg>
           <button
