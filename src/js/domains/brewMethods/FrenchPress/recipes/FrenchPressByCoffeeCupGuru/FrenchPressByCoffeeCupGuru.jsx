@@ -15,7 +15,12 @@ import StateContainer from '../../../../../components/StateContainer';
 function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
   // Initialize Recipe State Machine
   const [current, send] = useMachine(FrenchPressByCoffeeCupGuruMachine);
-  const { name, ratio, grindRange } = pageRecipe;
+  const {
+    name,
+    temp,
+    ratio,
+    grindRange,
+  } = pageRecipe;
 
   return (
     <>
@@ -28,6 +33,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns={false}
                 >
                   <StartState current={current} send={send} ratio={ratio} />
@@ -40,6 +46,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns
                 >
                   <GrindState current={current} grindRange={grindRange} />
@@ -52,6 +59,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns
                 >
                   <AddWaterState current={current} />
@@ -64,6 +72,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns
                 >
                   <StirState send={send} current={current} ms={15000} />
@@ -76,6 +85,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns
                 >
                   <AddRemainingWaterState current={current} />
@@ -88,6 +98,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns
                 >
                   <BrewState send={send} current={current} ms={240000} />
@@ -100,6 +111,7 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns={false}
                 >
                   <DoneState send={send} />
@@ -119,6 +131,7 @@ FrenchPressByCoffeeCupGuru.propTypes = {
   pageRecipe: PropTypes.shape({
     name: PropTypes.string.isRequired,
     ratio: PropTypes.number.isRequired,
+    temp: PropTypes.number.isRequired,
     grindRange: PropTypes.string.isRequired,
   }).isRequired,
 };

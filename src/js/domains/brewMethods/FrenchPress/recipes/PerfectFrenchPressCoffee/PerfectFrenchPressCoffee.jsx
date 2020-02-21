@@ -16,7 +16,12 @@ import DoneState from '../../../../../components/SharedStates/DoneState';
 function PerfectFrenchPressCoffee({ pageRecipe }) {
   const [current, send] = useMachine(PerfectFrenchPressCoffeeMachine);
 
-  const { name, ratio, grindRange } = pageRecipe;
+  const {
+    name,
+    ratio,
+    temp,
+    grindRange,
+  } = pageRecipe;
   return (
     <>
       {
@@ -28,6 +33,7 @@ function PerfectFrenchPressCoffee({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns={false}
                 >
                   <StartState current={current} send={send} ratio={ratio} />
@@ -40,6 +46,7 @@ function PerfectFrenchPressCoffee({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns
                 >
                   <GrindState current={current} grindRange={grindRange} />
@@ -52,6 +59,7 @@ function PerfectFrenchPressCoffee({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns
                 >
                   <AddWaterState current={current} />
@@ -64,6 +72,7 @@ function PerfectFrenchPressCoffee({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns
                 >
                   <BloomState current={current} send={send} />
@@ -76,6 +85,7 @@ function PerfectFrenchPressCoffee({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns
                 >
                   <StirState
@@ -92,6 +102,7 @@ function PerfectFrenchPressCoffee({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns
                 >
                   <AddRemainingWaterState current={current} />
@@ -105,6 +116,7 @@ function PerfectFrenchPressCoffee({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns
                 >
                   <BrewState current={current} send={send} ms={240000} />
@@ -117,6 +129,7 @@ function PerfectFrenchPressCoffee({ pageRecipe }) {
                   headline={name}
                   send={send}
                   current={current}
+                  temp={temp}
                   forwardBackBtns={false}
                 >
                   <DoneState send={send} />
@@ -136,6 +149,7 @@ PerfectFrenchPressCoffee.propTypes = {
   pageRecipe: PropTypes.shape({
     name: PropTypes.string.isRequired,
     ratio: PropTypes.number.isRequired,
+    temp: PropTypes.number.isRequired,
     grindRange: PropTypes.string.isRequired,
   }).isRequired,
 };

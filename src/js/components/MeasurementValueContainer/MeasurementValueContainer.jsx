@@ -6,13 +6,15 @@ import styles from './MeasurementValueContainer.module.scss';
 
 function MeasurementValueContainer({
   current,
+  temp,
 }) {
   return (
     <div className={styles.container}>
       <div className={styles.measurement}>
         <TempIcon className={styles.icon} />
         <div className={styles.text}>
-          205&deg;F
+          {temp || 0}
+          &deg;F
         </div>
       </div>
       <div className={styles.measurement}>
@@ -28,6 +30,7 @@ function MeasurementValueContainer({
 
 MeasurementValueContainer.propTypes = {
   current: PropTypes.objectOf(PropTypes.any).isRequired,
+  temp: PropTypes.number.isRequired,
 };
 
 export default MeasurementValueContainer;

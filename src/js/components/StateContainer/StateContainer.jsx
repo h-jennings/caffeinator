@@ -13,6 +13,7 @@ function StateContainer({
   send,
   current,
   headline: name,
+  temp,
   forwardBackBtns,
 }) {
   return (
@@ -20,7 +21,10 @@ function StateContainer({
       {
         !current.matches('Start') ? (
           <header className={styles.header}>
-            <MeasurementValueContainer current={current} />
+            <MeasurementValueContainer
+              current={current}
+              temp={temp}
+            />
             <ResetStateButton send={send} eventType="RESET" />
           </header>
         )
@@ -43,6 +47,7 @@ StateContainer.propTypes = {
   children: PropTypes.node.isRequired,
   send: PropTypes.func.isRequired,
   headline: PropTypes.string.isRequired,
+  temp: PropTypes.number.isRequired,
   current: PropTypes.objectOf(PropTypes.any).isRequired,
   forwardBackBtns: PropTypes.bool.isRequired,
 };

@@ -36,30 +36,14 @@
         "name": "Chemex sweet and easy",
         "path": "chemex-sweet-and-easy",
         "timeInSeconds": 260,
-        "ratio": 1.875,
-        "temp": 205,
+        "ratio": 1.98,
+        "temp": 196,
         "grindRange": "medium"
       },
       {
         "name": "Chemex by coffee.cup.guru",
         "path": "chemex-by-coffee-cup-guru",
         "timeInSeconds": 280,
-        "ratio": 1.875,
-        "temp": 205,
-        "grindRange": "medium"
-      },
-      {
-        "name": "Chemex higher temperature",
-        "path": "chemex-higher-temperature",
-        "timeInSeconds": 260,
-        "ratio": 1.875,
-        "temp": 205,
-        "grindRange": "medium"
-      },
-      {
-        "name": "Chemex longer bloom",
-        "path": "chemex-longer-bloom",
-        "timeInSeconds": 330,
         "ratio": 1.875,
         "temp": 205,
         "grindRange": "medium"

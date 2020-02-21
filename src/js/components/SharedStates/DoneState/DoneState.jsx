@@ -1,20 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './DoneState.module.scss';
 import FlexContainer from '../../FlexContainer';
 import MachineButton from '../../MachineButton';
 import gif from '../../../../images/jerry.gif';
+import ImageContainer from '../../ImageContainer';
 
 function DoneState({ send }) {
   return (
     <>
       <h1>Finished.</h1>
-      <div
-        className={styles.imgContainer}
-        style={{
-          backgroundImage: `url(${gif})`,
-        }}
-      />
+      <ImageContainer src={gif} />
       <FlexContainer>
         <MachineButton send={send} eventType="RESET">
           Reset
