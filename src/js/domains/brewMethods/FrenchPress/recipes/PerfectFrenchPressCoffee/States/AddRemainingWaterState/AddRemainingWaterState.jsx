@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
 import StateBodyText from '../../../../../../../components/StateBodyText';
-import roundToNearestTenth from '../../../../../../../utils/roundToNearestTenth';
+import roundToNearestTenth from '../../../../../../../utils/global/roundToNearestTenth';
 
 function AddRemainingWaterState({ current }) {
   return (

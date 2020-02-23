@@ -1,4 +1,5 @@
-import { assign } from 'xstate';
+import { assign, sendParent } from 'xstate';
+import timerButtonStates from '../../utils/machine/timerButtonStates';
 
 const setNow = assign({
   now: (_context, _event) => Date.now(),
@@ -53,6 +54,16 @@ const updateElapsedAndRemainingOnExit = assign({
   ),
 });
 
+const sendPausedUIStateToParent = sendParent({
+  type: 'TIMER_STATE_UPDATED',
+  timerButtonState: timerButtonStates.pause,
+});
+
+const sendPlayUIStateToParent = sendParent({
+  type: 'TIMER_STATE_UPDATED',
+  timerButtonState: timerButtonStates.play,
+});
+
 const startIntervalService = (context, _event) => (callback, _onReceive) => {
   let stopTimerTimeout;
   if (context.duration_ms) {
@@ -82,6 +93,8 @@ const TimerMethodConfig = {
     updateElapsedFromRunning,
     updateElapsedAndRemainingOnExit,
     updateLastElapsed,
+    sendPausedUIStateToParent,
+    sendPlayUIStateToParent,
   },
   services: {
     startIntervalService,

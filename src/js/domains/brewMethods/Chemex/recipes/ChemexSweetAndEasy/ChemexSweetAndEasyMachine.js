@@ -5,9 +5,10 @@ import {
   send,
 } from 'xstate';
 import TimerMachine from '../../../../../components/Timer/TimerMachine';
-import timerButtonStates from '../../../../../utils/timerButtonStates';
-import handleFlOzChange from '../../../../../utils/handleFlOzChange';
-import roundToNearestTenth from '../../../../../utils/roundToNearestTenth';
+import recipeActionsConfig from '../../../../../utils/machine/recipeActionsConfig';
+import timerUIActionsConfig from '../../../../../utils/machine/timerUIActionsConfig';
+import timerButtonStates from '../../../../../utils/machine/timerButtonStates';
+import roundToNearestTenth from '../../../../../utils/global/roundToNearestTenth';
 
 const states = {
   Start: 'Start',
@@ -84,16 +85,14 @@ const ChemexSweetAndEasyMachine = Machine({
           bloomTimer: () => spawn(TimerMachine.withContext({
             update_frequency_ms: 100,
             duration_ms: 45000,
-          }), { sync: false, autoForward: true, name: 'bloomTimer' }),
+          }), { sync: false, autoForward: false, name: 'bloomTimer' }),
         }),
         send('START', { to: 'bloomTimer' }),
       ],
       exit: [
-        send('RESET', { to: 'bloomTimer' }),
+        (context, _event) => context.bloomTimer.stop(),
         'resetRemainingMs',
-        assign({
-          timerButtonState: timerButtonStates.pause,
-        }),
+        'setUIStateToPause',
       ],
       on: {
         TIMER_UPDATED: {
@@ -116,16 +115,14 @@ const ChemexSweetAndEasyMachine = Machine({
           addWaterTimer: () => spawn(TimerMachine.withContext({
             update_frequency_ms: 100,
             duration_ms: 150000,
-          }), { sync: false, autoForward: true, name: 'addWaterTimer' }),
+          }), { sync: false, autoForward: false, name: 'addWaterTimer' }),
         }),
         send('START', { to: 'addWaterTimer' }),
       ],
       exit: [
-        send('RESET', { to: 'addWaterTimer' }),
+        (context, _event) => context.addWaterTimer.stop(),
         'resetRemainingMs',
-        assign({
-          timerButtonState: timerButtonStates.pause,
-        }),
+        'setUIStateToPause',
       ],
       on: {
         TIMER_UPDATED: {
@@ -167,22 +164,8 @@ const ChemexSweetAndEasyMachine = Machine({
   },
 }, {
   actions: {
-    handleFlOzChange,
-    updateRemainingMs: assign({
-      remaining_ms: (_context, event) => event.remaining_ms,
-    }),
-    updateTimerState: assign({
-      timerButtonState: (_context, event) => event.timerButtonState,
-    }),
-    resetRemainingMs: assign({
-      remaining_ms: undefined,
-    }),
-    sendResumeEvent: send('RESUME', {
-      to: (context, event) => context[event.timerName],
-    }),
-    sendPauseEvent: send('PAUSE', {
-      to: (context, event) => context[event.timerName],
-    }),
+    ...recipeActionsConfig,
+    ...timerUIActionsConfig,
   },
 });
 

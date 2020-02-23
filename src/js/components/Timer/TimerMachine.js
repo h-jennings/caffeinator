@@ -1,6 +1,5 @@
 import { Machine, sendParent } from 'xstate';
 import TimerMethodConfig from './methods';
-import timerButtonStates from '../../utils/timerButtonStates';
 
 const TimerMachine = Machine({
   id: 'Timer',
@@ -29,10 +28,7 @@ const TimerMachine = Machine({
       entry: [
         'setNow',
         'startTimer',
-        sendParent({
-          type: 'TIMER_STATE_UPDATED',
-          timerButtonState: timerButtonStates.pause,
-        }),
+        'sendPausedUIStateToParent',
       ],
       exit: [
         'setNow',
@@ -43,10 +39,7 @@ const TimerMachine = Machine({
       on: {
         PAUSE: {
           target: 'paused',
-          actions: sendParent({
-            type: 'TIMER_STATE_UPDATED',
-            timerButtonState: timerButtonStates.play,
-          }),
+          actions: 'sendPlayUIStateToParent',
         },
         UPDATE: {
           actions: [
@@ -79,10 +72,7 @@ const TimerMachine = Machine({
       on: {
         RESUME: {
           target: 'running',
-          actions: sendParent({
-            type: 'TIMER_STATE_UPDATED',
-            timerButtonState: timerButtonStates.pause,
-          }),
+          actions: 'sendPausedUIStateToParent',
         },
         RESET: {
           target: 'idle',

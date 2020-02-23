@@ -5,8 +5,9 @@ import {
   send,
 } from 'xstate';
 import TimerMachine from '../../../../../components/Timer/TimerMachine';
-import timerButtonStates from '../../../../../utils/timerButtonStates';
-import handleFlOzChange from '../../../../../utils/handleFlOzChange';
+import recipeActionsConfig from '../../../../../utils/machine/recipeActionsConfig';
+import timerUIActionsConfig from '../../../../../utils/machine/timerUIActionsConfig';
+import timerButtonStates from '../../../../../utils/machine/timerButtonStates';
 
 const FrenchPressByCoffeeCupGuruMachine = Machine({
   id: 'FrenchPressByCoffeeCupGuruMachine',
@@ -62,16 +63,14 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
           stirTimer: () => spawn(TimerMachine.withContext({
             update_frequency_ms: 100,
             duration_ms: 15000,
-          }), { sync: false, autoForward: true, name: 'stirTimer' }),
+          }), { sync: false, autoForward: false, name: 'stirTimer' }),
         }),
         send('START', { to: 'stirTimer' }),
       ],
       exit: [
         (context, _event) => context.stirTimer.stop(),
         'resetRemainingMs',
-        assign({
-          timerButtonState: timerButtonStates.pause,
-        }),
+        'setUIStateToPause',
       ],
       on: {
         TIMER_UPDATED: {
@@ -109,16 +108,14 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
           brewTimer: () => spawn(TimerMachine.withContext({
             update_frequency_ms: 100,
             duration_ms: 240000,
-          }), { sync: false, autoForward: true, name: 'brewTimer' }),
+          }), { sync: false, autoForward: false, name: 'brewTimer' }),
         }),
         send('START', { to: 'brewTimer' }),
       ],
       exit: [
         (context, _event) => context.brewTimer.stop(),
         'resetRemainingMs',
-        assign({
-          timerButtonState: timerButtonStates.pause,
-        }),
+        'setUIStateToPause',
       ],
       on: {
         TIMER_UPDATED: {
@@ -150,22 +147,8 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
   },
 }, {
   actions: {
-    handleFlOzChange,
-    updateRemainingMs: assign({
-      remaining_ms: (_context, event) => event.remaining_ms,
-    }),
-    updateTimerState: assign({
-      timerButtonState: (_context, event) => event.timerButtonState,
-    }),
-    resetRemainingMs: assign({
-      remaining_ms: undefined,
-    }),
-    sendResumeEvent: send('RESUME', {
-      to: (context, event) => context[event.timerName],
-    }),
-    sendPauseEvent: send('PAUSE', {
-      to: (context, event) => context[event.timerName],
-    }),
+    ...recipeActionsConfig,
+    ...timerUIActionsConfig,
   },
 });
 

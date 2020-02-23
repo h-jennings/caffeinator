@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import convertSecondsToMinutes from '../../../utils/convertSecondsToMinutes';
+import convertSecondsToMinutes from '../../../utils/global/convertSecondsToMinutes';
 import styles from './RecipePageListItem.module.scss';
 import { ReactComponent as TimerSvg } from '../../../../images/timer.svg';
 import { ReactComponent as BeanSvg } from '../../../../images/bean.svg';

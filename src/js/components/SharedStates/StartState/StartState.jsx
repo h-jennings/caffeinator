@@ -4,7 +4,7 @@ import MachineButton from '../../MachineButton';
 import RangeSlider from './RangeSlider';
 import CupSelector from './CupSelector';
 import FlexContainer from '../../FlexContainer';
-import useScrollToTop from '../../../utils/useScrollToTop';
+import useScrollToTop from '../../../utils/global/useScrollToTop';
 import UnitsContainer from './UnitsContainer';
 
 function Start({ send, current, ratio }) {
