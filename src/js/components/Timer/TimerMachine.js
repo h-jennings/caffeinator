@@ -91,9 +91,6 @@ const TimerMachine = Machine({
       },
     },
     done: {
-      // TODO:
-      // ! Getting a console warning when the timer auto-switches
-      // ! to the next spawned timer
       type: 'final',
     },
   },

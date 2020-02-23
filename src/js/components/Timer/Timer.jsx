@@ -11,7 +11,12 @@ import timerButtonStates from '../../utils/timerButtonStates';
 // TODO:
 // - Clean up play-pause button logic (at least naming)
 
-function Timer({ ms, current = {}, send }) {
+function Timer({
+  ms,
+  current = {},
+  send,
+  timerName,
+}) {
   const rootEl = useRef(document.documentElement);
   useEffect(() => {
     if (current.context.remaining_ms === undefined) return;
@@ -27,10 +32,10 @@ function Timer({ ms, current = {}, send }) {
   function handlePlayPauseButton() {
     switch (true) {
       case current.context.timerButtonState === timerButtonStates.play:
-        send('RESUME');
+        send({ type: 'RESUME', timerName });
         break;
       default:
-        send('PAUSE');
+        send({ type: 'PAUSE', timerName });
     }
   }
   return (
@@ -53,8 +58,6 @@ function Timer({ ms, current = {}, send }) {
             </defs>
             <g id="timer-icon">
               <circle stroke="#FF9F1C" fill="none" cx="100" cy="100" r="92.5" strokeWidth="5" strokeLinecap="round" />
-              {/* Animate the progress path */}
-              {/* <circle className={styles.progressPath} stroke="url(#linearGradient)" fill="none" cx="100" cy="100" r="92.5" strokeWidth="15" strokeLinecap="round" /> */}
               <circle
                 className={styles.progressPath}
                 stroke="url(#linearGradient)"
@@ -94,6 +97,7 @@ Timer.propTypes = {
   ms: PropTypes.number.isRequired,
   current: PropTypes.objectOf(PropTypes.any).isRequired,
   send: PropTypes.func.isRequired,
+  timerName: PropTypes.string.isRequired,
 };
 
 export default Timer;

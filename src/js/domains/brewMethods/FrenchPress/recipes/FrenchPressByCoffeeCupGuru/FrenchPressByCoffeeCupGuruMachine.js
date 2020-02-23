@@ -67,7 +67,7 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
         send('START', { to: 'stirTimer' }),
       ],
       exit: [
-        send('RESET', { to: 'stirTimer' }),
+        (context, _event) => context.stirTimer.stop(),
         'resetRemainingMs',
         assign({
           timerButtonState: timerButtonStates.pause,
@@ -114,7 +114,7 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
         send('START', { to: 'brewTimer' }),
       ],
       exit: [
-        send('RESET', { to: 'brewTimer' }),
+        (context, _event) => context.brewTimer.stop(),
         'resetRemainingMs',
         assign({
           timerButtonState: timerButtonStates.pause,
@@ -141,6 +141,12 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
     RESET: {
       target: 'Start',
     },
+    RESUME: {
+      actions: 'sendResumeEvent',
+    },
+    PAUSE: {
+      actions: 'sendPauseEvent',
+    },
   },
 }, {
   actions: {
@@ -153,6 +159,12 @@ const FrenchPressByCoffeeCupGuruMachine = Machine({
     }),
     resetRemainingMs: assign({
       remaining_ms: undefined,
+    }),
+    sendResumeEvent: send('RESUME', {
+      to: (context, event) => context[event.timerName],
+    }),
+    sendPauseEvent: send('PAUSE', {
+      to: (context, event) => context[event.timerName],
     }),
   },
 });

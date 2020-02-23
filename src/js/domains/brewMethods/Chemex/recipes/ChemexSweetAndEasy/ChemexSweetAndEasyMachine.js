@@ -156,7 +156,13 @@ const ChemexSweetAndEasyMachine = Machine({
   },
   on: {
     RESET: {
-      target: states.Start,
+      target: 'Start',
+    },
+    RESUME: {
+      actions: 'sendResumeEvent',
+    },
+    PAUSE: {
+      actions: 'sendPauseEvent',
     },
   },
 }, {
@@ -170,6 +176,12 @@ const ChemexSweetAndEasyMachine = Machine({
     }),
     resetRemainingMs: assign({
       remaining_ms: undefined,
+    }),
+    sendResumeEvent: send('RESUME', {
+      to: (context, event) => context[event.timerName],
+    }),
+    sendPauseEvent: send('PAUSE', {
+      to: (context, event) => context[event.timerName],
     }),
   },
 });

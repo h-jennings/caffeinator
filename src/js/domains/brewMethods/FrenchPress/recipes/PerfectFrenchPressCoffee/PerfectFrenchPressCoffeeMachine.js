@@ -68,12 +68,12 @@ const PerfectFrenchPressCoffeeMachine = Machine({
           bloomTimer: () => spawn(TimerMachine.withContext({
             update_frequency_ms: 100,
             duration_ms: 30000,
-          }), { sync: false, autoForward: true, name: 'bloomTimer' }),
+          }), { sync: false, autoForward: false, name: 'bloomTimer' }),
         }),
         send('START', { to: 'bloomTimer' }),
       ],
       exit: [
-        send('RESET', { to: 'bloomTimer' }),
+        (context, _event) => context.bloomTimer.stop(),
         'resetRemainingMs',
         assign({
           timerButtonState: timerButtonStates.pause,
@@ -100,12 +100,12 @@ const PerfectFrenchPressCoffeeMachine = Machine({
           stirTimer: () => spawn(TimerMachine.withContext({
             update_frequency_ms: 100,
             duration_ms: 10000,
-          }), { sync: false, autoForward: true, name: 'stirTimer' }),
+          }), { sync: false, autoForward: false, name: 'stirTimer' }),
         }),
         send('START', { to: 'stirTimer' }),
       ],
       exit: [
-        send('RESET', { to: 'stirTimer' }),
+        (context, _event) => context.stirTimer.stop(),
         'resetRemainingMs',
         assign({
           timerButtonState: timerButtonStates.pause,
@@ -179,6 +179,12 @@ const PerfectFrenchPressCoffeeMachine = Machine({
     RESET: {
       target: 'Start',
     },
+    RESUME: {
+      actions: 'sendResumeEvent',
+    },
+    PAUSE: {
+      actions: 'sendPauseEvent',
+    },
   },
 }, {
   actions: {
@@ -191,6 +197,12 @@ const PerfectFrenchPressCoffeeMachine = Machine({
     }),
     resetRemainingMs: assign({
       remaining_ms: undefined,
+    }),
+    sendResumeEvent: send('RESUME', {
+      to: (context, event) => context[event.timerName],
+    }),
+    sendPauseEvent: send('PAUSE', {
+      to: (context, event) => context[event.timerName],
     }),
   },
 });
