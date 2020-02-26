@@ -14,7 +14,7 @@ const states = {
   Start: 'Start',
   Grind: 'Grind',
   Rinse_Filter: 'Rinse_Filter',
-  Add_Water: 'Add_Water',
+  Add_Grinds_And_Water: 'Add_Grinds_And_Water',
   Bloom: 'Bloom',
   Add_Remaining_Water: 'Add_Remaining_Water',
   Trash_Filter: 'Trash_Filter',
@@ -65,11 +65,11 @@ const ChemexSweetAndEasyMachine = Machine({
           target: states.Grind,
         },
         NEXT: {
-          target: states.Add_Water,
+          target: states.Add_Grinds_And_Water,
         },
       },
     },
-    Add_Water: {
+    Add_Grinds_And_Water: {
       on: {
         PREV: {
           target: states.Rinse_Filter,
@@ -81,6 +81,9 @@ const ChemexSweetAndEasyMachine = Machine({
     },
     Bloom: {
       entry: [
+        assign({
+          fluidOuncesDisplayValue: (context, _event) => roundToNearestTenth(context.fluidOunces * 0.14),
+        }),
         assign({
           bloomTimer: () => spawn(TimerMachine.withContext({
             update_frequency_ms: 100,
@@ -102,7 +105,7 @@ const ChemexSweetAndEasyMachine = Machine({
           actions: 'updateTimerState',
         },
         PREV: {
-          target: states.Add_Water,
+          target: states.Add_Grinds_And_Water,
         },
         NEXT: {
           target: states.Add_Remaining_Water,
@@ -111,6 +114,9 @@ const ChemexSweetAndEasyMachine = Machine({
     },
     Add_Remaining_Water: {
       entry: [
+        assign({
+          fluidOuncesDisplayValue: (context, _event) => roundToNearestTenth(context.fluidOunces),
+        }),
         assign({
           addWaterTimer: () => spawn(TimerMachine.withContext({
             update_frequency_ms: 100,

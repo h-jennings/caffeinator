@@ -5,7 +5,12 @@ import ChemexSweetAndEasyMachine from './ChemexSweetAndEasyMachine';
 import StateContainer from '../../../../../components/StateContainer';
 import StartState from '../../../../../components/SharedStates/StartState';
 import GrindState from '../../../../../components/SharedStates/GrindState';
+import DoneState from '../../../../../components/SharedStates/DoneState';
 import RinseFilterState from './States/RinseFilterState';
+import AddGrindsAndWaterState from './States/AddGrindsAndWaterState';
+import BloomState from './States/BloomState';
+import AddRemainingWaterState from './States/AddRemainingWaterState';
+import TrashFilterState from './States/TrashFilterState';
 
 function ChemexSweetAndEasy({ pageRecipe }) {
   const [current, send] = useMachine(ChemexSweetAndEasyMachine);
@@ -60,7 +65,7 @@ function ChemexSweetAndEasy({ pageRecipe }) {
                 </StateContainer>
               );
 
-            case current.matches('Add_Water'):
+            case current.matches('Add_Grinds_And_Water'):
               return (
                 <StateContainer
                   headline={name}
@@ -69,7 +74,7 @@ function ChemexSweetAndEasy({ pageRecipe }) {
                   current={current}
                   forwardBackBtns
                 >
-                  Add_Water
+                  <AddGrindsAndWaterState current={current} />
                 </StateContainer>
               );
 
@@ -82,7 +87,10 @@ function ChemexSweetAndEasy({ pageRecipe }) {
                   current={current}
                   forwardBackBtns
                 >
-                  Bloom
+                  <BloomState
+                    send={send}
+                    current={current}
+                  />
                 </StateContainer>
               );
 
@@ -95,7 +103,10 @@ function ChemexSweetAndEasy({ pageRecipe }) {
                   current={current}
                   forwardBackBtns
                 >
-                  Add_Remaining_Water
+                  <AddRemainingWaterState
+                    current={current}
+                    send={send}
+                  />
                 </StateContainer>
               );
 
@@ -108,7 +119,7 @@ function ChemexSweetAndEasy({ pageRecipe }) {
                   current={current}
                   forwardBackBtns
                 >
-                  Trash_Filter
+                  <TrashFilterState />
                 </StateContainer>
               );
 
@@ -121,7 +132,7 @@ function ChemexSweetAndEasy({ pageRecipe }) {
                   current={current}
                   forwardBackBtns={false}
                 >
-                  Done
+                  <DoneState send={send} />
                 </StateContainer>
               );
 

@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FourZeroFour from '../../404';
 import Loading from '../../../components/Loading';
-const FrenchPressByCoffeeCupGuru = lazy(() => import('./Recipes/FrenchPressByCoffeeCupGuru'));
-import PerfectFrenchPressCoffee from './Recipes/PerfectFrenchPressCoffee';
+const FrenchPressByCoffeeCupGuru = lazy(() => import('./recipes/FrenchPressByCoffeeCupGuru'));
+const PerfectFrenchPressCoffee = lazy(() => import('./recipes/PerfectFrenchPressCoffee'));
 
 function FrenchPress({ recipes }) {
   const { recipePath } = useParams();
@@ -39,10 +39,6 @@ function FrenchPress({ recipes }) {
 
 FrenchPress.propTypes = {
   recipes: PropTypes.array.isRequired,
-};
-
-FrenchPress.defaultProps = {
-  // bla: 'test',
 };
 
 export default FrenchPress;

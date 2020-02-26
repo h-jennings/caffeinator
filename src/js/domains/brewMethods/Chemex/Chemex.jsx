@@ -38,11 +38,7 @@ function Chemex({ recipes }) {
 }
 
 Chemex.propTypes = {
-  // bla: PropTypes.string,
-};
-
-Chemex.defaultProps = {
-  // bla: 'test',
+  recipes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Chemex;
