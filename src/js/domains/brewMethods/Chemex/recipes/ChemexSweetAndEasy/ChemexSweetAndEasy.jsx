@@ -14,133 +14,120 @@ import TrashFilterState from './States/TrashFilterState';
 
 function ChemexSweetAndEasy({ pageRecipe }) {
   const [current, send] = useMachine(ChemexSweetAndEasyMachine);
-  const {
-    name,
-    ratio,
-    temp,
-    grindRange,
-  } = pageRecipe;
+  const { name, ratio, temp, grindRange } = pageRecipe;
 
   return (
     <>
-      {
-        (() => {
-          switch (true) {
-            case current.matches('Start'):
-              return (
-                <StateContainer
-                  headline={name}
-                  send={send}
-                  temp={temp}
-                  current={current}
-                  forwardBackBtns={false}
-                >
-                  <StartState current={current} send={send} ratio={ratio} />
-                </StateContainer>
-              );
+      {(() => {
+        switch (true) {
+          case current.matches('Start'):
+            return (
+              <StateContainer
+                headline={name}
+                send={send}
+                temp={temp}
+                current={current}
+                forwardBackBtns={false}
+              >
+                <StartState current={current} send={send} ratio={ratio} />
+              </StateContainer>
+            );
 
-            case current.matches('Grind'):
-              return (
-                <StateContainer
-                  headline={name}
-                  send={send}
-                  temp={temp}
-                  current={current}
-                  forwardBackBtns
-                >
-                  <GrindState current={current} grindRange={grindRange} />
-                </StateContainer>
-              );
+          case current.matches('Grind'):
+            return (
+              <StateContainer
+                headline={name}
+                send={send}
+                temp={temp}
+                current={current}
+                forwardBackBtns
+              >
+                <GrindState current={current} grindRange={grindRange} />
+              </StateContainer>
+            );
 
-            case current.matches('Rinse_Filter'):
-              return (
-                <StateContainer
-                  headline={name}
-                  send={send}
-                  temp={temp}
-                  current={current}
-                  forwardBackBtns
-                >
-                  <RinseFilterState />
-                </StateContainer>
-              );
+          case current.matches('Rinse_Filter'):
+            return (
+              <StateContainer
+                headline={name}
+                send={send}
+                temp={temp}
+                current={current}
+                forwardBackBtns
+              >
+                <RinseFilterState />
+              </StateContainer>
+            );
 
-            case current.matches('Add_Grinds_And_Water'):
-              return (
-                <StateContainer
-                  headline={name}
-                  send={send}
-                  temp={temp}
-                  current={current}
-                  forwardBackBtns
-                >
-                  <AddGrindsAndWaterState current={current} />
-                </StateContainer>
-              );
+          case current.matches('Add_Grinds_And_Water'):
+            return (
+              <StateContainer
+                headline={name}
+                send={send}
+                temp={temp}
+                current={current}
+                forwardBackBtns
+              >
+                <AddGrindsAndWaterState current={current} />
+              </StateContainer>
+            );
 
-            case current.matches('Bloom'):
-              return (
-                <StateContainer
-                  headline={name}
-                  send={send}
-                  temp={temp}
-                  current={current}
-                  forwardBackBtns
-                >
-                  <BloomState
-                    send={send}
-                    current={current}
-                  />
-                </StateContainer>
-              );
+          case current.matches('Bloom'):
+            return (
+              <StateContainer
+                headline={name}
+                send={send}
+                temp={temp}
+                current={current}
+                forwardBackBtns
+              >
+                <BloomState send={send} current={current} />
+              </StateContainer>
+            );
 
-            case current.matches('Add_Remaining_Water'):
-              return (
-                <StateContainer
-                  headline={name}
-                  send={send}
-                  temp={temp}
-                  current={current}
-                  forwardBackBtns
-                >
-                  <AddRemainingWaterState
-                    current={current}
-                    send={send}
-                  />
-                </StateContainer>
-              );
+          case current.matches('Add_Remaining_Water'):
+            return (
+              <StateContainer
+                headline={name}
+                send={send}
+                temp={temp}
+                current={current}
+                forwardBackBtns
+              >
+                <AddRemainingWaterState current={current} send={send} />
+              </StateContainer>
+            );
 
-            case current.matches('Trash_Filter'):
-              return (
-                <StateContainer
-                  headline={name}
-                  send={send}
-                  temp={temp}
-                  current={current}
-                  forwardBackBtns
-                >
-                  <TrashFilterState />
-                </StateContainer>
-              );
+          case current.matches('Trash_Filter'):
+            return (
+              <StateContainer
+                headline={name}
+                send={send}
+                temp={temp}
+                current={current}
+                forwardBackBtns
+              >
+                <TrashFilterState />
+              </StateContainer>
+            );
 
-            case current.matches('Done'):
-              return (
-                <StateContainer
-                  headline={name}
-                  send={send}
-                  temp={temp}
-                  current={current}
-                  forwardBackBtns={false}
-                >
-                  <DoneState send={send} />
-                </StateContainer>
-              );
+          case current.matches('Done'):
+            return (
+              <StateContainer
+                headline={name}
+                send={send}
+                temp={temp}
+                current={current}
+                forwardBackBtns={false}
+              >
+                <DoneState send={send} />
+              </StateContainer>
+            );
 
-            default:
-              return null;
-          }
-        })()
-      }
+          default:
+            return null;
+        }
+      })()}
     </>
   );
 }

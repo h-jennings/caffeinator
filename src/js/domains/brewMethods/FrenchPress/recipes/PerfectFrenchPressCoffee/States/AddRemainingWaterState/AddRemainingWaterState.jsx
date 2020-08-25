@@ -10,14 +10,15 @@ function AddRemainingWaterState({ current }) {
     <>
       <h1>Add Remaining Water</h1>
       <StateBodyText>
-        Add remaining
-        {' '}
-        <span className={classNames([sharedStyles.yellowTxt, sharedStyles.underlineDotted])}>
-          {roundToNearestTenth(current.context.fluidOunces * 0.6666)}
-          {' '}
-          floz.
-        </span>
-        {' '}
+        Add remaining{' '}
+        <span
+          className={classNames([
+            sharedStyles.yellowTxt,
+            sharedStyles.underlineDotted,
+          ])}
+        >
+          {roundToNearestTenth(current.context.fluidOunces * 0.6666)} floz.
+        </span>{' '}
         of water to the carafe.
       </StateBodyText>
     </>

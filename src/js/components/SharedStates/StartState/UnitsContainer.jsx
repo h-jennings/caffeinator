@@ -6,19 +6,19 @@ function UnitsContainer({ current }) {
   return (
     <div className={styles.valuesContainer}>
       <div className={styles.valueContainer}>
-        <div className={styles.measurementValueText}>{current.context.fluidOunces}</div>
+        <div className={styles.measurementValueText}>
+          {current.context.fluidOunces}
+        </div>
         <div className={styles.unitContainer}>
-          <div className={styles.unitTypeText}>
-            oz
-          </div>
+          <div className={styles.unitTypeText}>oz</div>
         </div>
       </div>
       <div className={styles.valueContainer}>
-        <div className={styles.measurementValueText}>{current.context.grams}</div>
+        <div className={styles.measurementValueText}>
+          {current.context.grams}
+        </div>
         <div className={styles.unitContainer}>
-          <div className={styles.unitTypeText}>
-            g
-          </div>
+          <div className={styles.unitTypeText}>g</div>
         </div>
       </div>
     </div>

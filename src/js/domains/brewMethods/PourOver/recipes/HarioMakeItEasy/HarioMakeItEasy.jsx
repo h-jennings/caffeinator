@@ -3,9 +3,7 @@ import MainContainer from '../../../../../components/MainContainer';
 
 function HarioMakeItEasy({ pageRecipe }) {
   const { name } = pageRecipe;
-  return (
-    <MainContainer headline={name} />
-  );
+  return <MainContainer headline={name} />;
 }
 
 export default HarioMakeItEasy;

@@ -10,7 +10,7 @@ function MainContainer({ headline, children }) {
   const handleClick = () => history.goBack();
   return (
     <main className={styles.wrapper}>
-      {headline && (<h1 className={styles.headline}>{headline}</h1>)}
+      {headline && <h1 className={styles.headline}>{headline}</h1>}
       <div className={styles.contentContainer}>
         {children}
         {/* if not home page, show button */}

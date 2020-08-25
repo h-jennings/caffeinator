@@ -5,6 +5,7 @@ import styles from './Home.module.scss';
 import BrewMethodThumbnail from './BrewMethodThumbnail';
 
 function Home({ brewMethods }) {
+  console.log(brewMethods);
   return (
     <MainContainer headline="Select a brew method.">
       <ul className={styles.methodsContainer}>

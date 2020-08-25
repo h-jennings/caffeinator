@@ -13,9 +13,7 @@ function RecipePageListItem({ recipe, icon }) {
           <div className={styles.methodIconContainer}>
             <img src={icon.src} alt="" className={styles.icon} />
           </div>
-          <p className={styles.recipeText}>
-            {recipe.name}
-          </p>
+          <p className={styles.recipeText}>{recipe.name}</p>
         </div>
         <div className={styles.listSubContentWrapper}>
           <div className={styles.listSubContentContainer}>

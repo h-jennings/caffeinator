@@ -15,9 +15,7 @@ function AddRemainingWaterState({ current, send }) {
   return (
     <>
       <h1>
-        Pour Remaining
-        {' '}
-        {current.fluidOuncesDisplayValue}
+        Pour Remaining {current.fluidOuncesDisplayValue}
         Water
       </h1>
       <StateBodyText>

@@ -9,14 +9,15 @@ function AddWaterState({ current }) {
     <>
       <h1>Add Water</h1>
       <StateBodyText>
-        Add
-        {' '}
-        <span className={classNames([sharedStyles.yellowTxt, sharedStyles.underlineDotted])}>
-          {current.context.fluidOuncesDisplayValue}
-          {' '}
-          floz.
-        </span>
-        {' '}
+        Add{' '}
+        <span
+          className={classNames([
+            sharedStyles.yellowTxt,
+            sharedStyles.underlineDotted,
+          ])}
+        >
+          {current.context.fluidOuncesDisplayValue} floz.
+        </span>{' '}
         of water to the carafe.
       </StateBodyText>
     </>

@@ -11,20 +11,18 @@ function PourOver({ recipes }) {
 
   return (
     <>
-      {
-        (() => {
-          switch (pageRecipe.path) {
-            case 'peets-pour-over':
-              return <PeetsPourOver pageRecipe={pageRecipe} />;
+      {(() => {
+        switch (pageRecipe.path) {
+          case 'peets-pour-over':
+            return <PeetsPourOver pageRecipe={pageRecipe} />;
 
-            case 'hario-make-it-easy':
-              return <HarioMakeItEasy pageRecipe={pageRecipe} />;
+          case 'hario-make-it-easy':
+            return <HarioMakeItEasy pageRecipe={pageRecipe} />;
 
-            default:
-              return <FourZeroFour />;
-          }
-        })()
-      }
+          default:
+            return <FourZeroFour />;
+        }
+      })()}
     </>
   );
 }

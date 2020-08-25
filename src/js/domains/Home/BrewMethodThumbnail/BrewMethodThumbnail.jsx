@@ -8,7 +8,12 @@ function BrewMethodThumbnail({ data }) {
     <li className={styles.container}>
       <h3 className={styles.headline}>{type}</h3>
       <div className={styles.iconContainer}>
-        <img className={styles.icon} src={icon.src} alt="" style={{ width: `${icon.width}`, height: `${icon.height}` }} />
+        <img
+          className={styles.icon}
+          src={icon.src}
+          alt=""
+          style={{ width: `${icon.width}`, height: `${icon.height}` }}
+        />
       </div>
     </li>
   );
@@ -20,6 +25,5 @@ BrewMethodThumbnail.propTypes = {
     icon: PropTypes.objectOf(PropTypes.string),
   }).isRequired,
 };
-
 
 export default BrewMethodThumbnail;

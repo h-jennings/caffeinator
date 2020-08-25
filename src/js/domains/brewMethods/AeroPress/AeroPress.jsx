@@ -11,20 +11,18 @@ function AeroPress({ recipes }) {
 
   return (
     <>
-      {
-        (() => {
-          switch (pageRecipe.path) {
-            case 'aeropress-basic-recipe':
-              return <AeroPressBasicRecipe pageRecipe={pageRecipe} />;
+      {(() => {
+        switch (pageRecipe.path) {
+          case 'aeropress-basic-recipe':
+            return <AeroPressBasicRecipe pageRecipe={pageRecipe} />;
 
-            case 'aeropress-brew-recipe':
-              return <AeroPressBrewRecipe pageRecipe={pageRecipe} />;
+          case 'aeropress-brew-recipe':
+            return <AeroPressBrewRecipe pageRecipe={pageRecipe} />;
 
-            default:
-              return <FourZeroFour />;
-          }
-        })()
-      }
+          default:
+            return <FourZeroFour />;
+        }
+      })()}
     </>
   );
 }

@@ -25,10 +25,7 @@ function Start({ send, current, ratio }) {
       <UnitsContainer current={current} />
       <RangeSlider ref={rangeRef} handleRangeChange={handleRangeChange} />
       <FlexContainer>
-        <MachineButton
-          send={send}
-          eventType="NEXT"
-        >
+        <MachineButton send={send} eventType="NEXT">
           Make Coffee
         </MachineButton>
       </FlexContainer>

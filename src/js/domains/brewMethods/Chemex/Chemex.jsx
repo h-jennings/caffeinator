@@ -13,26 +13,24 @@ function Chemex({ recipes }) {
 
   return (
     <>
-      {
-        (() => {
-          switch (pageRecipe.path) {
-            case 'chemex-sweet-and-easy':
-              return <ChemexSweetAndEasy pageRecipe={pageRecipe} />;
+      {(() => {
+        switch (pageRecipe.path) {
+          case 'chemex-sweet-and-easy':
+            return <ChemexSweetAndEasy pageRecipe={pageRecipe} />;
 
-            case 'chemex-by-coffee-cup-guru':
-              return <ChemexByCoffeeCupGuru pageRecipe={pageRecipe} />;
+          case 'chemex-by-coffee-cup-guru':
+            return <ChemexByCoffeeCupGuru pageRecipe={pageRecipe} />;
 
-            case 'chemex-higher-temperature':
-              return <ChemexHigherTemperature pageRecipe={pageRecipe} />;
+          case 'chemex-higher-temperature':
+            return <ChemexHigherTemperature pageRecipe={pageRecipe} />;
 
-            case 'chemex-longer-bloom':
-              return <ChemexLongerBloom pageRecipe={pageRecipe} />;
+          case 'chemex-longer-bloom':
+            return <ChemexLongerBloom pageRecipe={pageRecipe} />;
 
-            default:
-              return <FourZeroFour />;
-          }
-        })()
-      }
+          default:
+            return <FourZeroFour />;
+        }
+      })()}
     </>
   );
 }

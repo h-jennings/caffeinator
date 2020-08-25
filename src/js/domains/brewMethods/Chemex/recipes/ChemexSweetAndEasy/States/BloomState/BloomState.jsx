@@ -6,12 +6,7 @@ function BloomState({ send, current }) {
   return (
     <>
       <h1>Let it bloom</h1>
-      <Timer
-        ms={45000}
-        send={send}
-        current={current}
-        timerName="bloomTimer"
-      />
+      <Timer ms={45000} send={send} current={current} timerName="bloomTimer" />
     </>
   );
 }

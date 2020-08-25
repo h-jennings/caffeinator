@@ -9,14 +9,15 @@ function AddRemainingWaterState({ current }) {
     <>
       <h1>Add Remaining Water</h1>
       <StateBodyText>
-        Add remaining
-        {' '}
-        <span className={classNames([sharedStyles.yellowTxt, sharedStyles.underlineDotted])}>
-          {current.context.fluidOunces / 2}
-          {' '}
-          floz.
-        </span>
-        {' '}
+        Add remaining{' '}
+        <span
+          className={classNames([
+            sharedStyles.yellowTxt,
+            sharedStyles.underlineDotted,
+          ])}
+        >
+          {current.context.fluidOunces / 2} floz.
+        </span>{' '}
         of water to the carafe.
       </StateBodyText>
     </>

@@ -9,20 +9,25 @@ function AddGrindsAndWaterState({ current }) {
     <>
       <h1>Add Grinds and Water</h1>
       <StateBodyText>
-        Add
-        {' '}
-        <span className={classNames([sharedStyles.yellowTxt, sharedStyles.underlineDotted])}>
-          {current.context.grams}
-          g
-        </span>
-        {' '}
-        of beans and
-        {' '}
-        <span className={classNames([sharedStyles.yellowTxt, sharedStyles.underlineDotted])}>
+        Add{' '}
+        <span
+          className={classNames([
+            sharedStyles.yellowTxt,
+            sharedStyles.underlineDotted,
+          ])}
+        >
+          {current.context.grams}g
+        </span>{' '}
+        of beans and{' '}
+        <span
+          className={classNames([
+            sharedStyles.yellowTxt,
+            sharedStyles.underlineDotted,
+          ])}
+        >
           {current.context.fluidOuncesDisplayValue}
           floz.
-        </span>
-        {' '}
+        </span>{' '}
         of water to the chemex.
       </StateBodyText>
     </>

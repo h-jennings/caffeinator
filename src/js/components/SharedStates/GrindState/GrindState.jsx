@@ -9,19 +9,24 @@ function GrindState({ current, grindRange }) {
     <>
       <h1>Grind</h1>
       <StateBodyText>
-        Grind
-        {' '}
-        <span className={classNames([sharedStyles.yellowTxt, sharedStyles.underlineDotted])}>
-          {current.context.grams}
-          g
-        </span>
-        {' '}
-        of beans to a
-        {' '}
-        <span className={classNames([sharedStyles.yellowTxt, sharedStyles.underlineDotted])}>
+        Grind{' '}
+        <span
+          className={classNames([
+            sharedStyles.yellowTxt,
+            sharedStyles.underlineDotted,
+          ])}
+        >
+          {current.context.grams}g
+        </span>{' '}
+        of beans to a{' '}
+        <span
+          className={classNames([
+            sharedStyles.yellowTxt,
+            sharedStyles.underlineDotted,
+          ])}
+        >
           {grindRange}
-        </span>
-        {' '}
+        </span>{' '}
         consistency.
       </StateBodyText>
     </>

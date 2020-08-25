@@ -7,7 +7,6 @@ import MeasurementValueContainer from '../MeasurementValueContainer';
 import FlexContainer from '../FlexContainer';
 import MachineArrowButton from '../MachineArrowButton';
 
-
 function StateContainer({
   children,
   send,
@@ -18,18 +17,12 @@ function StateContainer({
 }) {
   return (
     <MainContainer headline={name}>
-      {
-        !current.matches('Start') ? (
-          <header className={styles.header}>
-            <MeasurementValueContainer
-              current={current}
-              temp={temp}
-            />
-            <ResetStateButton send={send} eventType="RESET" />
-          </header>
-        )
-          : null
-      }
+      {!current.matches('Start') ? (
+        <header className={styles.header}>
+          <MeasurementValueContainer current={current} temp={temp} />
+          <ResetStateButton send={send} eventType="RESET" />
+        </header>
+      ) : null}
       <div className={styles.stateContainerContent}>
         {children}
         {!forwardBackBtns ? null : (

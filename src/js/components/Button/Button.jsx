@@ -3,10 +3,7 @@ import styles from '../../../styles/shared/shared.scss';
 
 function Button({ children }) {
   return (
-    <button
-      type="button"
-      className={styles.btnBase}
-    >
+    <button type="button" className={styles.btnBase}>
       {children}
     </button>
   );

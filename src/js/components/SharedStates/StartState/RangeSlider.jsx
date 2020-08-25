@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './RangeSlider.module.scss';
 
-
 const RangeSlider = React.forwardRef(({ handleRangeChange }, ref) => (
   <div className={styles.sliderContainer}>
     <input

@@ -9,10 +9,13 @@ function MachineArrowButton({ send, eventType }) {
     <button
       type="button"
       onClick={() => send(eventType)}
-      className={className([styles.btn, {
-        [styles.next]: eventType === 'NEXT',
-        [styles.prev]: eventType === 'PREV',
-      }])}
+      className={className([
+        styles.btn,
+        {
+          [styles.next]: eventType === 'NEXT',
+          [styles.prev]: eventType === 'PREV',
+        },
+      ])}
     >
       <BackArrow width="15" />
     </button>

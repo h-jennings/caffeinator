@@ -11,12 +11,7 @@ import timerButtonStates from '../../utils/machine/timerButtonStates';
 // TODO:
 // - Clean up play-pause button logic (at least naming)
 
-function Timer({
-  ms,
-  current = {},
-  send,
-  timerName,
-}) {
+function Timer({ ms, current = {}, send, timerName }) {
   const rootEl = useRef(document.documentElement);
   useEffect(() => {
     if (current.context.remaining_ms === undefined) return;
@@ -24,7 +19,10 @@ function Timer({
     const root = rootEl.current;
 
     // Set --progress value to the circumference minus percentage of progress every 1000ms
-    root.style.setProperty('--progress', `${581.2 - (current.context.remaining_ms / ms) * 581.2}`);
+    root.style.setProperty(
+      '--progress',
+      `${581.2 - (current.context.remaining_ms / ms) * 581.2}`,
+    );
 
     return () => root.style.removeProperty('--progress');
   }, [current.context.remaining_ms, ms]);
@@ -43,21 +41,36 @@ function Timer({
       <div className={styles.wrapper}>
         <div className={styles.progressContainer}>
           <h2 className={styles.timerText}>
-            {
-              ((current.context.remaining_ms
-                && toTimeString(current.context.remaining_ms))
-                || toTimeString(ms))
-            }
+            {(current.context.remaining_ms &&
+              toTimeString(current.context.remaining_ms)) ||
+              toTimeString(ms)}
           </h2>
-          <svg className={styles.progress} viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+          <svg
+            className={styles.progress}
+            viewBox="0 0 200 200"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xlink="http://www.w3.org/1999/xlink"
+          >
             <defs>
-              <linearGradient gradientTransform="rotate(30)" id="linearGradient">
+              <linearGradient
+                gradientTransform="rotate(30)"
+                id="linearGradient"
+              >
                 <stop stopColor="#FFB959" offset="0%" />
                 <stop stopColor="#FF9F1C" offset="100%" />
               </linearGradient>
             </defs>
             <g id="timer-icon">
-              <circle stroke="#FF9F1C" fill="none" cx="100" cy="100" r="92.5" strokeWidth="5" strokeLinecap="round" />
+              <circle
+                stroke="#FF9F1C"
+                fill="none"
+                cx="100"
+                cy="100"
+                r="92.5"
+                strokeWidth="5"
+                strokeLinecap="round"
+              />
               <circle
                 className={styles.progressPath}
                 stroke="url(#linearGradient)"
@@ -75,17 +88,23 @@ function Timer({
             onClick={handlePlayPauseButton}
             className={styles.timerBtn}
           >
-            <PlaySvg className={className({
-              [styles.play]: true,
-              [styles.visible]: current.context.timerButtonState === timerButtonStates.play,
-              [styles.hidden]: current.context.timerButtonState === timerButtonStates.pause,
-            })}
+            <PlaySvg
+              className={className({
+                [styles.play]: true,
+                [styles.visible]:
+                  current.context.timerButtonState === timerButtonStates.play,
+                [styles.hidden]:
+                  current.context.timerButtonState === timerButtonStates.pause,
+              })}
             />
-            <PauseSvg className={className({
-              [styles.pause]: true,
-              [styles.visible]: current.context.timerButtonState === timerButtonStates.pause,
-              [styles.hidden]: current.context.timerButtonState === timerButtonStates.play,
-            })}
+            <PauseSvg
+              className={className({
+                [styles.pause]: true,
+                [styles.visible]:
+                  current.context.timerButtonState === timerButtonStates.pause,
+                [styles.hidden]:
+                  current.context.timerButtonState === timerButtonStates.play,
+              })}
             />
           </button>
         </div>

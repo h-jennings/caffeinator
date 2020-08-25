@@ -6,9 +6,7 @@ function Layout({ children }) {
   return (
     <>
       <Navigation />
-      <div className={styles.appContainer}>
-        {children}
-      </div>
+      <div className={styles.appContainer}>{children}</div>
     </>
   );
 }

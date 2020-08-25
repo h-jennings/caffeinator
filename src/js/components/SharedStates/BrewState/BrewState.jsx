@@ -6,12 +6,7 @@ function BrewState({ send, current, ms }) {
   return (
     <>
       <h1>Brew</h1>
-      <Timer
-        ms={ms}
-        send={send}
-        current={current}
-        timerName="brewTimer"
-      />
+      <Timer ms={ms} send={send} current={current} timerName="brewTimer" />
     </>
   );
 }

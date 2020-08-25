@@ -10,34 +10,33 @@ import PourOver from '../brewMethods/PourOver';
 
 function Caffeinator({ brewMethods }) {
   const { method } = useParams();
-  const pageMethod = brewMethods.find((brewMethod) => brewMethod.path === method);
+  const pageMethod = brewMethods.find(
+    (brewMethod) => brewMethod.path === method,
+  );
   const { recipes } = pageMethod;
 
   return (
     <>
       <ScrollToTopOnMount />
-      {
-        (() => {
-          switch (method) {
-            case 'aeropress':
-              return <AeroPress recipes={recipes} />;
+      {(() => {
+        switch (method) {
+          case 'aeropress':
+            return <AeroPress recipes={recipes} />;
 
-            case 'french-press':
-              return <FrenchPress recipes={recipes} />;
+          case 'french-press':
+            return <FrenchPress recipes={recipes} />;
 
-            case 'chemex':
-              return <Chemex recipes={recipes} />;
+          case 'chemex':
+            return <Chemex recipes={recipes} />;
 
-            case 'pour-over':
-              return <PourOver recipes={recipes} />;
+          case 'pour-over':
+            return <PourOver recipes={recipes} />;
 
-            default:
-              return <FourZeroFour />;
-          }
-        })()
-      }
+          default:
+            return <FourZeroFour />;
+        }
+      })()}
     </>
-
   );
 }
 

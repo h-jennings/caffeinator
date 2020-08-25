@@ -7,7 +7,8 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
     "dev:mobile": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --config config/webpack.dev.js",
     "storybook": "start-storybook",
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js"
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+    "prettier": "prettier --write src/**/*.{js,jsx}"
   },
   "author": "Hunter Jennings",
   "repository": "https://github.com/h-jennings/SPAReactStarter",
