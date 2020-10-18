@@ -1,11 +1,11 @@
-@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+@import '@styles/shared/breakpoints.scss';
 
 .appContainer {
   margin: 0 auto;
   min-height: calc(100vh - var(--nav-height));
   height: 100%;
-  
-  @media phoneBreak {
+
+  @include breakpoint(phoneBreak) {
     display: flex;
   }
 }

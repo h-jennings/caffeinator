@@ -1,4 +1,4 @@
-@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+@import '@styles/shared/breakpoints.scss';
 
 .btn {
   width: 30px;
@@ -9,7 +9,7 @@
   padding: 0;
   border: none;
 
-  @media phoneBreak {
+  @include breakpoint(phoneBreak) {
     position: static;
     display: block;
     width: 20px;

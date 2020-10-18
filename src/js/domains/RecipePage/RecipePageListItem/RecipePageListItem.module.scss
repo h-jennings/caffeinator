@@ -1,11 +1,9 @@
-@value mainContainerBreak from '../../../../styles/shared/breakpoints.scss';
-@value phoneBreak from '../../../../styles/shared/breakpoints.scss';
+@import '@styles/shared/breakpoints.scss';
 
 .listItemContainer {
   width: 600px;
   position: relative;
-
-  @media mainContainerBreak {
+  @include breakpoint(mainContainerBreak) {
     width: 100%;
   }
 }
@@ -20,7 +18,7 @@
   z-index: 2;
   position: relative;
 
-  @media phoneBreak {
+  @include breakpoint(phoneBreak) {
     padding: var(--c-05);
   }
 }
@@ -28,13 +26,13 @@
 .recipeText {
   font-weight: 500;
 
-  @media phoneBreak {
+  @include breakpoint(phoneBreak) {
     font-size: var(--txt-xsm);
     line-height: 1.2;
   }
 }
 
-.listSubContentWrapper{
+.listSubContentWrapper {
   padding: 0 var(--c-05);
 }
 
@@ -49,18 +47,18 @@
   display: flex;
   justify-content: space-between;
 
-  @media mainContainerBreak {
+  @include breakpoint(mainContainerBreak) {
     width: calc(60% + 20px);
   }
-  
-  @media phoneBreak {
+
+  @include breakpoint(phoneBreak) {
     width: 100%;
     max-width: 300px;
     padding: var(--c-07) var(--c-05) var(--c-05) var(--c-05);
   }
 }
 
-.subContentText{
+.subContentText {
   text-align: left;
   color: var(--light-steel-blue);
   line-height: 1;
@@ -72,10 +70,10 @@
   display: flex;
   align-items: center;
 
-  :nth-child(1){
+  :nth-child(1) {
     margin-right: var(--c-05);
 
-    @media phoneBreak {
+    @include breakpoint(phoneBreak) {
       margin-right: var(--c-03);
     }
   }

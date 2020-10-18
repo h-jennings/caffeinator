@@ -1,4 +1,4 @@
-@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+@import '@styles/shared/breakpoints.scss';
 
 .container {
   display: flex;
@@ -7,7 +7,7 @@
   width: 100%;
   top: 0;
 
-  @media phoneBreak {
+  @include breakpoint(phoneBreak) {
     justify-content: flex-start;
     padding: var(--c-05);
   }

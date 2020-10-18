@@ -2,6 +2,7 @@
 // Please do not change this file!
 interface CssExports {
   'input': string;
+  'mainContainerBreak': string;
   'phoneBreak': string;
   'sliderContainer': string;
 }

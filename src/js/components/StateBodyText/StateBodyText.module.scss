@@ -1,5 +1,4 @@
-@value mainContainerBreak from '../../../styles/shared/breakpoints.scss';
-@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+@import '@styles/shared/breakpoints.scss';
 
 .text {
   text-align: center;
@@ -10,11 +9,11 @@
   margin: 0 auto var(--l-03) auto;
   max-width: 500px;
 
-  @media mainContainerBreak {
+  @include breakpoint(mainContainerBreak) {
     font-size: var(--txt-sm);
   }
 
-  @media phoneBreak {
+  @include breakpoint(phoneBreak) {
     // font-size: var(--txt-base);
     font-weight: 400;
   }

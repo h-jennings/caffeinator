@@ -1,8 +1,8 @@
-@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+@import '@styles/shared/breakpoints.scss';
 
 :global {
   .Logo {
-    [class*="Logo-cup"] {
+    [class*='Logo-cup'] {
       fill: var(--black);
     }
   }
@@ -16,7 +16,7 @@
   place-items: center;
   border-radius: 10%;
 
-  @media phoneBreak {
+  @include breakpoint(phoneBreak) {
     height: 50px;
     width: 50px;
 

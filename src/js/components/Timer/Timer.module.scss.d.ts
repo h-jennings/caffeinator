@@ -2,6 +2,7 @@
 // Please do not change this file!
 interface CssExports {
   'hidden': string;
+  'mainContainerBreak': string;
   'pause': string;
   'phoneBreak': string;
   'play': string;

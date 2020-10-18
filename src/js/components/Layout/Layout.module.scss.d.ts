@@ -2,6 +2,7 @@
 // Please do not change this file!
 interface CssExports {
   'appContainer': string;
+  'mainContainerBreak': string;
   'phoneBreak': string;
 }
 export const cssExports: CssExports;

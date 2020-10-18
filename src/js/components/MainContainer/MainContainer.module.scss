@@ -1,19 +1,18 @@
-@value mainContainerBreak from '../../../styles/shared/breakpoints.scss';
-@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+@import '@styles/shared/breakpoints.scss';
 
 .wrapper {
   margin: 0 auto var(--l-04) auto;
   width: 800px;
   padding-top: var(--l-02);
-  
-  @media mainContainerBreak {
+
+  @include breakpoint(mainContainerBreak) {
     padding-top: var(--l-02);
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
   }
-  @media phoneBreak {
+  @include breakpoint(phoneBreak) {
     grid-template-rows: auto 1fr;
     margin: 0 auto;
     align-self: flex-end;
@@ -26,11 +25,11 @@
   margin-bottom: 56px;
   padding-left: var(--c-05);
 
-  @media mainContainerBreak {
+  @include breakpoint(mainContainerBreak) {
     text-align: center;
   }
-  
-  @media phoneBreak {
+
+  @include breakpoint(phoneBreak) {
     font-size: 8vw;
     margin-bottom: var(--l-02);
     padding-right: var(--c-05);
@@ -38,18 +37,18 @@
 }
 
 .contentContainer {
-  background-color: #2F404E;
+  background-color: #2f404e;
   padding: var(--l-04) var(--l-04) var(--l-05) var(--l-04);
   border-radius: 45px;
   max-width: 760px;
   margin: 0 20px;
   position: relative;
 
-  @media mainContainerBreak {
+  @include breakpoint(mainContainerBreak) {
     width: 100%;
   }
 
-  @media phoneBreak {
+  @include breakpoint(phoneBreak) {
     padding: var(--l-01);
     margin: 0 10px;
     border-top-left-radius: 15px;
@@ -63,7 +62,7 @@
 .prevBtn {
   width: 60px;
   height: 60px;
-  background-color: #2F404E;
+  background-color: #2f404e;
   position: absolute;
   top: 0;
   right: calc(100% + var(--c-08));
@@ -72,16 +71,16 @@
   border-radius: 6px;
   cursor: pointer;
   padding: 0;
-  
+
   path {
     fill: var(--black);
   }
-  
+
   @media screen and (max-width: 1030px) {
     right: calc(100% + var(--c-06));
   }
 
-  @media mainContainerBreak {
+  @include breakpoint(mainContainerBreak) {
     display: none;
   }
 }

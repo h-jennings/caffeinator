@@ -1,4 +1,4 @@
-@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+@import '@styles/shared/breakpoints.scss';
 
 .wrapper {
   display: flex;
@@ -31,21 +31,21 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   padding: 0;
-  
+
   &:hover {
     transform: scale(1.1);
   }
-  
+
   .visible {
     transform: scale(1);
     opacity: 1;
   }
-  
+
   .hidden {
     transform: scale(0.2);
     opacity: 0;
   }
-  
+
   .play,
   .pause {
     transition: all 0.2s linear;
@@ -63,7 +63,7 @@
     width: 8px;
     height: auto;
   }
-  
+
   path {
     fill: var(--black);
   }
@@ -91,7 +91,7 @@
 }
 
 .progressPath {
-  // 2🥧r = C 
+  // 2🥧r = C
   // C = stroke-dasharray
   stroke-dasharray: 581.2;
   stroke-dashoffset: var(--progress);

@@ -1,2 +1,15 @@
-@value mainContainerBreak: screen and (max-width: 970px);
-@value phoneBreak: screen and (max-width: 599px);
+$media-query-map: (
+  'mainContainerBreak': 970px,
+  'phoneBreak': 599px,
+);
+
+/* Media query generator */
+@mixin breakpoint($value) {
+  @if map-has-key($media-query-map, $value) {
+    @media screen and (max-width: map-get($media-query-map, $value)) {
+      @content;
+    }
+  } @else {
+    @error "Make sure you're using a key from $media-query-map";
+  }
+}

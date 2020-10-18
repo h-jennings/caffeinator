@@ -4,6 +4,7 @@ interface CssExports {
   'active': string;
   'cupSelectorBtn': string;
   'cupSelectorContainer': string;
+  'mainContainerBreak': string;
   'phoneBreak': string;
 }
 export const cssExports: CssExports;

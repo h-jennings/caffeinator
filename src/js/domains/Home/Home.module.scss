@@ -1,12 +1,11 @@
-@value mainContainerBreak from '../../../styles/shared/breakpoints.scss';
-@value phoneBreak from '../../../styles/shared/breakpoints.scss';
+@import '@styles/shared/breakpoints.scss';
 
 .methodsContainer {
   display: grid;
   grid-template-columns: repeat(3, 190px);
   gap: 35px;
 
-  @media mainContainerBreak {
+  @include breakpoint(mainContainerBreak) {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
   }

@@ -1,4 +1,4 @@
-@value phoneBreak from './breakpoints.scss';
+@import '@styles/shared/breakpoints.scss';
 
 .btnBase {
   text-decoration: none;
@@ -18,7 +18,7 @@
     color: var(--black);
   }
 
-  @media phoneBreak {
+  @include breakpoint(phoneBreak) {
     font-size: var(--txt-xsm);
     padding: var(--c-04) var(--c-07);
   }

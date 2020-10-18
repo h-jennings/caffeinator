@@ -1,4 +1,4 @@
-@value phoneBreak from '../../../../styles/shared/breakpoints.scss';
+@import '@styles/shared/breakpoints.scss';
 
 .cupSelectorContainer {
   background-color: var(--black);
@@ -9,8 +9,8 @@
   max-width: 472px;
   margin: 0 auto var(--l-01) auto;
   border-radius: 14px;
-  
-  @media phoneBreak {
+
+  @include breakpoint(phoneBreak) {
     padding: var(--c-06) var(--c-06);
   }
 }
