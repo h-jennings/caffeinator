@@ -48,7 +48,6 @@
     "postcss-custom-properties": "^9.0.2",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
-    "preload-webpack-plugin": "^2.3.0",
     "resolve-url-loader": "^3.1.1",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.1.2",
