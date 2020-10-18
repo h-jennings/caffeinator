@@ -3,8 +3,6 @@
 interface CssExports {
   'contentContainer': string;
   'headline': string;
-  'mainContainerBreak': string;
-  'phoneBreak': string;
   'prevBtn': string;
   'wrapper': string;
 }

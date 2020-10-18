@@ -5,8 +5,6 @@ interface CssExports {
   'headline': string;
   'icon': string;
   'iconContainer': string;
-  'mainContainerBreak': string;
-  'phoneBreak': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

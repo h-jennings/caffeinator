@@ -3,9 +3,7 @@
 interface CssExports {
   'container': string;
   'icon': string;
-  'mainContainerBreak': string;
   'measurement': string;
-  'phoneBreak': string;
   'text': string;
 }
 export const cssExports: CssExports;

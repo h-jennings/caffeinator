@@ -5,9 +5,7 @@ interface CssExports {
   'listItemContainer': string;
   'listSubContentContainer': string;
   'listSubContentWrapper': string;
-  'mainContainerBreak': string;
   'methodIconContainer': string;
-  'phoneBreak': string;
   'primaryListContent': string;
   'recipeText': string;
   'subContentIconContainer': string;

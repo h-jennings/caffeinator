@@ -3,8 +3,6 @@
 interface CssExports {
   'btnBase': string;
   'flexContainer': string;
-  'mainContainerBreak': string;
-  'phoneBreak': string;
   'txtCentered': string;
   'underlineDotted': string;
   'whiteTxt': string;
