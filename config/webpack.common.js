@@ -3,16 +3,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./paths');
 
-// Use Babel to transpile JavaScript files.
-// const configureBabelLoader = () => ({
-//   test: /\.(js|jsx)$/,
-//   exclude: /node_modules/,
-//   resolve: {
-//     extensions: ['.jsx'],
-//   },
-//   use: ['babel-loader'],
-// });
-
 // Processing TS files
 const configureTSLoader = () => ({
   test: /\.(ts|tsx|js|jsx)$/,
@@ -67,11 +57,6 @@ const configureSVGLoader = () => ({
     },
     {
       loader: 'url-loader',
-      options: {
-        limit: 8192,
-        name: '[path][name].[ext]',
-        context: 'src', // prevent display of src/ in filename
-      },
     },
   ],
 });
@@ -119,7 +104,6 @@ module.exports = {
   ],
   module: {
     rules: [
-      // configureBabelLoader(),
       configureTSLoader(),
       configureImageLoader(),
       configureSVGLoader(),
