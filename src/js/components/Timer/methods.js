@@ -6,11 +6,11 @@ const setNow = assign({
 });
 
 const startTimer = assign({
-  start_time: (context, _event) => (context.now || 0),
+  start_time: (context, _event) => context.now || 0,
 });
 
 const stopTimer = assign({
-  stop_time: (context, _event) => (context.now || 0),
+  stop_time: (context, _event) => context.now || 0,
 });
 
 // Reset timer values
@@ -25,33 +25,32 @@ const resetTimer = assign({
 });
 
 const updateRemainingFromRunning = assign({
-  remaining_ms: (context, _event) => (
+  remaining_ms: (context, _event) =>
     context.duration_ms
       ? context.duration_ms - (context.elapsed_ms || 0)
-      : undefined
-  ),
+      : undefined,
 });
 
 const updateElapsedFromRunning = assign({
-  elapsed_ms: (context, _event) => (context.elapsed_last_ms || 0)
-    + (context.now || 0)
-    - (context.start_time || 0),
+  elapsed_ms: (context, _event) =>
+    (context.elapsed_last_ms || 0) +
+    (context.now || 0) -
+    (context.start_time || 0),
 });
 
 const updateLastElapsed = assign({
-  elapsed_last_ms: (context, _event) => (context.elapsed_last_ms || 0)
-    + (context.stop_time ? context.stop_time : 0)
-    - (context.start_time ? context.start_time : 0),
-
+  elapsed_last_ms: (context, _event) =>
+    (context.elapsed_last_ms || 0) +
+    (context.stop_time ? context.stop_time : 0) -
+    (context.start_time ? context.start_time : 0),
 });
 
 const updateElapsedAndRemainingOnExit = assign({
-  elapsed_ms: (context, _event) => (context.elapsed_last_ms || 0),
-  remaining_ms: (context, _event) => (
+  elapsed_ms: (context, _event) => context.elapsed_last_ms || 0,
+  remaining_ms: (context, _event) =>
     context.duration_ms
       ? context.duration_ms - (context.elapsed_ms || 0)
-      : undefined
-  ),
+      : undefined,
 });
 
 const sendPausedUIStateToParent = sendParent({
@@ -74,14 +73,13 @@ const startIntervalService = (context, _event) => (callback, _onReceive) => {
 
   const updateTimer = setInterval(() => {
     callback('UPDATE');
-  }, (context.update_frequency_ms || 1000));
+  }, context.update_frequency_ms || 1000);
 
   return () => {
     clearInterval(updateTimer);
     if (stopTimerTimeout) clearTimeout(stopTimerTimeout);
   };
 };
-
 
 const TimerMethodConfig = {
   actions: {

@@ -47,44 +47,44 @@ function Timer({ ms, current = {}, send, timerName }) {
           </h2>
           <svg
             className={styles.progress}
-            viewBox="0 0 200 200"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xlink="http://www.w3.org/1999/xlink"
+            viewBox='0 0 200 200'
+            version='1.1'
+            xmlns='http://www.w3.org/2000/svg'
+            xlink='http://www.w3.org/1999/xlink'
           >
             <defs>
               <linearGradient
-                gradientTransform="rotate(30)"
-                id="linearGradient"
+                gradientTransform='rotate(30)'
+                id='linearGradient'
               >
-                <stop stopColor="#FFB959" offset="0%" />
-                <stop stopColor="#FF9F1C" offset="100%" />
+                <stop stopColor='#FFB959' offset='0%' />
+                <stop stopColor='#FF9F1C' offset='100%' />
               </linearGradient>
             </defs>
-            <g id="timer-icon">
+            <g id='timer-icon'>
               <circle
-                stroke="#FF9F1C"
-                fill="none"
-                cx="100"
-                cy="100"
-                r="92.5"
-                strokeWidth="5"
-                strokeLinecap="round"
+                stroke='#FF9F1C'
+                fill='none'
+                cx='100'
+                cy='100'
+                r='92.5'
+                strokeWidth='5'
+                strokeLinecap='round'
               />
               <circle
                 className={styles.progressPath}
-                stroke="url(#linearGradient)"
-                fill="none"
-                cx="100"
-                cy="100"
-                r="92.5"
-                strokeWidth="15"
-                strokeLinecap="round"
+                stroke='url(#linearGradient)'
+                fill='none'
+                cx='100'
+                cy='100'
+                r='92.5'
+                strokeWidth='15'
+                strokeLinecap='round'
               />
             </g>
           </svg>
           <button
-            type="button"
+            type='button'
             onClick={handlePlayPauseButton}
             className={styles.timerBtn}
           >

@@ -7,7 +7,7 @@ import styles from './MachineArrowButton.module.scss';
 function MachineArrowButton({ send, eventType }) {
   return (
     <button
-      type="button"
+      type='button'
       onClick={() => send(eventType)}
       className={className([
         styles.btn,
@@ -17,7 +17,7 @@ function MachineArrowButton({ send, eventType }) {
         },
       ])}
     >
-      <BackArrow width="15" />
+      <BackArrow width='15' />
     </button>
   );
 }

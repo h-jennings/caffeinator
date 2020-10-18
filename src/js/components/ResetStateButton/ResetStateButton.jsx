@@ -6,7 +6,7 @@ import styles from './ResetStateButton.module.scss';
 function ResetStateButton({ send, eventType }) {
   return (
     <button
-      type="button"
+      type='button'
       onClick={() => send(eventType)}
       className={styles.btn}
     >

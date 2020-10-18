@@ -12,13 +12,13 @@ function App() {
     <Router>
       <Layout>
         <Switch>
-          <Route path="/" exact>
+          <Route path='/' exact>
             <Home brewMethods={methods} />
           </Route>
-          <Route path="/:method" exact>
+          <Route path='/:method' exact>
             <RecipePage brewMethods={methods} />
           </Route>
-          <Route path="/:method/:recipePath" exact>
+          <Route path='/:method/:recipePath' exact>
             <Caffeinator brewMethods={methods} />
           </Route>
           <Route component={FourZeroFour} />

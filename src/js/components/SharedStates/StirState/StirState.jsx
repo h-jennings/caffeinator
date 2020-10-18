@@ -6,7 +6,7 @@ function StirState({ send, current, ms }) {
   return (
     <>
       <h1>Stir</h1>
-      <Timer ms={ms} send={send} current={current} timerName="stirTimer" />
+      <Timer ms={ms} send={send} current={current} timerName='stirTimer' />
     </>
   );
 }

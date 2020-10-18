@@ -20,15 +20,15 @@ function StateContainer({
       {!current.matches('Start') ? (
         <header className={styles.header}>
           <MeasurementValueContainer current={current} temp={temp} />
-          <ResetStateButton send={send} eventType="RESET" />
+          <ResetStateButton send={send} eventType='RESET' />
         </header>
       ) : null}
       <div className={styles.stateContainerContent}>
         {children}
         {!forwardBackBtns ? null : (
           <FlexContainer>
-            <MachineArrowButton send={send} eventType="PREV" />
-            <MachineArrowButton send={send} eventType="NEXT" />
+            <MachineArrowButton send={send} eventType='PREV' />
+            <MachineArrowButton send={send} eventType='NEXT' />
           </FlexContainer>
         )}
       </div>

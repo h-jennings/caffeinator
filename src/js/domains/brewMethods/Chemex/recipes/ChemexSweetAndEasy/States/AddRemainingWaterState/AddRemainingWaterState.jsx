@@ -28,7 +28,7 @@ function AddRemainingWaterState({ current, send }) {
         current={current}
         send={send}
         ms={150000}
-        timerName="addWaterTimer"
+        timerName='addWaterTimer'
       />
     </>
   );

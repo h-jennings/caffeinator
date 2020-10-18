@@ -15,7 +15,7 @@ function CupSelector({ send, ratio, current }) {
           [styles.cupSelectorBtn]: true,
           [styles.active]: current.context.fluidOunces >= 8,
         })}
-        type="button"
+        type='button'
         onClick={() => handleCupSelection(1)}
       >
         1
@@ -25,7 +25,7 @@ function CupSelector({ send, ratio, current }) {
           [styles.cupSelectorBtn]: true,
           [styles.active]: current.context.fluidOunces >= 16,
         })}
-        type="button"
+        type='button'
         onClick={() => handleCupSelection(2)}
       >
         2
@@ -35,7 +35,7 @@ function CupSelector({ send, ratio, current }) {
           [styles.cupSelectorBtn]: true,
           [styles.active]: current.context.fluidOunces >= 24,
         })}
-        type="button"
+        type='button'
         onClick={() => handleCupSelection(3)}
       >
         3
@@ -45,7 +45,7 @@ function CupSelector({ send, ratio, current }) {
           [styles.cupSelectorBtn]: true,
           [styles.active]: current.context.fluidOunces >= 32,
         })}
-        type="button"
+        type='button'
         onClick={() => handleCupSelection(4)}
       >
         4
@@ -55,7 +55,7 @@ function CupSelector({ send, ratio, current }) {
           [styles.cupSelectorBtn]: true,
           [styles.active]: current.context.fluidOunces >= 40,
         })}
-        type="button"
+        type='button'
         onClick={() => handleCupSelection(5)}
       >
         5

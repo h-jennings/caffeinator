@@ -11,7 +11,7 @@ function DoneState({ send }) {
       <h1>Finished.</h1>
       <ImageContainer src={gif} />
       <FlexContainer>
-        <MachineButton send={send} eventType="RESET">
+        <MachineButton send={send} eventType='RESET'>
           Reset
         </MachineButton>
       </FlexContainer>
