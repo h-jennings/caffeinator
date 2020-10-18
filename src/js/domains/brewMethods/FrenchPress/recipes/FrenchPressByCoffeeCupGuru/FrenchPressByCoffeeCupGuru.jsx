@@ -9,7 +9,7 @@ import StirState from '../../../../../components/SharedStates/StirState';
 import AddWaterState from '../../../../../components/SharedStates/AddWaterState';
 import BrewState from '../../../../../components/SharedStates/BrewState';
 import DoneState from '../../../../../components/SharedStates/DoneState';
-import StateContainer from '../../../../../components/StateContainer';
+import { StateContainer } from '@components/StateContainer/StateContainer';
 
 function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
   // Initialize Recipe State Machine

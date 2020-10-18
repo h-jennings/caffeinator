@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FlexContainer from '../../FlexContainer';
-import MachineButton from '../../MachineButton';
+import { FlexContainer } from '@components/FlexContainer/FlexContainer';
+import { MachineButton } from '@components/MachineButton/MachineButton';
 import gif from '../../../../images/jerry.gif';
-import ImageContainer from '../../ImageContainer';
+import { ImageContainer } from '@components/ImageContainer/ImageContainer';
 
 function DoneState({ send }) {
   return (

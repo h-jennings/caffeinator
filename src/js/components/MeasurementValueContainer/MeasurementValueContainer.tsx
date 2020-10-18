@@ -4,7 +4,16 @@ import { ReactComponent as TempIcon } from '@/images/temp.svg';
 import { ReactComponent as DropIcon } from '@/images/drop.svg';
 import styles from './MeasurementValueContainer.module.scss';
 
-function MeasurementValueContainer({ current, temp }) {
+// TODO: declare better types for 'current'
+type MeasurementValueContainerProps = {
+  current: any;
+  temp: number;
+};
+
+export function MeasurementValueContainer({
+  current,
+  temp,
+}: MeasurementValueContainerProps) {
   return (
     <div className={styles.container}>
       <div className={styles.measurement}>
@@ -24,10 +33,3 @@ function MeasurementValueContainer({ current, temp }) {
     </div>
   );
 }
-
-MeasurementValueContainer.propTypes = {
-  current: PropTypes.objectOf(PropTypes.any).isRequired,
-  temp: PropTypes.number.isRequired,
-};
-
-export default MeasurementValueContainer;

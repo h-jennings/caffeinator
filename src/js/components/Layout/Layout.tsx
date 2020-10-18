@@ -2,11 +2,11 @@ import React, { ReactNode } from 'react';
 import { Navigation } from '@components/Navigation/Navigation';
 import styles from './Layout.module.scss';
 
-type Layout = {
+type LayoutProps = {
   children: ReactNode;
 };
 
-export function Layout({ children }: Layout) {
+export function Layout({ children }: LayoutProps) {
   return (
     <>
       <Navigation />

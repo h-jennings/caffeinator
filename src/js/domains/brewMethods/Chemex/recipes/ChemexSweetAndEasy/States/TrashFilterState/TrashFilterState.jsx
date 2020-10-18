@@ -1,6 +1,6 @@
 import React from 'react';
-import gif from '../../../../../../../../images/oscar.gif';
-import ImageContainer from '../../../../../../../components/ImageContainer';
+import gif from '@/images/oscar.gif';
+import { ImageContainer } from '@components/ImageContainer/ImageContainer';
 
 function TrashFilterState() {
   return (

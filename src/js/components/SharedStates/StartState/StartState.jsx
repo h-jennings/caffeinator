@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import MachineButton from '../../MachineButton';
+import { MachineButton } from '@components/MachineButton/MachineButton';
 import RangeSlider from './RangeSlider';
 import CupSelector from './CupSelector';
-import FlexContainer from '../../FlexContainer';
+import { FlexContainer } from '@components/FlexContainer/FlexContainer';
 import useScrollToTop from '../../../utils/global/useScrollToTop';
 import UnitsContainer from './UnitsContainer';
 

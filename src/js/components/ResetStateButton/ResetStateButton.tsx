@@ -1,9 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ReactComponent as ResetIcon } from '@/images/reset.svg';
 import styles from './ResetStateButton.module.scss';
 
-function ResetStateButton({ send, eventType }) {
+// TODO: declare better types for 'send' and 'eventType'
+type ResetStateButtonProps = {
+  send: (x: any) => any;
+  eventType: any;
+};
+
+export function ResetStateButton({ send, eventType }: ResetStateButtonProps) {
   return (
     <button
       type='button'
@@ -14,10 +19,3 @@ function ResetStateButton({ send, eventType }) {
     </button>
   );
 }
-
-ResetStateButton.propTypes = {
-  send: PropTypes.func.isRequired,
-  eventType: PropTypes.string.isRequired,
-};
-
-export default ResetStateButton;

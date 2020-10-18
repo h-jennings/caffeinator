@@ -1,20 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import styles from './StateContainer.module.scss';
 import { MainContainer } from '@components/MainContainer/MainContainer';
-import ResetStateButton from '../ResetStateButton';
-import MeasurementValueContainer from '../MeasurementValueContainer';
-import FlexContainer from '../FlexContainer';
-import MachineArrowButton from '../MachineArrowButton';
+import { ResetStateButton } from '@components/ResetStateButton/ResetStateButton';
+import { MeasurementValueContainer } from '@components/MeasurementValueContainer/MeasurementValueContainer';
+import { FlexContainer } from '@components/FlexContainer/FlexContainer';
+import { MachineArrowButton } from '@components/MachineArrowButton/MachineArrowButton';
 
-function StateContainer({
+// TODO: Refactor types 'send' and 'current' to be more specific
+type StateContainerProps = {
+  children: ReactNode;
+  send: (x: any) => any;
+  current: any;
+  headline: string;
+  temp: number;
+  forwardBackBtns: boolean;
+};
+
+export function StateContainer({
   children,
   send,
   current,
   headline: name,
   temp,
   forwardBackBtns,
-}) {
+}: StateContainerProps) {
   return (
     <MainContainer headline={name}>
       {!current.matches('Start') ? (
@@ -23,7 +32,7 @@ function StateContainer({
           <ResetStateButton send={send} eventType='RESET' />
         </header>
       ) : null}
-      <div className={styles.stateContainerContent}>
+      <div>
         {children}
         {!forwardBackBtns ? null : (
           <FlexContainer>
@@ -35,14 +44,3 @@ function StateContainer({
     </MainContainer>
   );
 }
-
-StateContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-  send: PropTypes.func.isRequired,
-  headline: PropTypes.string.isRequired,
-  temp: PropTypes.number.isRequired,
-  current: PropTypes.objectOf(PropTypes.any).isRequired,
-  forwardBackBtns: PropTypes.bool.isRequired,
-};
-
-export default StateContainer;

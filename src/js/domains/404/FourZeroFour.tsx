@@ -14,7 +14,7 @@ export function FourZeroFour() {
       </h3>
       <div className={styles.btnContainer}>
         <Button>
-          <Link to="/">Back to home</Link>
+          <Link to='/'>Back to home</Link>
         </Button>
       </div>
     </MainContainer>

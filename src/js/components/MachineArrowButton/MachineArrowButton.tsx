@@ -1,10 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import className from 'classnames';
 import { ReactComponent as BackArrow } from '@/images/backArrow.svg';
 import styles from './MachineArrowButton.module.scss';
 
-function MachineArrowButton({ send, eventType }) {
+// TODO: Refactor types to be more specific
+type MachineArrowButtonProps = {
+  send: (x: any) => any;
+  eventType?: any;
+};
+
+export function MachineArrowButton({
+  send,
+  eventType,
+}: MachineArrowButtonProps) {
   return (
     <button
       type='button'
@@ -21,10 +29,3 @@ function MachineArrowButton({ send, eventType }) {
     </button>
   );
 }
-
-MachineArrowButton.propTypes = {
-  send: PropTypes.func.isRequired,
-  eventType: PropTypes.string.isRequired,
-};
-
-export default MachineArrowButton;

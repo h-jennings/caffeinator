@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import sharedStyles from '../../../../styles/shared/shared.scss';
-import StateBodyText from '../../StateBodyText';
+import { StateBodyText } from '@components/StateBodyText/StateBodyText';
 
 function AddWaterState({ current }) {
   return (

@@ -1,8 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './ImageContainer.module.scss';
 
-function ImageContainer({ src }) {
+type ImageContainerProps = {
+  src: string;
+};
+
+export function ImageContainer({ src }: ImageContainerProps) {
   return (
     <div
       className={styles.imgContainer}
@@ -12,9 +15,3 @@ function ImageContainer({ src }) {
     />
   );
 }
-
-ImageContainer.propTypes = {
-  src: PropTypes.string.isRequired,
-};
-
-export default ImageContainer;

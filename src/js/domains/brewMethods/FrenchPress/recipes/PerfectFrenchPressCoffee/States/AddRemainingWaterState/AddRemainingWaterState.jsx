@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
-import StateBodyText from '../../../../../../../components/StateBodyText';
-import roundToNearestTenth from '../../../../../../../utils/global/roundToNearestTenth';
+import sharedStyles from '@styles/shared/shared.scss';
+import { StateBodyText } from '@components/StateBodyText/StateBodyText';
+import roundToNearestTenth from '@/js/utils/global/roundToNearestTenth';
 
 function AddRemainingWaterState({ current }) {
   return (

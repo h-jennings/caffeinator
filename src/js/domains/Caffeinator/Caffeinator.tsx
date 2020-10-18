@@ -7,7 +7,7 @@ import { FourZeroFour } from '@domains/404/FourZeroFour';
 import FrenchPress from '@domains/brewMethods/FrenchPress';
 import Chemex from '@domains/brewMethods/Chemex';
 
-import ScrollToTopOnMount from '@components/ScrollToTopOnMount';
+import { ScrollToTopOnMount } from '@components/ScrollToTopOnMount/ScrollToTopOnMount';
 
 export function Caffeinator({ brewMethods }: BrewMethods) {
   const { method } = useParams<{ method: string }>();

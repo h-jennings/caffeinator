@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useMachine } from '@xstate/react';
 import PerfectFrenchPressCoffeeMachine from './PerfectFrenchPressCoffeeMachine';
-import StateContainer from '../../../../../components/StateContainer';
+import { StateContainer } from '@components/StateContainer/StateContainer';
 import StartState from '../../../../../components/SharedStates/StartState';
 import GrindState from '../../../../../components/SharedStates/GrindState';
 import AddWaterState from '../../../../../components/SharedStates/AddWaterState';

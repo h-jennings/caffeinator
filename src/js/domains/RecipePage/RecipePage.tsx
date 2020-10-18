@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouteMatch, Link, useParams } from 'react-router-dom';
 import styles from './RecipePage.module.scss';
-import ScrollToTopOnMount from '../../components/ScrollToTopOnMount';
+import { ScrollToTopOnMount } from '@components/ScrollToTopOnMount/ScrollToTopOnMount';
 import { MainContainer } from '@components/MainContainer/MainContainer';
 import { RecipePageListItem } from './RecipePageListItem/RecipePageListItem';
 import { FourZeroFour } from '@domains/404/FourZeroFour';
