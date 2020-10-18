@@ -1,14 +1,11 @@
 {
-  "extends": [
-    "airbnb"
-  ],
+  "extends": ["airbnb"],
   "env": {
     "browser": true
   },
-  "plugins": [
-    "react-hooks"
-  ],
+  "plugins": ["react-hooks"],
   "rules": {
+    "react/prop-types": ["ignore"],
     "indent": [
       "error",
       2,
@@ -16,25 +13,23 @@
         "SwitchCase": 1
       }
     ],
-    "quotes": [
-      "warn",
-      "single"
-    ],
-    "linebreak-style": [
-      1,
-      "unix"
-    ],
+    "quotes": ["warn", "single"],
+    "linebreak-style": [1, "unix"],
     "no-unused-vars": [
       "warn",
       {
         "argsIgnorePattern": "^_"
       }
     ],
-    "import/no-extraneous-dependencies": ["error", {
-      "devDependencies": true
-    }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
     "react/jsx-filename-extension": [
-      1, {
+      1,
+      {
         "extensions": [".js", ".jsx"]
       }
     ],

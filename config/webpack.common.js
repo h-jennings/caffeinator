@@ -4,13 +4,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./paths');
 
 // Use Babel to transpile JavaScript files.
-const configureBabelLoader = () => ({
-  test: /\.(js|jsx)$/,
+// const configureBabelLoader = () => ({
+//   test: /\.(js|jsx)$/,
+//   exclude: /node_modules/,
+//   resolve: {
+//     extensions: ['.jsx'],
+//   },
+//   use: ['babel-loader'],
+// });
+
+// Processing TS files
+const configureTSLoader = () => ({
+  test: /\.(ts|tsx|js|jsx)$/,
   exclude: /node_modules/,
+  loader: 'ts-loader',
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.jsx', '.js', '.scss', '.css'],
   },
-  use: ['babel-loader'],
 });
 
 // Copy image files to build folder and compresses them
@@ -77,11 +87,18 @@ const configureFontLoader = () => ({
 });
 
 module.exports = {
-  entry: [`${paths.src}/index.js`],
+  entry: [`${paths.src}/index.tsx`],
   output: {
     path: paths.build,
     filename: '[name].bundle.js',
     publicPath: '/',
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      '@': paths.src,
+      '@components': `${paths.src}/js/components`,
+    },
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -100,7 +117,8 @@ module.exports = {
   ],
   module: {
     rules: [
-      configureBabelLoader(),
+      // configureBabelLoader(),
+      configureTSLoader(),
       configureImageLoader(),
       configureSVGLoader(),
       configureFontLoader(),

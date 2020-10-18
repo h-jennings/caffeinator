@@ -1,7 +1,9 @@
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const paths = require('./paths');
 const common = require('./webpack.common.js');
 
@@ -23,7 +25,19 @@ const configureProductionSassLoader = () => ({
       },
     },
     'postcss-loader',
-    'sass-loader',
+    {
+      loader: 'resolve-url-loader',
+      options: {
+        sourceMap: true,
+        debug: true,
+      },
+    },
+    {
+      loader: 'sass-loader',
+      options: {
+        webpackImporter: true,
+      },
+    },
   ],
 });
 
@@ -40,19 +54,20 @@ module.exports = merge(common, {
       filename: '[name].[contenthash].css',
       chunkFilename: '[id].css',
     }),
+    new webpack.SourceMapDevToolPlugin({
+      exclude: ['/node_modules/'],
+    }),
+    new PreloadWebpackPlugin(),
   ],
   module: {
     rules: [
       configureProductionSassLoader(),
     ],
   },
-  // Production minimizing of JavaSvript and CSS assets.
+  // Production minimizing of JavaScript and CSS assets.
   optimization: {
     minimizer: [
-      new TerserJSPlugin({
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-      }),
+      new TerserJSPlugin({}),
       new OptimizeCSSAssetsPlugin({}),
     ],
     // Once your build outputs multiple chunks, this option will

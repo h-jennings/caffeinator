@@ -10,6 +10,7 @@ const configureSassLoader = () => ({
   test: /\.(scss|css)$/i,
   use: [
     'style-loader',
+    'css-modules-typescript-loader',
     {
       loader: 'css-loader',
       options: {
@@ -29,9 +30,17 @@ const configureSassLoader = () => ({
       },
     },
     {
+      loader: 'resolve-url-loader',
+      options: {
+        sourceMap: true,
+        debug: true,
+      },
+    },
+    {
       loader: 'sass-loader',
       options: {
         sourceMap: true,
+        webpackImporter: true,
       },
     },
   ],
