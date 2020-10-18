@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ReactComponent as ResetIcon } from '../../../images/reset.svg';
+import { ReactComponent as ResetIcon } from '@/images/reset.svg';
 import styles from './ResetStateButton.module.scss';
 
 function ResetStateButton({ send, eventType }) {

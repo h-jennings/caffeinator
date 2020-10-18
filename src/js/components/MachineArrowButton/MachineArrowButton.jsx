@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import className from 'classnames';
-import { ReactComponent as BackArrow } from '../../../images/backArrow.svg';
+import { ReactComponent as BackArrow } from '@/images/backArrow.svg';
 import styles from './MachineArrowButton.module.scss';
 
 function MachineArrowButton({ send, eventType }) {

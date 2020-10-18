@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import className from 'classnames';
 import styles from './Timer.module.scss';
 import toTimeString from '../../utils/global/toTimeString';
-import { ReactComponent as PlaySvg } from '../../../images/play.svg';
-import { ReactComponent as PauseSvg } from '../../../images/pause.svg';
+import { ReactComponent as PlaySvg } from '@/images/play.svg';
+import { ReactComponent as PauseSvg } from '@/images/pause.svg';
 import timerButtonStates from '../../utils/machine/timerButtonStates';
 
 // TODO:

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ReactComponent as TempIcon } from '../../../images/temp.svg';
-import { ReactComponent as DropIcon } from '../../../images/drop.svg';
+import { ReactComponent as TempIcon } from '@/images/temp.svg';
+import { ReactComponent as DropIcon } from '@/images/drop.svg';
 import styles from './MeasurementValueContainer.module.scss';
 
 function MeasurementValueContainer({ current, temp }) {
