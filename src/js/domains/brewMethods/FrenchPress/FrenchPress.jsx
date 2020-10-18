@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import FourZeroFour from '../../404';
+import { FourZeroFour } from '@domains/404/FourZeroFour';
 import Loading from '../../../components/Loading';
 const FrenchPressByCoffeeCupGuru = lazy(() =>
   import('./recipes/FrenchPressByCoffeeCupGuru'),

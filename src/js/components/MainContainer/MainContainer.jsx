@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
 import styles from './MainContainer.module.scss';
-import { ReactComponent as BackArrow } from '../../../images/backArrow.svg';
+import { ReactComponent as BackArrow } from '@/images/backArrow.svg';
 
 function MainContainer({ headline, children }) {
   const history = useHistory();
@@ -14,7 +14,7 @@ function MainContainer({ headline, children }) {
       <div className={styles.contentContainer}>
         {children}
         {/* if not home page, show button */}
-        {location.pathname !== '/' && (
+        {location.pathname !== '/' ? (
           <button
             type="button"
             onClick={handleClick}
@@ -22,7 +22,7 @@ function MainContainer({ headline, children }) {
           >
             <BackArrow width="15" />
           </button>
-        )}
+        ) : null}
       </div>
     </main>
   );

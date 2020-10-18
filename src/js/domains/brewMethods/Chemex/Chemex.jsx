@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import FourZeroFour from '../../404';
+import { FourZeroFour } from '@domains/404/FourZeroFour';
 import ChemexSweetAndEasy from './recipes/ChemexSweetAndEasy';
 import ChemexByCoffeeCupGuru from './recipes/ChemexByCoffeeCupGuru';
 import ChemexHigherTemperature from './recipes/ChemexHigherTemperature';

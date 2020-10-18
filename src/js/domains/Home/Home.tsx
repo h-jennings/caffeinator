@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import MainContainer from '../../components/MainContainer';
 import styles from './Home.module.scss';
 import BrewMethodThumbnail from './BrewMethodThumbnail';
+import { BrewMethods } from '@/data/methods.model';
 
-function Home({ brewMethods }) {
-  console.log(brewMethods);
+export function Home({ brewMethods }: BrewMethods) {
   return (
     <MainContainer headline="Select a brew method.">
       <ul className={styles.methodsContainer}>
@@ -18,5 +18,3 @@ function Home({ brewMethods }) {
     </MainContainer>
   );
 }
-
-export default Home;

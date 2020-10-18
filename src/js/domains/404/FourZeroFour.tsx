@@ -4,7 +4,7 @@ import styles from './FourZeroFour.module.scss';
 import MainContainer from '../../components/MainContainer';
 import Button from '../../components/Button';
 
-function FourZeroFour() {
+export function FourZeroFour() {
   const location = useLocation();
   return (
     <MainContainer headline="Oops...we got nothin' :(">
@@ -20,5 +20,3 @@ function FourZeroFour() {
     </MainContainer>
   );
 }
-
-export default FourZeroFour;

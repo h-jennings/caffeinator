@@ -5,7 +5,7 @@ import styles from './RecipePage.module.scss';
 import ScrollToTopOnMount from '../../components/ScrollToTopOnMount';
 import MainContainer from '../../components/MainContainer';
 import RecipePageListItem from './RecipePageListItem';
-import FourZeroFour from '../404';
+import { FourZeroFour } from '@domains/404/FourZeroFour';
 
 function RecipePage({ brewMethods }) {
   const { method } = useParams();

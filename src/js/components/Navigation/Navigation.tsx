@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../Logo';
+import { Logo } from '@components/Logo/Logo';
 import styles from './Navigation.module.scss';
 
-function Navigation() {
+export function Navigation() {
   return (
     <nav className={styles.container}>
       <Link to="/">
@@ -12,5 +12,3 @@ function Navigation() {
     </nav>
   );
 }
-
-export default Navigation;
