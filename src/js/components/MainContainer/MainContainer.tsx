@@ -1,10 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import styles from './MainContainer.module.scss';
 import { ReactComponent as BackArrow } from '@/images/backArrow.svg';
 
-function MainContainer({ headline, children }) {
+type MainContainer = {
+  headline?: string;
+  children: ReactNode;
+};
+
+export function MainContainer({ headline, children }: MainContainer) {
   const history = useHistory();
   const location = useLocation();
   const handleClick = () => history.goBack();
@@ -27,14 +31,3 @@ function MainContainer({ headline, children }) {
     </main>
   );
 }
-
-MainContainer.propTypes = {
-  headline: PropTypes.string,
-  children: PropTypes.node.isRequired,
-};
-
-MainContainer.defaultProps = {
-  headline: '',
-};
-
-export default MainContainer;

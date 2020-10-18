@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import styles from './FourZeroFour.module.scss';
-import MainContainer from '../../components/MainContainer';
-import Button from '../../components/Button';
+import { MainContainer } from '@components/MainContainer/MainContainer';
+import { Button } from '@components/Button/Button';
 
 export function FourZeroFour() {
   const location = useLocation();

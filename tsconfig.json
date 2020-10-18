@@ -19,7 +19,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/js/components/*"],
-      "@domains/*": ["./src/js/domains/*"]
+      "@domains/*": ["./src/js/domains/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   },
   "include": ["src/**/*.tsx", "src/**/*.ts"],

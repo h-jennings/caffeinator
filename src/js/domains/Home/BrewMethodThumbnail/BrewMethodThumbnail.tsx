@@ -1,8 +1,12 @@
+import { BrewMethod } from '@/data/methods.model';
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './BrewMethodThumbnail.module.scss';
 
-function BrewMethodThumbnail({ data }) {
+type BrewMethodThumbnail = {
+  data: BrewMethod;
+};
+
+export function BrewMethodThumbnail({ data }: BrewMethodThumbnail) {
   const { type, icon } = data;
   return (
     <li className={styles.container}>
@@ -18,12 +22,3 @@ function BrewMethodThumbnail({ data }) {
     </li>
   );
 }
-
-BrewMethodThumbnail.propTypes = {
-  data: PropTypes.shape({
-    type: PropTypes.string,
-    icon: PropTypes.objectOf(PropTypes.string),
-  }).isRequired,
-};
-
-export default BrewMethodThumbnail;

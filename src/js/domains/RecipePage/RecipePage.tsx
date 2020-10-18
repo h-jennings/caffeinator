@@ -1,14 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useRouteMatch, Link, useParams } from 'react-router-dom';
 import styles from './RecipePage.module.scss';
 import ScrollToTopOnMount from '../../components/ScrollToTopOnMount';
-import MainContainer from '../../components/MainContainer';
-import RecipePageListItem from './RecipePageListItem';
+import { MainContainer } from '@components/MainContainer/MainContainer';
+import { RecipePageListItem } from './RecipePageListItem/RecipePageListItem';
 import { FourZeroFour } from '@domains/404/FourZeroFour';
+import { BrewMethods } from '@/data/methods.model';
 
-function RecipePage({ brewMethods }) {
-  const { method } = useParams();
+export function RecipePage({ brewMethods }: BrewMethods) {
+  const { method } = useParams<{ method: string }>();
   const match = useRouteMatch();
   const pageMethod = brewMethods.find(
     (brewMethod) => brewMethod.path === method,
@@ -39,9 +39,3 @@ function RecipePage({ brewMethods }) {
     </>
   );
 }
-
-RecipePage.propTypes = {
-  brewMethods: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-export default RecipePage;

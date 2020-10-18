@@ -1,11 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import convertSecondsToMinutes from '../../../utils/global/convertSecondsToMinutes';
+import convertSecondsToMinutes from '@/js/utils/global/convertSecondsToMinutes';
 import styles from './RecipePageListItem.module.scss';
-import { ReactComponent as TimerSvg } from '../../../../images/timer.svg';
-import { ReactComponent as BeanSvg } from '../../../../images/bean.svg';
+import { ReactComponent as TimerSvg } from '@/images/timer.svg';
+import { ReactComponent as BeanSvg } from '@/images/bean.svg';
+import { BrewIcon, Recipe } from '@/data/methods.model';
 
-function RecipePageListItem({ recipe, icon }) {
+type RecipePageListItem = {
+  recipe: Recipe;
+  icon: BrewIcon;
+};
+
+export function RecipePageListItem({ recipe, icon }: RecipePageListItem) {
   return (
     <>
       <li className={styles.listItemContainer}>
@@ -35,10 +40,3 @@ function RecipePageListItem({ recipe, icon }) {
     </>
   );
 }
-
-RecipePageListItem.propTypes = {
-  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
-  icon: PropTypes.objectOf(PropTypes.string).isRequired,
-};
-
-export default RecipePageListItem;

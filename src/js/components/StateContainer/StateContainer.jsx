@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './StateContainer.module.scss';
-import MainContainer from '../MainContainer';
+import { MainContainer } from '@components/MainContainer/MainContainer';
 import ResetStateButton from '../ResetStateButton';
 import MeasurementValueContainer from '../MeasurementValueContainer';
 import FlexContainer from '../FlexContainer';

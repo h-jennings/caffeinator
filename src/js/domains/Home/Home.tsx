@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MainContainer from '../../components/MainContainer';
+import { MainContainer } from '@components/MainContainer/MainContainer';
 import styles from './Home.module.scss';
-import BrewMethodThumbnail from './BrewMethodThumbnail';
+import { BrewMethodThumbnail } from './BrewMethodThumbnail/BrewMethodThumbnail';
 import { BrewMethods } from '@/data/methods.model';
 
 export function Home({ brewMethods }: BrewMethods) {

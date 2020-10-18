@@ -98,6 +98,8 @@ module.exports = {
     alias: {
       '@': paths.src,
       '@components': `${paths.src}/js/components`,
+      '@domains': `${paths.src}/js/domains`,
+      '@styles': `${paths.src}/styles`,
     },
   },
   plugins: [
