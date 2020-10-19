@@ -5,7 +5,8 @@ import { Loading } from '@components/Loading/Loading';
 import { Recipe } from '@/data/methods.model';
 
 const FrenchPressByCoffeeCupGuru = lazy(
-  () => import('./recipes/FrenchPressByCoffeeCupGuru'),
+  () =>
+    import('./recipes/FrenchPressByCoffeeCupGuru/FrenchPressByCoffeeCupGuru'),
 );
 const PerfectFrenchPressCoffee = lazy(
   () => import('./recipes/PerfectFrenchPressCoffee'),

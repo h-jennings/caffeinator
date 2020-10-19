@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useMachine } from '@xstate/react';
-import FrenchPressByCoffeeCupGuruMachine from './FrenchPressByCoffeeCupGuruMachine';
+import { FrenchPressByCoffeeCupGuruMachine } from './FrenchPressByCoffeeCupGuruMachine';
 import AddRemainingWaterState from './States/AddRemainingWaterState';
 import StartState from '../../../../../components/SharedStates/StartState';
 import GrindState from '../../../../../components/SharedStates/GrindState';
@@ -10,8 +9,15 @@ import AddWaterState from '../../../../../components/SharedStates/AddWaterState'
 import BrewState from '../../../../../components/SharedStates/BrewState';
 import DoneState from '../../../../../components/SharedStates/DoneState';
 import { StateContainer } from '@components/StateContainer/StateContainer';
+import { Recipe } from '@/data/methods.model';
 
-function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
+type FrenchPressByCoffeeCupGuruProps = {
+  pageRecipe: Recipe;
+};
+
+export default function FrenchPressByCoffeeCupGuru({
+  pageRecipe,
+}: FrenchPressByCoffeeCupGuruProps) {
   // Initialize Recipe State Machine
   const [current, send] = useMachine(FrenchPressByCoffeeCupGuruMachine);
   const { name, temp, ratio, grindRange } = pageRecipe;
@@ -118,14 +124,3 @@ function FrenchPressByCoffeeCupGuru({ pageRecipe }) {
     </>
   );
 }
-
-FrenchPressByCoffeeCupGuru.propTypes = {
-  pageRecipe: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    ratio: PropTypes.number.isRequired,
-    temp: PropTypes.number.isRequired,
-    grindRange: PropTypes.string.isRequired,
-  }).isRequired,
-};
-
-export default FrenchPressByCoffeeCupGuru;

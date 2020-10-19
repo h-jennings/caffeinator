@@ -2,9 +2,17 @@ import { Machine, assign, spawn, send } from 'xstate';
 import TimerMachine from '../../../../../components/Timer/TimerMachine';
 import recipeActionsConfig from '../../../../../utils/machine/recipeActionsConfig';
 import timerUIActionsConfig from '../../../../../utils/machine/timerUIActionsConfig';
-import timerButtonStates from '../../../../../utils/machine/timerButtonStates';
+import {
+  FrenchPressByCoffeeCupGuruMachineContext,
+  FrenchPressByCoffeeCupGuruMachineEvent,
+  FrenchPressByCoffeeCupGuruMachineState,
+} from './FrenchPressByCoffeeCupGuru.models';
 
-const FrenchPressByCoffeeCupGuruMachine = Machine(
+export const FrenchPressByCoffeeCupGuruMachine = Machine<
+  FrenchPressByCoffeeCupGuruMachineContext,
+  FrenchPressByCoffeeCupGuruMachineState,
+  FrenchPressByCoffeeCupGuruMachineEvent
+>(
   {
     id: 'FrenchPressByCoffeeCupGuruMachine',
     initial: 'Start',
@@ -13,8 +21,9 @@ const FrenchPressByCoffeeCupGuruMachine = Machine(
       fluidOuncesDisplayValue: null,
       grams: 45,
       stirTimer: undefined,
+      brewTimer: undefined,
       remaining_ms: undefined,
-      timerButtonState: timerButtonStates.pause,
+      timerButtonState: 'pause',
     },
     states: {
       Start: {
@@ -56,7 +65,7 @@ const FrenchPressByCoffeeCupGuruMachine = Machine(
       },
       Stir: {
         entry: [
-          assign({
+          assign<any, any>({
             stirTimer: () =>
               spawn(
                 TimerMachine.withContext({
@@ -105,7 +114,7 @@ const FrenchPressByCoffeeCupGuruMachine = Machine(
       },
       Brew: {
         entry: [
-          assign({
+          assign<any, any>({
             brewTimer: () =>
               spawn(
                 TimerMachine.withContext({
@@ -156,7 +165,5 @@ const FrenchPressByCoffeeCupGuruMachine = Machine(
       ...recipeActionsConfig,
       ...timerUIActionsConfig,
     },
-  },
+  } as any,
 );
-
-export default FrenchPressByCoffeeCupGuruMachine;
