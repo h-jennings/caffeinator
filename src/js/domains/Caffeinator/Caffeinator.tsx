@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import { BrewMethods } from '@/data/methods.model';
 
 import { FourZeroFour } from '@domains/404/FourZeroFour';
-import FrenchPress from '@domains/brewMethods/FrenchPress';
-import Chemex from '@domains/brewMethods/Chemex';
+import { FrenchPress } from '@domains/brewMethods/FrenchPress/FrenchPress';
+import { Chemex } from '@domains/brewMethods/Chemex/Chemex';
 
 import ScrollToTopOnMount from '@components/ScrollToTopOnMount';
 
