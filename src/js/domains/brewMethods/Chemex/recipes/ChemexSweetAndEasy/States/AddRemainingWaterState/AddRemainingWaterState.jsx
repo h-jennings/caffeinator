@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
 import { StateBodyText } from '@components/StateBodyText/StateBodyText';
 import roundToNearestTenth from '../../../../../../../utils/global/roundToNearestTenth';
-import Timer from '../../../../../../../components/Timer';
+import { Timer } from '@components/Timer/Timer';
 
 function AddRemainingWaterState({ current, send }) {
   const [floz, setFloz] = useState(null);

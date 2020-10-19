@@ -1,19 +1,31 @@
 import { Machine, sendParent } from 'xstate';
-import TimerMethodConfig from './methods';
+import {
+  setNow,
+  startTimer,
+  stopTimer,
+  resetTimer,
+  updateRemainingFromRunning,
+  updateElapsedFromRunning,
+  updateElapsedAndRemainingOnExit,
+  updateLastElapsed,
+  sendPausedUIStateToParent,
+  sendPlayUIStateToParent,
+  startIntervalService,
+} from './methods';
+import {
+  TimerContext,
+  TimerContextDefault,
+  TimerEvent,
+  TimerMachineState,
+} from './TimerMachine.models';
 
-const TimerMachine = Machine(
+// TODO: Figure out how to make this machine type safe...
+const TimerMachine = Machine<TimerContext, TimerMachineState, TimerEvent>(
   {
     id: 'Timer',
     initial: 'idle',
     context: {
-      update_frequency_ms: undefined,
-      start_time: undefined,
-      stop_time: undefined,
-      elapsed_ms: undefined,
-      elapsed_last_ms: undefined,
-      remaining_ms: undefined,
-      duration_ms: undefined,
-      now: undefined,
+      ...TimerContextDefault,
     },
     states: {
       idle: {
@@ -43,7 +55,7 @@ const TimerMachine = Machine(
               'setNow',
               'updateElapsedFromRunning',
               'updateRemainingFromRunning',
-              sendParent((context) => ({
+              sendParent((context: TimerContext) => ({
                 type: 'TIMER_UPDATED',
                 remaining_ms: context.remaining_ms || 0,
               })),
@@ -53,7 +65,7 @@ const TimerMachine = Machine(
             target: 'idle',
             actions: [
               'resetTimer',
-              sendParent((context) => ({
+              sendParent((context: TimerContext) => ({
                 type: 'TIMER_UPDATED',
                 remaining_ms: context.remaining_ms || 0,
               })),
@@ -83,7 +95,21 @@ const TimerMachine = Machine(
     },
   },
   {
-    ...TimerMethodConfig,
+    actions: {
+      setNow,
+      startTimer,
+      stopTimer,
+      resetTimer,
+      updateRemainingFromRunning,
+      updateElapsedFromRunning,
+      updateElapsedAndRemainingOnExit,
+      updateLastElapsed,
+      sendPausedUIStateToParent,
+      sendPlayUIStateToParent,
+    },
+    services: {
+      startIntervalService,
+    },
   },
 );
 

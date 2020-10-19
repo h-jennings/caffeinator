@@ -1,6 +1,5 @@
 /* eslint-disable consistent-return */
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import className from 'classnames';
 import styles from './Timer.module.scss';
 import toTimeString from '../../utils/global/toTimeString';
@@ -11,7 +10,16 @@ import timerButtonStates from '../../utils/machine/timerButtonStates';
 // TODO:
 // - Clean up play-pause button logic (at least naming)
 
-function Timer({ ms, current = {}, send, timerName }) {
+type TimerProps = {
+  ms: number;
+  current: {
+    [x: string]: any;
+  };
+  send: (x: any) => any;
+  timerName: string;
+};
+
+export function Timer({ ms, current = {}, send, timerName }: TimerProps) {
   const rootEl = useRef(document.documentElement);
   useEffect(() => {
     if (current.context.remaining_ms === undefined) return;
@@ -24,7 +32,7 @@ function Timer({ ms, current = {}, send, timerName }) {
       `${581.2 - (current.context.remaining_ms / ms) * 581.2}`,
     );
 
-    return () => root.style.removeProperty('--progress');
+    return () => root.style.setProperty('--progress', null);
   }, [current.context.remaining_ms, ms]);
 
   function handlePlayPauseButton() {
@@ -50,7 +58,6 @@ function Timer({ ms, current = {}, send, timerName }) {
             viewBox='0 0 200 200'
             version='1.1'
             xmlns='http://www.w3.org/2000/svg'
-            xlink='http://www.w3.org/1999/xlink'
           >
             <defs>
               <linearGradient
@@ -112,11 +119,3 @@ function Timer({ ms, current = {}, send, timerName }) {
     </>
   );
 }
-Timer.propTypes = {
-  ms: PropTypes.number.isRequired,
-  current: PropTypes.objectOf(PropTypes.any).isRequired,
-  send: PropTypes.func.isRequired,
-  timerName: PropTypes.string.isRequired,
-};
-
-export default Timer;
