@@ -1,10 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import sharedStyles from '../../../../styles/shared/shared.scss';
 import { StateBodyText } from '@components/StateBodyText/StateBodyText';
 
-function AddWaterState({ current }) {
+type AddWaterStateProps = {
+  current: any;
+};
+
+export function AddWaterState({ current }: AddWaterStateProps) {
   return (
     <>
       <h1>Add Water</h1>
@@ -23,9 +26,3 @@ function AddWaterState({ current }) {
     </>
   );
 }
-
-AddWaterState.propTypes = {
-  current: PropTypes.objectOf(PropTypes.any).isRequired,
-};
-
-export default AddWaterState;

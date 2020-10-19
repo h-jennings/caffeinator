@@ -1,11 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FlexContainer } from '@components/FlexContainer/FlexContainer';
 import { MachineButton } from '@components/MachineButton/MachineButton';
 import gif from '../../../../images/jerry.gif';
 import { ImageContainer } from '@components/ImageContainer/ImageContainer';
 
-function DoneState({ send }) {
+// TODO: declare better types for 'send'
+type DoneStateProps = {
+  send: (x: any) => any;
+};
+
+export function DoneState({ send }: DoneStateProps) {
   return (
     <>
       <h1>Finished.</h1>
@@ -18,9 +22,3 @@ function DoneState({ send }) {
     </>
   );
 }
-
-DoneState.propTypes = {
-  send: PropTypes.func.isRequired,
-};
-
-export default DoneState;

@@ -1,10 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import sharedStyles from '../../../../styles/shared/shared.scss';
 import { StateBodyText } from '@components/StateBodyText/StateBodyText';
+import { GrindRanges } from '@/data/methods.model';
 
-function GrindState({ current, grindRange }) {
+// TODO: declare better types for 'current'
+type GrindStateProps = {
+  current: any;
+  grindRange: GrindRanges;
+};
+
+export function GrindState({ current, grindRange }: GrindStateProps) {
   return (
     <>
       <h1>Grind</h1>
@@ -32,10 +38,3 @@ function GrindState({ current, grindRange }) {
     </>
   );
 }
-
-GrindState.propTypes = {
-  current: PropTypes.objectOf(PropTypes.any).isRequired,
-  grindRange: PropTypes.string.isRequired,
-};
-
-export default GrindState;

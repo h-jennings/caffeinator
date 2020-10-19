@@ -4,13 +4,13 @@ import { useMachine } from '@xstate/react';
 import PerfectFrenchPressCoffeeMachine from './PerfectFrenchPressCoffeeMachine';
 import { StateContainer } from '@components/StateContainer/StateContainer';
 import StartState from '../../../../../components/SharedStates/StartState';
-import GrindState from '../../../../../components/SharedStates/GrindState';
-import AddWaterState from '../../../../../components/SharedStates/AddWaterState';
+import { GrindState } from '@components/SharedStates/GrindState/GrindState';
+import { AddWaterState } from '@components/SharedStates/AddWaterState/AddWaterState';
 import StirState from '../../../../../components/SharedStates/StirState';
 import BloomState from './States/BloomState';
 import AddRemainingWaterState from './States/AddRemainingWaterState';
-import BrewState from '../../../../../components/SharedStates/BrewState/BrewState';
-import DoneState from '../../../../../components/SharedStates/DoneState';
+import { BrewState } from '@components/SharedStates/BrewState/BrewState';
+import { DoneState } from '@components/SharedStates/DoneState/DoneState';
 
 function PerfectFrenchPressCoffee({ pageRecipe }) {
   const [current, send] = useMachine(PerfectFrenchPressCoffeeMachine);
