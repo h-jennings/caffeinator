@@ -1,10 +1,11 @@
 import React, { ReactNode } from 'react';
 import styles from '@styles/shared/shared.scss';
+import { SendFn } from '@/js/models/xstate.models';
 
 // TODO: declare better types for 'send' and 'eventType'
 type MachineButtonProps = {
   children: ReactNode;
-  send: (x: any) => any;
+  send: SendFn;
   eventType: any;
 };
 

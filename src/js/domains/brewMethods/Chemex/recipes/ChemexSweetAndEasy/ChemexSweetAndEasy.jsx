@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useMachine } from '@xstate/react';
 import ChemexSweetAndEasyMachine from './ChemexSweetAndEasyMachine';
 import { StateContainer } from '@components/StateContainer/StateContainer';
-import StartState from '../../../../../components/SharedStates/StartState';
+import { StartState } from '@components/SharedStates/StartState/StartState';
 import { GrindState } from '@components/SharedStates/GrindState/GrindState';
 import { DoneState } from '@components/SharedStates/DoneState/DoneState';
 import RinseFilterState from './States/RinseFilterState';

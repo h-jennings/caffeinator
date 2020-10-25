@@ -1,10 +1,11 @@
+import { Current, SendFn } from '@/js/models/xstate.models';
 import React from 'react';
 import Timer from '../../Timer';
 
 // TODO: declare better types for 'current' and 'send'
 type StirStateProps = {
-  send: (x: any) => any;
-  current: any;
+  send: SendFn;
+  current: Current;
   ms: number;
 };
 

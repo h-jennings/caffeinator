@@ -5,12 +5,13 @@ import { ResetStateButton } from '@components/ResetStateButton/ResetStateButton'
 import { MeasurementValueContainer } from '@components/MeasurementValueContainer/MeasurementValueContainer';
 import { FlexContainer } from '@components/FlexContainer/FlexContainer';
 import { MachineArrowButton } from '@components/MachineArrowButton/MachineArrowButton';
+import { Current, SendFn } from '@/js/models/xstate.models';
 
 // TODO: Refactor types 'send' and 'current' to be more specific
 type StateContainerProps = {
   children: ReactNode;
-  send: (x: any) => any;
-  current: any;
+  send: SendFn;
+  current: Current;
   headline: string;
   temp: number;
   forwardBackBtns: boolean;

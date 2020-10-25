@@ -2,10 +2,11 @@ import React from 'react';
 import className from 'classnames';
 import { ReactComponent as BackArrow } from '@/images/backArrow.svg';
 import styles from './MachineArrowButton.module.scss';
+import { SendFn } from '@/js/models/xstate.models';
 
 // TODO: Refactor types to be more specific
 type MachineArrowButtonProps = {
-  send: (x: any) => any;
+  send: SendFn;
   eventType?: any;
 };
 

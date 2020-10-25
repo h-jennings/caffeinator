@@ -1,22 +1,32 @@
 import React, { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { MachineButton } from '@components/MachineButton/MachineButton';
-import RangeSlider from './RangeSlider';
+import { RangeSlider } from './RangeSlider';
 import CupSelector from './CupSelector';
 import { FlexContainer } from '@components/FlexContainer/FlexContainer';
-import useScrollToTop from '../../../utils/global/useScrollToTop';
+import useScrollToTop from '@/js/utils/global/useScrollToTop';
 import UnitsContainer from './UnitsContainer';
+import { Current, SendFn } from '@/js/models/xstate.models';
 
-function Start({ send, current, ratio }) {
+type StartStateProps = {
+  send: SendFn;
+  current: Current;
+  ratio: number;
+};
+
+export function StartState({ send, current, ratio }: StartStateProps) {
   useScrollToTop();
-  const rangeRef = useRef(null);
-  const handleRangeChange = () => {
-    send({ type: 'CHANGE', fluidOunces: rangeRef.current.value, ratio });
+  const rangeRef = useRef<HTMLInputElement>(null);
+  const handleRangeChange = (): void => {
+    if (rangeRef.current) {
+      send({ type: 'CHANGE', fluidOunces: rangeRef.current.value, ratio });
+    }
   };
 
   // Synchronizes the value of the range input to the state machine context
   useEffect(() => {
-    rangeRef.current.value = current.context.fluidOunces;
+    if (rangeRef.current) {
+      rangeRef.current.value = current.context.fluidOunces;
+    }
   }, [current.context.fluidOunces]);
 
   return (
@@ -32,11 +42,3 @@ function Start({ send, current, ratio }) {
     </>
   );
 }
-
-Start.propTypes = {
-  current: PropTypes.objectOf(PropTypes.any).isRequired,
-  send: PropTypes.func.isRequired,
-  ratio: PropTypes.number.isRequired,
-};
-
-export default Start;

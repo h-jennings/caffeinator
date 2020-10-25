@@ -1,10 +1,11 @@
 import React from 'react';
 import { ReactComponent as ResetIcon } from '@/images/reset.svg';
 import styles from './ResetStateButton.module.scss';
+import { SendFn } from '@/js/models/xstate.models';
 
-// TODO: declare better types for 'send' and 'eventType'
+// TODO: declare better types for 'eventType'
 type ResetStateButtonProps = {
-  send: (x: any) => any;
+  send: SendFn;
   eventType: any;
 };
 
