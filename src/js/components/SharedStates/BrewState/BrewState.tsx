@@ -1,6 +1,6 @@
 import { Current, SendFn } from '@/js/models/xstate.models';
 import React from 'react';
-import Timer from '../../Timer';
+import { Timer } from '@components/Timer/Timer';
 
 // TODO: declare better types for 'send' and 'current'
 type BrewStateProps = {

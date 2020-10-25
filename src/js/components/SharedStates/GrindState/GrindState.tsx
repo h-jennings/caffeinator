@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import sharedStyles from '../../../../styles/shared/shared.scss';
+import sharedStyles from '@styles/shared/shared.scss';
 import { StateBodyText } from '@components/StateBodyText/StateBodyText';
 import { GrindRanges } from '@/data/methods.model';
 

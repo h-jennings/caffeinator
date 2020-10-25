@@ -1,6 +1,6 @@
 import { assign, EventObject, sendParent } from 'xstate';
 import { TimerContext, TimerEvent } from './TimerMachine.models';
-import timerButtonStates from '../../utils/machine/timerButtonStates';
+import { timerButtonStates } from '@/js/utils/machine/timerButtonStates';
 
 export const setNow = assign<TimerContext>({
   now: (_context, _event) => Date.now(),

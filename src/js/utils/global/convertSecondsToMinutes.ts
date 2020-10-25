@@ -1,8 +1,8 @@
-function pad(num) {
+function pad(num: number) {
   return `0${num}`.slice(-2);
 }
 
-export default function convertSecondsToMinutes(seconds) {
+export function convertSecondsToMinutes(seconds: number) {
   let minutes = Math.floor(seconds / 60);
   const secs = seconds % 60;
   minutes %= 60;

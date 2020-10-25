@@ -2,10 +2,10 @@
 import React, { useEffect, useRef } from 'react';
 import className from 'classnames';
 import styles from './Timer.module.scss';
-import toTimeString from '../../utils/global/toTimeString';
+import { toTimeString } from '@/js/utils/global/toTimeString';
 import { ReactComponent as PlaySvg } from '@/images/play.svg';
 import { ReactComponent as PauseSvg } from '@/images/pause.svg';
-import timerButtonStates from '../../utils/machine/timerButtonStates';
+import { timerButtonStates } from '@/js/utils/machine/timerButtonStates';
 
 // TODO:
 // - Clean up play-pause button logic (at least naming)

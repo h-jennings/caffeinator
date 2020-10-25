@@ -1,7 +1,7 @@
 import { send, assign } from 'xstate';
 import handleFlOzChange from './handleFlOzChange';
 
-const recipeActionsConfig = {
+export const recipeActionsConfig = {
   handleFlOzChange,
   updateRemainingMs: assign({
     remaining_ms: (_context, event: any) => event.remaining_ms,
@@ -19,5 +19,3 @@ const recipeActionsConfig = {
     to: (context: any, event: any) => context[event.timerName],
   }),
 };
-
-export default recipeActionsConfig;

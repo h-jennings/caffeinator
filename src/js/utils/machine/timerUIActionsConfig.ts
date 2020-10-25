@@ -1,7 +1,7 @@
 import { assign } from 'xstate';
-import timerButtonStates from './timerButtonStates';
+import { timerButtonStates } from '@/js/utils/machine/timerButtonStates';
 
-const timerUIActionsConfig = {
+export const timerUIActionsConfig = {
   setUIStateToPause: assign({
     timerButtonState: timerButtonStates.pause,
   }),
@@ -9,5 +9,3 @@ const timerUIActionsConfig = {
     timerButtonState: timerButtonStates.play,
   }),
 };
-
-export default timerUIActionsConfig;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMachine } from '@xstate/react';
 import { FrenchPressByCoffeeCupGuruMachine } from './FrenchPressByCoffeeCupGuruMachine';
-import AddRemainingWaterState from './States/AddRemainingWaterState';
+import { AddRemainingWaterState } from './States/AddRemainingWaterState/AddRemainingWaterState';
 import { StartState } from '@components/SharedStates/StartState/StartState';
 import { GrindState } from '@components/SharedStates/GrindState/GrindState';
 import { StirState } from '@components/SharedStates/StirState/StirState';

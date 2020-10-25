@@ -3,7 +3,7 @@ import { MachineButton } from '@components/MachineButton/MachineButton';
 import { RangeSlider } from './RangeSlider';
 import CupSelector from './CupSelector';
 import { FlexContainer } from '@components/FlexContainer/FlexContainer';
-import useScrollToTop from '@/js/utils/global/useScrollToTop';
+import { useScrollToTop } from '@/js/utils/global/useScrollToTop';
 import UnitsContainer from './UnitsContainer';
 import { Current, SendFn } from '@/js/models/xstate.models';
 

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
+import sharedStyles from '@styles/shared/shared.scss';
 import { StateBodyText } from '@components/StateBodyText/StateBodyText';
-import roundToNearestTenth from '../../../../../../../utils/global/roundToNearestTenth';
+import { roundToNearestTenth } from '@/js/utils/global/roundToNearestTenth';
 import { Timer } from '@components/Timer/Timer';
 
 function AddRemainingWaterState({ current, send }) {

@@ -1,7 +1,7 @@
 import { Machine, assign, spawn, send } from 'xstate';
-import TimerMachine from '../../../../../components/Timer/TimerMachine';
-import recipeActionsConfig from '../../../../../utils/machine/recipeActionsConfig';
-import timerUIActionsConfig from '../../../../../utils/machine/timerUIActionsConfig';
+import { TimerMachine } from '@components/Timer/TimerMachine';
+import { recipeActionsConfig } from '@/js/utils/machine/recipeActionsConfig';
+import { timerUIActionsConfig } from '@/js/utils/machine/timerUIActionsConfig';
 import {
   FrenchPressByCoffeeCupGuruMachineContext,
   FrenchPressByCoffeeCupGuruMachineEvent,
@@ -164,6 +164,6 @@ export const FrenchPressByCoffeeCupGuruMachine = Machine<
     actions: {
       ...recipeActionsConfig,
       ...timerUIActionsConfig,
-    },
-  } as any,
+    } as any,
+  },
 );

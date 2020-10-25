@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export default function useScrollToTop() {
+export function useScrollToTop() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

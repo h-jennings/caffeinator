@@ -1,9 +1,9 @@
 import { Machine, assign, spawn, send } from 'xstate';
-import TimerMachine from '../../../../../components/Timer/TimerMachine';
-import recipeActionsConfig from '../../../../../utils/machine/recipeActionsConfig';
-import timerUIActionsConfig from '../../../../../utils/machine/timerUIActionsConfig';
-import timerButtonStates from '../../../../../utils/machine/timerButtonStates';
-import roundToNearestTenth from '../../../../../utils/global/roundToNearestTenth';
+import { TimerMachine } from '@components/Timer/TimerMachine';
+import { recipeActionsConfig } from '@/js/utils/machine/recipeActionsConfig';
+import { timerUIActionsConfig } from '@/js/utils/machine/timerUIActionsConfig';
+import { timerButtonStates } from '@/js/utils/machine/timerButtonStates';
+import { roundToNearestTenth } from '@/js/utils/global/roundToNearestTenth';
 
 const PerfectFrenchPressCoffeeMachine = Machine(
   {
@@ -47,7 +47,6 @@ const PerfectFrenchPressCoffeeMachine = Machine(
       Add_Water: {
         entry: [
           assign({
-            // eslint-disable-next-line arrow-body-style
             fluidOuncesDisplayValue: (context, _event) =>
               roundToNearestTenth(context.fluidOunces * 0.3333),
           }),

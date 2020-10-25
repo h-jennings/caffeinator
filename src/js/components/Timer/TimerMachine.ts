@@ -20,7 +20,11 @@ import {
 } from './TimerMachine.models';
 
 // TODO: Figure out how to make this machine type safe...
-const TimerMachine = Machine<TimerContext, TimerMachineState, TimerEvent>(
+export const TimerMachine = Machine<
+  TimerContext,
+  TimerMachineState,
+  TimerEvent
+>(
   {
     id: 'Timer',
     initial: 'idle',
@@ -112,5 +116,3 @@ const TimerMachine = Machine<TimerContext, TimerMachineState, TimerEvent>(
     },
   },
 );
-
-export default TimerMachine;

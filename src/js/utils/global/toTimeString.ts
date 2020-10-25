@@ -1,11 +1,11 @@
-function toTimeString(ms) {
-  const totalSeconds = parseInt(Math.floor(ms / 1000), 10);
-  const totalMinutes = parseInt(totalSeconds / 60, 10);
-  const totalHours = parseInt(totalMinutes / 24, 10);
+export function toTimeString(ms: number) {
+  const totalSeconds = Math.floor(ms / 1000);
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  const totalHours = totalMinutes / 24;
 
-  const seconds = parseInt(totalSeconds % 60, 10);
-  const minutes = parseInt(totalMinutes % 60, 10);
-  const hours = parseInt(totalHours % 240, 10);
+  const seconds = Math.floor(totalSeconds % 60);
+  const minutes = Math.floor(totalMinutes % 60);
+  const hours = Math.floor(totalHours % 240);
 
   const outSeconds = seconds < 10 ? `0${seconds}` : seconds.toString();
   const outMinutes = minutes < 10 ? `0${minutes}` : minutes.toString();
@@ -22,5 +22,3 @@ function toTimeString(ms) {
       return `00:${outSeconds}`;
   }
 }
-
-export default toTimeString;

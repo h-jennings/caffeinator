@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import sharedStyles from '../../../../../../../../styles/shared/shared.scss';
+import sharedStyles from '@styles/shared/shared.scss';
 import { StateBodyText } from '@components/StateBodyText/StateBodyText';
+import { Current } from '@/js/models/xstate.models';
 
-function AddRemainingWaterState({ current }) {
+export function AddRemainingWaterState({ current }: { current: Current }) {
   return (
     <>
       <h1>Add Remaining Water</h1>
@@ -23,9 +23,3 @@ function AddRemainingWaterState({ current }) {
     </>
   );
 }
-
-AddRemainingWaterState.propTypes = {
-  current: PropTypes.objectOf(PropTypes.any).isRequired,
-};
-
-export default AddRemainingWaterState;

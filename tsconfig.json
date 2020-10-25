@@ -23,6 +23,10 @@
       "@styles/*": ["./src/styles/*"]
     }
   },
-  "include": ["src/**/*.tsx", "src/**/*.ts"],
+  "include": [
+    "src/**/*.tsx",
+    "src/**/*.ts",
+    "src/js/utils/global/toTimeString.js"
+  ],
   "exclude": ["dist", "config", "node_modules", "build", "scripts", "webpack"]
 }
