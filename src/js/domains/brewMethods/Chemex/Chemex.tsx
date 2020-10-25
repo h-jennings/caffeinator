@@ -1,15 +1,21 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { FourZeroFour } from '@domains/404/FourZeroFour';
 import ChemexSweetAndEasy from './recipes/ChemexSweetAndEasy';
 import ChemexByCoffeeCupGuru from './recipes/ChemexByCoffeeCupGuru';
-import ChemexHigherTemperature from './recipes/ChemexHigherTemperature';
-import ChemexLongerBloom from './recipes/ChemexLongerBloom';
+import { Recipe } from '@/data/methods.model';
 
-function Chemex({ recipes }) {
-  const { recipePath } = useParams();
+type ChemexProps = {
+  recipes: Recipe[];
+};
+
+export function Chemex({ recipes }: ChemexProps) {
+  const { recipePath } = useParams<{ recipePath: string }>();
   const pageRecipe = recipes.find((recipe) => recipe.path === recipePath);
+
+  if (!pageRecipe?.path) {
+    return <FourZeroFour />;
+  }
 
   return (
     <>
@@ -21,12 +27,6 @@ function Chemex({ recipes }) {
           case 'chemex-by-coffee-cup-guru':
             return <ChemexByCoffeeCupGuru pageRecipe={pageRecipe} />;
 
-          case 'chemex-higher-temperature':
-            return <ChemexHigherTemperature pageRecipe={pageRecipe} />;
-
-          case 'chemex-longer-bloom':
-            return <ChemexLongerBloom pageRecipe={pageRecipe} />;
-
           default:
             return <FourZeroFour />;
         }
@@ -34,9 +34,3 @@ function Chemex({ recipes }) {
     </>
   );
 }
-
-Chemex.propTypes = {
-  recipes: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-export default Chemex;

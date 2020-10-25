@@ -1,19 +1,28 @@
 import React, { Suspense, lazy } from 'react';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { FourZeroFour } from '@domains/404/FourZeroFour';
 import { Loading } from '@components/Loading/Loading';
+import { Recipe } from '@/data/methods.model';
 
-const FrenchPressByCoffeeCupGuru = lazy(() =>
-  import('./recipes/FrenchPressByCoffeeCupGuru'),
+const FrenchPressByCoffeeCupGuru = lazy(
+  () =>
+    import('./recipes/FrenchPressByCoffeeCupGuru/FrenchPressByCoffeeCupGuru'),
 );
-const PerfectFrenchPressCoffee = lazy(() =>
-  import('./recipes/PerfectFrenchPressCoffee'),
+const PerfectFrenchPressCoffee = lazy(
+  () => import('./recipes/PerfectFrenchPressCoffee'),
 );
 
-function FrenchPress({ recipes }) {
-  const { recipePath } = useParams();
+type FrenchPressProps = {
+  recipes: Recipe[];
+};
+
+export function FrenchPress({ recipes }: FrenchPressProps) {
+  const { recipePath } = useParams<{ recipePath: string }>();
   const pageRecipe = recipes.find((recipe) => recipe.path === recipePath);
+
+  if (!pageRecipe?.path) {
+    return <FourZeroFour />;
+  }
 
   return (
     <>
@@ -39,9 +48,3 @@ function FrenchPress({ recipes }) {
     </>
   );
 }
-
-FrenchPress.propTypes = {
-  recipes: PropTypes.array.isRequired,
-};
-
-export default FrenchPress;

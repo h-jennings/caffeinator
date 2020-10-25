@@ -4,19 +4,19 @@ import handleFlOzChange from './handleFlOzChange';
 const recipeActionsConfig = {
   handleFlOzChange,
   updateRemainingMs: assign({
-    remaining_ms: (_context, event) => event.remaining_ms,
+    remaining_ms: (_context, event: any) => event.remaining_ms,
   }),
   updateTimerState: assign({
-    timerButtonState: (_context, event) => event.timerButtonState,
+    timerButtonState: (_context, event: any) => event.timerButtonState,
   }),
   resetRemainingMs: assign({
     remaining_ms: undefined,
   }),
   sendResumeEvent: send('RESUME', {
-    to: (context, event) => context[event.timerName],
+    to: (context: any, event: any) => context[event.timerName],
   }),
   sendPauseEvent: send('PAUSE', {
-    to: (context, event) => context[event.timerName],
+    to: (context: any, event: any) => context[event.timerName],
   }),
 };
 

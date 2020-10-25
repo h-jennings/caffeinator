@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Timer from '../../../../../../../components/Timer';
+import { Timer } from '@components/Timer/Timer';
 
 function BloomState({ send, current }) {
   return (
